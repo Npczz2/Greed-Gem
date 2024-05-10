@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		79F91FAA2BEE914E001DF1F2 /* guilhermeTeste.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F91FA92BEE914E001DF1F2 /* guilhermeTeste.swift */; };
+		79F91FAC2BEE9408001DF1F2 /* Carro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F91FAB2BEE9408001DF1F2 /* Carro.swift */; };
+		79F91FAE2BEE9D10001DF1F2 /* mapas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F91FAD2BEE9D10001DF1F2 /* mapas.swift */; };
 		BEA3A9CC2BEBEE3500AEFA4C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3A9CB2BEBEE3500AEFA4C /* main.swift */; };
 		BEE08B7E2BEE8EF70075FF05 /* etor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE08B7D2BEE8EF70075FF05 /* etor.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		79F91FA92BEE914E001DF1F2 /* guilhermeTeste.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guilhermeTeste.swift; sourceTree = "<group>"; };
+		79F91FAB2BEE9408001DF1F2 /* Carro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carro.swift; sourceTree = "<group>"; };
+		79F91FAD2BEE9D10001DF1F2 /* mapas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapas.swift; sourceTree = "<group>"; };
 		BEA3A9C82BEBEE3500AEFA4C /* Challenge 1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Challenge 1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA3A9CB2BEBEE3500AEFA4C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		BEE08B7D2BEE8EF70075FF05 /* etor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = etor.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 				BEA3A9CB2BEBEE3500AEFA4C /* main.swift */,
 				BEE08B7D2BEE8EF70075FF05 /* etor.swift */,
 				79F91FA92BEE914E001DF1F2 /* guilhermeTeste.swift */,
+				79F91FAB2BEE9408001DF1F2 /* Carro.swift */,
+				79F91FAD2BEE9D10001DF1F2 /* mapas.swift */,
 			);
 			path = "Challenge 1";
 			sourceTree = "<group>";
@@ -126,7 +132,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79F91FAE2BEE9D10001DF1F2 /* mapas.swift in Sources */,
 				BEA3A9CC2BEBEE3500AEFA4C /* main.swift in Sources */,
+				79F91FAC2BEE9408001DF1F2 /* Carro.swift in Sources */,
 				BEE08B7E2BEE8EF70075FF05 /* etor.swift in Sources */,
 				79F91FAA2BEE914E001DF1F2 /* guilhermeTeste.swift in Sources */,
 			);
