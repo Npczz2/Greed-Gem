@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79F91FAA2BEE914E001DF1F2 /* guilhermeTeste.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F91FA92BEE914E001DF1F2 /* guilhermeTeste.swift */; };
 		BEA3A9CC2BEBEE3500AEFA4C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3A9CB2BEBEE3500AEFA4C /* main.swift */; };
 		BEE08B7E2BEE8EF70075FF05 /* etor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE08B7D2BEE8EF70075FF05 /* etor.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		79F91FA92BEE914E001DF1F2 /* guilhermeTeste.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guilhermeTeste.swift; sourceTree = "<group>"; };
 		BEA3A9C82BEBEE3500AEFA4C /* Challenge 1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Challenge 1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA3A9CB2BEBEE3500AEFA4C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		BEE08B7D2BEE8EF70075FF05 /* etor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = etor.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			children = (
 				BEA3A9CB2BEBEE3500AEFA4C /* main.swift */,
 				BEE08B7D2BEE8EF70075FF05 /* etor.swift */,
+				79F91FA92BEE914E001DF1F2 /* guilhermeTeste.swift */,
 			);
 			path = "Challenge 1";
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			files = (
 				BEA3A9CC2BEBEE3500AEFA4C /* main.swift in Sources */,
 				BEE08B7E2BEE8EF70075FF05 /* etor.swift in Sources */,
+				79F91FAA2BEE914E001DF1F2 /* guilhermeTeste.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
