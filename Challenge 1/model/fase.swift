@@ -31,7 +31,33 @@ var todasAsFases: [Fase] = [
         })],
          quantidadeMinerios: 10,
          quantidadePedras: 20,
-         tipoDeMinerio: Minerio(desenho: "◆".green2(), nivel: 1))
+         tipoDeMinerio: Minerio(desenho: "◆".green2(), nivel: 1)),
+    
+    Fase(mapaModelo: [
+        
+        ["┌", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "┐"],
+        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
+        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
+        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", "┌", "─", "─", "─", "─", "─", "┐", " ", ".", " ", ".", " ", "│"],
+        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│", " ", " ", " ", " ", " ", "│", " ", ".", " ", ".", " ", "│"],
+        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", "└", "─", "─", "─", "─", "─", "┘", " ", ".", " ", ".", " ", "│"],
+        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
+        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
+        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
+        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
+        ["│", " ", ".", " ", ".", " ", ".", " ", ".", "┌", "─", "─", "┐", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
+        ["└", "─", "─", "─", "─", "─", "─", "─", "─", "┘", " ", " ", "└", "─", "─", "─", "─", "─", "─", "─", "─", "─", "┘"]],
+         
+         npcs: [Npc(desenho: "b".yellow() , interacao: {
+            print("heitorgdnfjjndfg");
+            print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
+            
+        })],
+         quantidadeMinerios: 5,
+         quantidadePedras: 40,
+         tipoDeMinerio: Minerio(desenho: "◆".blue(), nivel: 1))
+    
+    
     
 
 ]
@@ -103,7 +129,21 @@ struct Fase {
         mapaAtual.mapaDesenhadoComObjetos = mapaAtual.mapaDesenho
         for i in 0..<mapaAtual.posicoesPedras.count {
             mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesPedras[i].y][mapaAtual.posicoesPedras[i].x] = Espaco("☗".white(), AlgoInteragivel(index: i) {
+                energia -= 2
                 mapaAtual.posicoesPedras.remove(at: i)
+                
+                for i in 0..<inventario.count{
+                    if(inventario[i] == ""){
+                        inventario[i] = "☗"
+                        inventarioQuantidade[i] += 1
+                        
+                        break
+                    }else if(inventario[i] == "☗"){
+                        inventarioQuantidade[i] += 1
+                        
+                        break
+                    }
+                }
             })
            
                 
@@ -112,7 +152,21 @@ struct Fase {
         
         for i in 0..<mapaAtual.posicoesMinerios.count {
             mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesMinerios[i].y][mapaAtual.posicoesMinerios[i].x] = Espaco(tipoDeMinerio.desenho, AlgoInteragivel(index: i) {
+                energia -= 4
                 mapaAtual.posicoesMinerios.remove(at: i)
+                
+                for i in 0..<inventario.count{
+                    if(inventario[i] == ""){
+                        inventario[i] = tipoDeMinerio.desenho
+                        inventarioQuantidade[i] += 1
+                        
+                        break
+                    }else if(inventario[i] == tipoDeMinerio.desenho){
+                        inventarioQuantidade[i] += 1
+                        
+                        break
+                    }
+                }
 
             })
         }

@@ -6,6 +6,10 @@ import Foundation
 var mapaAtual = todasAsFases[0]
 var posicaoBoneco: (x: Int, y:Int, ladoOlhando:String) = (x: mapaAtual.posicaoSpawnBoneco.x, y: mapaAtual.posicaoSpawnBoneco.y,         ladoOlhando: "↓");
 
+var energia: Int = 100
+
+var inventario: [String] = ["", ""]
+var inventarioQuantidade: [Int] = [0,0]
 
 func loopGame() {
     
@@ -18,7 +22,6 @@ func loopGame() {
         
         let entrada = readLine()
         var entradaInvalida = false
-        
         
         if let entradaConfirmada = entrada {
             
@@ -46,7 +49,7 @@ func loopGame() {
                 posicaoBoneco.ladoOlhando = "→";
                 break
                 
-            case "E":
+            case "E": //Interagir
                 let espacoFuturo = pegarFuturaPosicao();
                 print(espacoFuturo)
                 if let coisaNoEspaco = mapaAtual.mapaDesenhadoComObjetos[espacoFuturo.y][espacoFuturo.x].algoInteragivel {
@@ -58,10 +61,21 @@ func loopGame() {
                 print("troca de mapa..")
                 mapaAtual = todasAsFases[1];
                 mapaAtual.desenharObjetosMapa();
+                
+                energia -= 10
                 break
                 
             case "X":
                 exit(0)
+                break
+                
+            case "I": //Inventário
+                print("Inventário:")
+                for i in 0..<inventario.count{
+                    if(inventario[i] != ""){
+                        print(inventario[i]," x", inventarioQuantidade[i])
+                    }
+                }
                 break
             default:
                 pegarFuturaPosicao = {
@@ -84,6 +98,7 @@ func loopGame() {
                         if (mapaAtual.mapaDesenhadoComObjetos[posicaoFutura.y][posicaoFutura.x].desenho == ".") {
                             posicaoBoneco.x = pegarFuturaPosicao().x
                             posicaoBoneco.y = pegarFuturaPosicao().y
+                            
                             printarGameTeste()
                         } else {
                             print("colisao".red())
@@ -96,6 +111,11 @@ func loopGame() {
                         }
                     }
                 }
+            }
+            
+            if(energia <= 0)
+            {
+                exit(0)
             }
         }
     }
@@ -127,6 +147,8 @@ func loopGame() {
 
 func printarGameTeste() {
     
+    printarEnergia()
+    
     var mapaComObjetos = mapaAtual.mapaDesenhadoComObjetos
     mapaComObjetos[posicaoBoneco.y][posicaoBoneco.x].desenho = posicaoBoneco.ladoOlhando.red()
     for i in 0..<mapaComObjetos.count {
@@ -137,6 +159,20 @@ func printarGameTeste() {
         print();
     }
     
+}
+
+func printarEnergia(){
+    var energiaConv: Int = energia/5
+    var barraEnergia: String = ""
+    for i in 0..<energiaConv{
+        barraEnergia += "#"
+    }
+    
+    for i in 0..<20-energiaConv {
+        barraEnergia += "#".black2()
+    }
+    
+    print("Energia: [" + barraEnergia + "]")
 }
 
 
