@@ -11,31 +11,28 @@ var palavra: String = "Lorem Ipsum is simply dummy text of the printing and type
 
 func testePati() {
     
-    let vetor = palavra.split(separator: " ")
+    let vetor = Array(palavra)
     
     for i in 0..<vetor.count {
-        print()
-        print()
-        print()
-        print()
-        print()
-        print()
-        print()
-        print()
-        print()
-        print()
-        print()
-        print()
-        print()
-        print()
-        print()
-        print()
+        
+        for _ in 0..<20 {
+            print()
+        }
+        
+        print(
+            """
+                fhhgfhfghfghfhg hfghfhfhfgfg
+                                fhhgfhfghfghfhg hfghfhfhfgfg
+                            fhhgfhfghfghfhg hfghfhfhfgfg        fhhgfhfghfghfhg hfghfhfhfgfg
+            """
+        )
+        
         for j in 0..<i {
-            print(vetor[j] + " ", terminator: "")
+            print(vetor[j], terminator: "")
         }
         
         do {
-            usleep(100000)
+            usleep(20000)
         }
     }
     
