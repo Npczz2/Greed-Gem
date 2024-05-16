@@ -149,6 +149,10 @@ func printarGameTeste() {
     
     printarEnergia()
     
+    for _ in 0..<20 {
+        print()
+    }
+    
     var mapaComObjetos = mapaAtual.mapaDesenhadoComObjetos
     mapaComObjetos[posicaoBoneco.y][posicaoBoneco.x].desenho = posicaoBoneco.ladoOlhando.red()
     for i in 0..<mapaComObjetos.count {
@@ -156,7 +160,6 @@ func printarGameTeste() {
             print(mapaComObjetos[i][j].desenho ,terminator: "");
         }
         
-        print();
     }
     
 }

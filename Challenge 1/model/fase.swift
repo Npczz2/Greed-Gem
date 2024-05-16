@@ -9,57 +9,30 @@ import Foundation
 
 var todasAsFases: [Fase] = [
     
-    Fase(mapaModelo: [
-        
-        ["┌", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "┐"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", "┌", "─", "─", "─", "─", "─", "┐", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│", " ", " ", " ", " ", " ", "│", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", "└", "─", "─", "─", "─", "─", "┘", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", "┌", "─", "─", "┐", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["└", "─", "─", "─", "─", "─", "─", "─", "─", "┘", " ", " ", "└", "─", "─", "─", "─", "─", "─", "─", "─", "─", "┘"]],
+    Fase(mapaModelo: """
+       ┌┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┐             &
+   ┌┬┬┬┤┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼├┬┬┬┬┬┬┐      &
+   ├┼┼┼┼ . . . . . . . . . . . . .├┼┼┼┼┼┼┼┬┐    &
+   │ . . . . . . . . . . . . . . . . . . ├┼┤    &
+ ┌┬│ . . . . . . ┌┬┬┬┬┬┬┬┐ . . . . . . . . └┬┐  &
+ ├┼┘ . . . . . ┌┬┘┼┼┼┼┼┼┼┼┬┐ . . . . . . . . ││ &
+││ . . . . . . └─┐         │ . . . . . . . ┌┼┘  &
+││ . . . . . . . └─────────┘ . . . . . . . │    &
+ ├┬┬┬┐ . . . . . . . . . . . . . . . ┌┬┬┬┬┬┘    &
+ └┼┼┼┼┬┐ . . . . . . . . . . . ┌┬┬┬┬┬┼┼┼┼┼┘     &
+   └┼┼┼┼┬┬┬┬┬┬┬┐ . . . . ┌┬┬┬┬┬┼┼┼┼┼┘           &
+               └┬┬┬┬┬┬┬┬┬┘                      &
+""",
          
-         npcs: [Npc(desenho: "b".cyan2() , interacao: {
-            print("heitorgdnfjjndfg");                                                                                   
-            print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
-            
-        })],
-         quantidadeMinerios: 10,
-         quantidadePedras: 20,
-         tipoDeMinerio: Minerio(desenho: "◆".green2(), nivel: 1)),
-    
-    Fase(mapaModelo: [
-        
-        ["┌", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "─", "┐"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", "┌", "─", "─", "─", "─", "─", "┐", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│", " ", " ", " ", " ", " ", "│", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", "└", "─", "─", "─", "─", "─", "┘", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["│", " ", ".", " ", ".", " ", ".", " ", ".", "┌", "─", "─", "┐", " ", ".", " ", ".", " ", ".", " ", ".", " ", "│"],
-        ["└", "─", "─", "─", "─", "─", "─", "─", "─", "┘", " ", " ", "└", "─", "─", "─", "─", "─", "─", "─", "─", "─", "┘"]],
-         
-         npcs: [Npc(desenho: "b".yellow() , interacao: {
+         npcs: [Npc(desenho: "Y".cyan2() , interacao: {
             print("heitorgdnfjjndfg");
             print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
             
         })],
-         quantidadeMinerios: 5,
-         quantidadePedras: 40,
-         tipoDeMinerio: Minerio(desenho: "◆".blue(), nivel: 1))
-    
-    
-    
-
+         quantidadeMinerios: 2,
+         quantidadePedras: 30,
+         tipoDeMinerio: Minerio(desenho: "◆".yellow(), nivel: 1))
+ 
 ]
 
 struct Fase {
@@ -70,21 +43,23 @@ struct Fase {
     var posicoesMinerios: [(x:Int, y: Int)] = [];
     let npcs: [Npc];
     var posicoesNpcs: [(x:Int, y: Int)] = [];
-    let posicaoSpawnBoneco = (x: 2, y: 1);
+    let posicaoSpawnBoneco = (x: 44, y: 5);
     let quantidadeMinerios: Int;
     let quantidadePedras: Int;
     var mapaDesenhadoComObjetos: [[Espaco]] = [];
     let tipoDeMinerio: Minerio;
     
-    init (mapaModelo: [[String]], npcs: [Npc], quantidadeMinerios: Int, quantidadePedras: Int, tipoDeMinerio: Minerio) {
+    init (mapaModelo: String, npcs: [Npc], quantidadeMinerios: Int, quantidadePedras: Int, tipoDeMinerio: Minerio) {
         
-        for i in 0..<mapaModelo.count {
+        var vetor = mapaModelo.split(separator: "&")
+        for i in 0..<vetor.count {
+            var vetor2 = Array(vetor[i])
             mapaDesenho.append([])
-            for j in 0..<mapaModelo[0].count {
-                mapaDesenho[i].append(Espaco(mapaModelo[i][j]))
+            for j in 0..<vetor2.count {
+                mapaDesenho[i].append(Espaco(String(vetor2[j])))
             }
         }
-        
+
         self.npcs = npcs;
         self.tipoDeMinerio = tipoDeMinerio;
         self.quantidadePedras = quantidadePedras;
