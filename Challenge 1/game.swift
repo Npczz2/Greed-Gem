@@ -2,20 +2,33 @@ import Foundation
 
 
 
+struct Personagem {
+    
+    var posicao: (x: Int, y: Int) = (x: 0, y: 0)
+    var direcaoPadrao = "↓".red()
+    var energia: Int = 100
+    var inventario: [String] = ["", ""]
+    var inventarioQuantidade: [Int] = [0,0]
+    
+}
 
+var personagem = Personagem()
 var mapaAtual = todasAsFases[0]
-var posicaoBoneco: (x: Int, y:Int, ladoOlhando:String) = (x: mapaAtual.posicaoSpawnBoneco.x, y: mapaAtual.posicaoSpawnBoneco.y,         ladoOlhando: "↓");
+//var posicaoBoneco: (x: Int, y:Int, ladoOlhando:String) = (x: mapaAtual.posicaoSpawnBoneco.x, y: mapaAtual.posicaoSpawnBoneco.y,         ladoOlhando: "↓");
 
-var energia: Int = 100
+var velocidadeTexto: Double = 1
+var textoCompleto: Bool = false
 
-var inventario: [String] = ["", ""]
-var inventarioQuantidade: [Int] = [0,0]
 
 func loopGame() {
     
+    print("Digite a velocidade de digitação do texto (0.5; 1; 2; 5):")
+    velocidadeTexto = Double(readLine()!)!
+    
     mapaAtual.desenharObjetosMapa()
+    personagem.posicao = mapaAtual.posicaoSpawnBoneco
     printarGameTeste();
-    var pegarFuturaPosicao: () -> (x: Int, y: Int) = { (x: posicaoBoneco.x, y: posicaoBoneco.y + 1) };
+    var pegarFuturaPosicao: () -> (x: Int, y: Int) = { (x: personagem.posicao.x, y: personagem.posicao.y + 1) };
     
     while(true) {
         
@@ -30,23 +43,23 @@ func loopGame() {
             switch entradaSeparada[0].uppercased() {
                 
             case "W":
-                pegarFuturaPosicao = { return (x: posicaoBoneco.x, y: posicaoBoneco.y - 1) }
-                posicaoBoneco.ladoOlhando = "↑";
+                pegarFuturaPosicao = { return (x: personagem.posicao.x, y: personagem.posicao.y - 1) }
+                personagem.direcaoPadrao = "↑".red();
                 break
                 
             case "A":
-                pegarFuturaPosicao = { (x: posicaoBoneco.x - 2, y: posicaoBoneco.y) }
-                posicaoBoneco.ladoOlhando = "←";
+                pegarFuturaPosicao = { (x: personagem.posicao.x - 2, y: personagem.posicao.y) }
+                personagem.direcaoPadrao = "←".red();
                 break
                 
             case "S":
-                pegarFuturaPosicao = { (x: posicaoBoneco.x, y: posicaoBoneco.y + 1) }
-                posicaoBoneco.ladoOlhando = "↓";
+                pegarFuturaPosicao = { (x: personagem.posicao.x, y: personagem.posicao.y + 1) }
+                personagem.direcaoPadrao = "↓".red();
                 break
                 
             case "D":
-                pegarFuturaPosicao = { (x: posicaoBoneco.x + 2, y: posicaoBoneco.y) }
-                posicaoBoneco.ladoOlhando = "→";
+                pegarFuturaPosicao = { (x: personagem.posicao.x + 2, y: personagem.posicao.y) }
+                personagem.direcaoPadrao = "→".red();
                 break
                 
             case "E": //Interagir
@@ -62,7 +75,7 @@ func loopGame() {
                 mapaAtual = todasAsFases[1];
                 mapaAtual.desenharObjetosMapa();
                 
-                energia -= 10
+                personagem.energia -= 10
                 break
                 
             case "X":
@@ -71,15 +84,15 @@ func loopGame() {
                 
             case "I": //Inventário
                 print("Inventário:")
-                for i in 0..<inventario.count{
-                    if(inventario[i] != ""){
-                        print(inventario[i]," x", inventarioQuantidade[i])
+                for i in 0..<personagem.inventario.count{
+                    if(personagem.inventario[i] != ""){
+                        print(personagem.inventario[i]," x", personagem.inventarioQuantidade[i])
                     }
                 }
                 break
             default:
                 pegarFuturaPosicao = {
-                    (x: posicaoBoneco.x, y: posicaoBoneco.y)
+                    (x: personagem.posicao.x, y: personagem.posicao.y)
                 }
                 
                 entradaInvalida = true
@@ -96,8 +109,8 @@ func loopGame() {
                     for i in 0..<numeroDeCasas {
                         var posicaoFutura = pegarFuturaPosicao();
                         if (mapaAtual.mapaDesenhadoComObjetos[posicaoFutura.y][posicaoFutura.x].desenho == ".") {
-                            posicaoBoneco.x = pegarFuturaPosicao().x
-                            posicaoBoneco.y = pegarFuturaPosicao().y
+                            personagem.posicao.x = pegarFuturaPosicao().x
+                            personagem.posicao.y = pegarFuturaPosicao().y
                             
                             printarGameTeste()
                         } else {
@@ -113,7 +126,7 @@ func loopGame() {
                 }
             }
             
-            if(energia <= 0)
+            if(personagem.energia <= 0)
             {
                 exit(0)
             }
@@ -154,7 +167,8 @@ func printarGameTeste() {
     }
     
     var mapaComObjetos = mapaAtual.mapaDesenhadoComObjetos
-    mapaComObjetos[posicaoBoneco.y][posicaoBoneco.x].desenho = posicaoBoneco.ladoOlhando.red()
+    print("posicao spawn", mapaAtual.posicaoSpawnBoneco)
+    mapaComObjetos[personagem.posicao.y][personagem.posicao.x].desenho = personagem.direcaoPadrao
     for i in 0..<mapaComObjetos.count {
         for j in 0..<mapaComObjetos[0].count {
             print(mapaComObjetos[i][j].desenho ,terminator: "");
@@ -162,10 +176,16 @@ func printarGameTeste() {
         
     }
     
+    printarDevagar(texto: "\n\nParry adentra a caverna e começa a explorar seu interior…\n\n", velocidade: velocidadeTexto, completo: textoCompleto)
+        
+    if(!textoCompleto){
+        textoCompleto = true
+    }
+    
 }
 
 func printarEnergia(){
-    var energiaConv: Int = energia/5
+    var energiaConv: Int = personagem.energia/5
     var barraEnergia: String = ""
     for i in 0..<energiaConv{
         barraEnergia += "#"
@@ -178,6 +198,25 @@ func printarEnergia(){
     print("Energia: [" + barraEnergia + "]")
 }
 
+func printarDevagar(texto: String, velocidade: Double, completo: Bool){
+    var textoConv = Array(texto)
+    var velocidadeConv = 50000 / velocidade
+    
+    setbuf(__stdoutp, nil)
+    
+    if(!completo){ //Caso ainda não tenha digitado o texto
+        for i in 0..<textoConv.count{
+            print(textoConv[i], terminator: "")
+            
+            usleep(useconds_t(velocidadeConv))
+        }
+    }else{
+        print(texto.italic())
+    }
+}
+    
+    
+
 
 
 
@@ -188,6 +227,10 @@ func printarEnergia(){
 
 extension String {
     
+    func bold() -> String { juntar("1")}
+    func dim() -> String { juntar("2")}
+    func italic() -> String { juntar("3")}
+    func underline() -> String { juntar("4")}
     func black() -> String { juntar("30") }
     func red() -> String { juntar("31") }
     func green() -> String { juntar("32") }

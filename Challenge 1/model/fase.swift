@@ -10,6 +10,32 @@ import Foundation
 var todasAsFases: [Fase] = [
     
     Fase(mapaModelo: """
+        ├┐  . .  ┌┤           &
+         ├┐ . . ┌┤            &
+  ┌┬┬┬┬┬┬┼┤ . . ├┼┬┬┬┬┬┬┬┐    &
+  ├┼┼┼┼┼┼┼┤ . . ├┼┼┼┼┼┼┼┼┤    &
+  │ . . . . . . . . . .  ├┬┐  &
+ ┌┤ . . . . . . . . . .  ├┼┤  &
+│├┤ . . . . . . . . . . .  ││ &
+││  . . . . . . . . . . .  ││ &
+ ├┐ . . . . . . . . . .  ┌┬┤  &
+ ├┤ . . . . . . . . . .  ├┼┤  &
+  ├┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┤    &
+  ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤    &
+""",
+         
+         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 5, y: 4), interacao: {
+            print("heitorgdnfjjndfg");
+            print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
+            
+        })],
+         quantidadePedras: 2,
+         quantidadeMinerios: 10,
+         tipoDeMinerio: Minerio(desenho: "◆".yellow(), nivel: 1),
+         posicaoSpawnBoneco: (x: 13, y: 1)
+                    ),
+    
+    Fase(mapaModelo: """
        ┌┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┐             &
    ┌┬┬┬┤┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼├┬┬┬┬┬┬┐      &
    ├┼┼┼┼ . . . . . . . . . . . . .├┼┼┼┼┼┼┼┬┐    &
@@ -24,18 +50,23 @@ var todasAsFases: [Fase] = [
                └┬┬┬┬┬┬┬┬┬┘                      &
 """,
          
-         npcs: [Npc(desenho: "Y".cyan2() , interacao: {
+         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 6, y: 4), interacao: {
             print("heitorgdnfjjndfg");
             print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
             
         })],
+         quantidadePedras: 10,
          quantidadeMinerios: 2,
-         quantidadePedras: 30,
-         tipoDeMinerio: Minerio(desenho: "◆".yellow(), nivel: 1))
+         tipoDeMinerio: Minerio(desenho: "◆".yellow(), nivel: 1),
+         posicaoSpawnBoneco: (x: 44, y: 5)
+                    ),
+    
+
+    
  
 ]
 
-struct Fase {
+class Fase {
     
     var mapaDesenho: [[Espaco]] = [];
     var posicoesValidas: [(x:Int, y: Int)] = [];
@@ -43,17 +74,18 @@ struct Fase {
     var posicoesMinerios: [(x:Int, y: Int)] = [];
     let npcs: [Npc];
     var posicoesNpcs: [(x:Int, y: Int)] = [];
-    let posicaoSpawnBoneco = (x: 44, y: 5);
+    let posicaoSpawnBoneco: (x: Int, y: Int);
     let quantidadeMinerios: Int;
     let quantidadePedras: Int;
     var mapaDesenhadoComObjetos: [[Espaco]] = [];
     let tipoDeMinerio: Minerio;
+    let posicaoEscada: (x: Int, y: Int)
     
-    init (mapaModelo: String, npcs: [Npc], quantidadeMinerios: Int, quantidadePedras: Int, tipoDeMinerio: Minerio) {
+    init (mapaModelo: String, npcs: [Npc], quantidadePedras: Int, quantidadeMinerios: Int, tipoDeMinerio: Minerio, posicaoSpawnBoneco: (x: Int, y: Int)) {
         
-        var vetor = mapaModelo.split(separator: "&")
+        let vetor = mapaModelo.split(separator: "&")
         for i in 0..<vetor.count {
-            var vetor2 = Array(vetor[i])
+            let vetor2 = Array(vetor[i])
             mapaDesenho.append([])
             for j in 0..<vetor2.count {
                 mapaDesenho[i].append(Espaco(String(vetor2[j])))
@@ -64,7 +96,9 @@ struct Fase {
         self.tipoDeMinerio = tipoDeMinerio;
         self.quantidadePedras = quantidadePedras;
         self.quantidadeMinerios = quantidadeMinerios;
-        mapaDesenhadoComObjetos = mapaDesenho
+        self.posicaoSpawnBoneco = posicaoSpawnBoneco;
+        self.mapaDesenhadoComObjetos = mapaDesenho;
+        personagem.posicao = posicaoSpawnBoneco;
         
         for i in 1..<mapaDesenho.count - 1 {
             for j in 1..<mapaDesenho[0].count - 1 {
@@ -72,6 +106,13 @@ struct Fase {
                     posicoesValidas.append((x: j, y: i))
                 }
             }
+        }
+        
+        for npc in npcs {
+            let randomPosicaoValida = Int.random(in: 0..<posicoesValidas.count)
+            let posicaoValida = posicoesValidas[randomPosicaoValida]
+            posicoesNpcs.append(npc.posicaoSpawnNPC)
+  
         }
         
         for _ in 0..<quantidadePedras {
@@ -89,36 +130,36 @@ struct Fase {
             posicoesValidas.remove(at: randomPosicaoValida)
         }
         
-        for _ in npcs {
-            let randomPosicaoValida = Int.random(in: 0..<posicoesValidas.count)
-            let posicaoValida = posicoesValidas[randomPosicaoValida]
-            posicoesNpcs.append(posicaoValida)
-            posicoesValidas.remove(at: randomPosicaoValida)
-            
-            
-        }
-        
+        let randomPosicaoPedra = Int.random(in: 0..<posicoesPedras.count)
+        posicaoEscada = posicoesPedras[randomPosicaoPedra]
     }
     
     func desenharObjetosMapa () {
+        
         mapaAtual.mapaDesenhadoComObjetos = mapaAtual.mapaDesenho
+        self.mapaDesenho[posicaoEscada.y][posicaoEscada.x] = Espaco("⇊".bgBlack(), AlgoInteragivel(index: 0, interacao: {
+            mapaAtual = todasAsFases[1]
+            textoCompleto = false //Texto ter que ser digitado novamente
+            personagem.posicao = todasAsFases[1].posicaoSpawnBoneco
+        }))
+        
         for i in 0..<mapaAtual.posicoesPedras.count {
             mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesPedras[i].y][mapaAtual.posicoesPedras[i].x] = Espaco("☗".white(), AlgoInteragivel(index: i) {
-                energia -= 2
+                personagem.energia -= 2
                 mapaAtual.posicoesPedras.remove(at: i)
                 
-                for i in 0..<inventario.count{
-                    if(inventario[i] == ""){
-                        inventario[i] = "☗"
-                        inventarioQuantidade[i] += 1
-                        
-                        break
-                    }else if(inventario[i] == "☗"){
-                        inventarioQuantidade[i] += 1
-                        
-                        break
-                    }
-                }
+//                for i in 0..<inventario.count{
+//                    if(inventario[i] == ""){
+//                        inventario[i] = "☗"
+//                        inventarioQuantidade[i] += 1
+//                        
+//                        break
+//                    }else if(inventario[i] == "☗"){
+//                        inventarioQuantidade[i] += 1
+//                        
+//                        break
+//                    }
+//                }
             })
            
                 
@@ -127,28 +168,28 @@ struct Fase {
         
         for i in 0..<mapaAtual.posicoesMinerios.count {
             mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesMinerios[i].y][mapaAtual.posicoesMinerios[i].x] = Espaco(tipoDeMinerio.desenho, AlgoInteragivel(index: i) {
-                energia -= 4
+                personagem.energia -= 4
                 mapaAtual.posicoesMinerios.remove(at: i)
                 
-                for i in 0..<inventario.count{
-                    if(inventario[i] == ""){
-                        inventario[i] = tipoDeMinerio.desenho
-                        inventarioQuantidade[i] += 1
-                        
-                        break
-                    }else if(inventario[i] == tipoDeMinerio.desenho){
-                        inventarioQuantidade[i] += 1
-                        
-                        break
-                    }
-                }
+//                for i in 0..<inventario.count{
+//                    if(inventario[i] == ""){
+//                        inventario[i] = self.tipoDeMinerio.desenho
+//                        inventarioQuantidade[i] += 1
+//                        
+//                        break
+//                    }else if(inventario[i] == self.tipoDeMinerio.desenho){
+//                        inventarioQuantidade[i] += 1
+//                        
+//                        break
+//                    }
+//                }
 
             })
         }
         
         for i in 0..<mapaAtual.posicoesNpcs.count {
             mapaAtual.mapaDesenhadoComObjetos[posicoesNpcs[i].y][posicoesNpcs[i].x] = Espaco(npcs[i].desenho, AlgoInteragivel(index: 0) {
-                npcs[i].interacao()
+                self.npcs[i].interacao()
             })
         }
         
@@ -206,9 +247,10 @@ class Minerio: Item {
 class Npc: Item {
     
     let interacao: (() -> Void);
-    
-    init(desenho: String, interacao: @escaping () -> Void) {
-        self.interacao = interacao
+    let posicaoSpawnNPC: (x: Int, y: Int);
+    init(desenho: String, posicaoSpawnNPC: (x: Int, y: Int), interacao: @escaping () -> Void) {
+        self.interacao = interacao;
+        self.posicaoSpawnNPC = posicaoSpawnNPC;
         super.init(desenho: desenho)
     }
 }
