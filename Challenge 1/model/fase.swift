@@ -7,6 +7,7 @@
 
 import Foundation
 
+var faseNumero: Int = 0;
 var todasAsFases: [Fase] = [
     
     Fase(mapaModelo: """
@@ -24,15 +25,90 @@ var todasAsFases: [Fase] = [
   ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤    &
 """,
          
+         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 19, y: 5), interacao: {
+            print("heitorgdnfjjndfg");
+            print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
+            
+        })],
+         quantidadePedras: 5,
+         quantidadeMinerios: 10,
+         tipoDeMinerio: Minerio(desenho: "◆".yellow(), nivel: 1),
+         posicaoSpawnBoneco: (x: 13, y: 1)
+                    ),
+    
+    Fase(mapaModelo: """
+  ┌┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┐                   &
+  ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤                   &
+  │ . . . . . . . ├┬┐                 &
+ ┌┤ . . . . . . . ├┼┼┬┬┬┬┬┬┬┬┬┬┬┬┬┐   &
+│├┤ . . . . . . . . ├┼┼┼┼┼┼┼┼┼┼┼┼┼┤   &
+││  . . . . . . . . . . . . . . . ││  &
+ ├┐ . . . . . . . ┌┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┤   &
+ ├┤ . . . . . . . ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤   &
+  ├┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┤                   &
+  ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤                   &
+""",
+         
          npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 5, y: 4), interacao: {
             print("heitorgdnfjjndfg");
             print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
             
         })],
-         quantidadePedras: 2,
+         quantidadePedras: 5,
          quantidadeMinerios: 10,
-         tipoDeMinerio: Minerio(desenho: "◆".yellow(), nivel: 1),
-         posicaoSpawnBoneco: (x: 13, y: 1)
+         tipoDeMinerio: Minerio(desenho: "▰".blue(), nivel: 1),
+         posicaoSpawnBoneco: (x: 5, y: 2)
+                    ),
+    
+    Fase(mapaModelo: """
+ ┌┬┬┬┬┬┬┬┬┬┬┬┐                  &
+ ├┼┼┼┼┼┼┼┼┼┼┼┤                  &
+││ . . . . . ├┬┬┬┬┬┬┬┬┬┬┬┬┬┐    &
+││ . . . . . ├┼┼┼┼┼┼┼┼┼┼┼┼┼┤    &
+││ . . . . . . . . . . . . ├┬┐  &
+││ . . . . . . . . . . . . ├┼┤  &
+││ . . . . . . . . . . . . . ││ &
+ ├┬┬┬┬┬┬┬┬┬┬┬┐ . . . . . . . ││ &
+ ├┼┼┼┼┼┼┼┼┼┼┼┤ . . . . . . . ││ &
+             │ . . . . . . ┌┬┤  &
+             ├┬┬┬┬┬┬┬┬┬┬┬┬┬┼┼┤  &
+             ├┼┼┼┼┼┼┼┼┼┼┼┼┼┤    &
+""",
+         
+         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 7, y: 3), interacao: {
+            print("heitorgdnfjjndfg");
+            print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
+            
+        })],
+         quantidadePedras: 5,
+         quantidadeMinerios: 10,
+         tipoDeMinerio: Minerio(desenho: "▮".yellow(), nivel: 1),
+         posicaoSpawnBoneco: (x: 6, y: 3)
+                    ),
+    
+    Fase(mapaModelo: """
+ ┌┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┐              &
+ ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤              &
+││ . . . . . . . . . . . . . . ├┬┬┬┬┬┬┬┬┬┬┬┐  &
+││ . . . . . . . . . . . . . . ├┼┼┼┼┼┼┼┼┼┼┼┤  &
+││ . . . . . . . . . . . . . . . . . . . . ││ &
+ ├┬┬┬┬┬┬┬┬┬┬┬┐ . . . . . . . . ┌┬┬┬┬┬┬┬┬┬┬┬┤  &
+ ├┼┼┼┼┼┼┼┼┼┼┼┤ . . . . . . . . ├┼┼┼┼┼┼┼┼┼┼┼┤  &
+             │ . . . . . . . . │              &
+             │ . . . . . . . . │              &
+             ├┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┤              &
+             ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤              &
+""",
+         
+         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 3, y: 3), interacao: {
+            print("heitorgdnfjjndfg");
+            print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
+            
+        })],
+         quantidadePedras: 5,
+         quantidadeMinerios: 10,
+         tipoDeMinerio: Minerio(desenho: "◆".green(), nivel: 1),
+         posicaoSpawnBoneco: (x: 8, y: 2)
                     ),
     
     Fase(mapaModelo: """
@@ -55,10 +131,60 @@ var todasAsFases: [Fase] = [
             print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
             
         })],
-         quantidadePedras: 10,
-         quantidadeMinerios: 2,
-         tipoDeMinerio: Minerio(desenho: "◆".yellow(), nivel: 1),
+         quantidadePedras: 5,
+         quantidadeMinerios: 10,
+         tipoDeMinerio: Minerio(desenho: "✦".cyan(), nivel: 1),
          posicaoSpawnBoneco: (x: 44, y: 5)
+                    ),
+    
+    Fase(mapaModelo: """
+              ┌┬┬┬┬┬┬┬┬┬┬┐                             &
+              ├┼┼┼┼┼┼┼┼┼┼┤                             &
+ ┌┬┬┬┬┬┬┬┬┬┬┬┬┤ . . . .  ├┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┐          &
+┌┼┼┼┼┼┼┼┼┼┼┼┼┼┤ . . . .  ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤          &
+││  . . . . . . . . . . . . . . . . . . . . ├┬┬┬┬┬┬┐   &
+││  . . . . ┌┬┐ . . . . . . . . . . . . . . ├┼┼┼┼┼┼┼┐  &
+ └┬┬┬┬┬┬┐ . . . . . . . . . . . . . ┌┬┬┬┐ . . . . . ││ &
+     └┼┼│ . . . . ┌┬┬┬┬┬┬┬┬┬┐ . . . ├┼┼┼┤ . . . . . ││ &
+       ││ . . . . ├┼┼┼┼┼┼┼┼┼┤ . . . . . . . . . . . ││ &
+       └├┬┬┬┬┬┬┬┬┬┤         ├┬┬┬┬┬┐ . . . . ┌┬┬┬┬┬┬┬┬┘ &
+        └┼┼┼┼┼┼┼┼┼┘         └┼┼┼┼┼┤ . . . . ├┼┼┼┼┼┼┼┘  &
+                                  ├┬┬┬┬┬┬┬┬┬┤          &
+                                  └┼┼┼┼┼┼┼┼┼┘          &
+""",
+         
+         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 6, y: 4), interacao: {
+            print("heitorgdnfjjndfg");
+            print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
+            
+        })],
+         quantidadePedras: 5,
+         quantidadeMinerios: 10,
+         tipoDeMinerio: Minerio(desenho: "●".red(), nivel: 1),
+         posicaoSpawnBoneco: (x: 17, y: 2)
+                    ),
+    
+    Fase(mapaModelo: """
+                     ┌┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┐              &
+        ┌┬┬┬┬┬┬┬┬┬┬┬┬┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤              &
+  ┌┬┬┬┬┬┤┼┼┼┼┼┼┼┼┼┼┼┼┤. . . . . . . . ├┬┬┬┬┬┬┬┬┬┬┬┐  &
+  ├┼┼┼┼┼┤ . . . . . . . . . . . . . . ├┼┼┼┼┼┼┼┼┼┼┼┤  &
+ ││ . . . . . . . . . . . . . . . . . . . . . . . ││ &
+ ││ . . . . . . . . . . . . . . . . . . . . . . . ││ &
+  ├┬┬┬┬┬┐ . . . . . . . . . . . . . . ┌┬┬┬┬┬┬┬┬┬┬┬┤  &
+  ├┼┼┼┼┼┼┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┼┼┼┼┼┼┼┼┼┼┼┼┤  &
+            ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤           &
+""",
+         
+         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 6, y: 4), interacao: {
+            print("heitorgdnfjjndfg");
+            print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
+            
+        })],
+         quantidadePedras: 5,
+         quantidadeMinerios: 10,
+         tipoDeMinerio: Minerio(desenho: "⋇".magenta(), nivel: 1),
+         posicaoSpawnBoneco: (x: 50, y: 4)
                     ),
     
 
@@ -138,9 +264,10 @@ class Fase {
         
         mapaAtual.mapaDesenhadoComObjetos = mapaAtual.mapaDesenho
         self.mapaDesenho[posicaoEscada.y][posicaoEscada.x] = Espaco("⇊".bgBlack(), AlgoInteragivel(index: 0, interacao: {
-            mapaAtual = todasAsFases[1]
+            faseNumero += 1;
+            mapaAtual = todasAsFases[faseNumero]
             textoCompleto = false //Texto ter que ser digitado novamente
-            personagem.posicao = todasAsFases[1].posicaoSpawnBoneco
+            personagem.posicao = todasAsFases[faseNumero].posicaoSpawnBoneco
         }))
         
         for i in 0..<mapaAtual.posicoesPedras.count {
