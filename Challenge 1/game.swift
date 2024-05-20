@@ -56,7 +56,7 @@ func printarGameTeste() {
         
     }
     
-    printarDevagar(texto: "\n\n" + personagem.nome + " adentra a caverna e começa a explorar seu interior…\n\n", velocidade: velocidadeTexto, completo: textoCompleto)
+    printarDevagar(texto: "\n\n" + mapaAtual.fraseInicial, velocidade: velocidadeTexto, completo: textoCompleto)
         
     if(!textoCompleto){
         textoCompleto = true
@@ -150,6 +150,14 @@ func printarEscolhas(escolhas: [String]){
     while(escolha != 1 && escolha != 2){
         print("Escolha inválida. Digite novamente.")
         escolha = Int(readLine()!)!
+    }
+    
+    if(escolha == 1){
+        printarDevagar(texto: "Wallis: Jovem, você vai se arrepender desta decisão. Eu perdi tudo… E você terá um fim trágico igual a mim.", velocidade: velocidadeTexto, completo: false)
+        readLine()
+    }else if(escolha == 2){
+        printarDevagar(texto: "Wallis: Você é bom… Não deixe a caverna te corromper…", velocidade: velocidadeTexto, completo: false)
+        readLine()
     }
 }
 

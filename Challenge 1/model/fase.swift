@@ -32,8 +32,9 @@ var todasAsFases: [Fase] = [
         })],
          quantidadePedras: 5,
          quantidadeMinerios: 10,
-         tipoDeMinerio: Minerio(desenho: "◆".yellow(), nivel: 1),
-         posicaoSpawnBoneco: (x: 13, y: 1)
+         tipoDeMinerio: Minerio(desenho: "◆".blue(), nivel: 1),
+         posicaoSpawnBoneco: (x: 13, y: 1),
+         fraseInicial: personagem.nome + " adentra a caverna e começa a explorar seu interior…\n"
                     ),
     
     Fase(mapaModelo: """
@@ -57,7 +58,8 @@ var todasAsFases: [Fase] = [
          quantidadePedras: 5,
          quantidadeMinerios: 10,
          tipoDeMinerio: Minerio(desenho: "▰".blue(), nivel: 1),
-         posicaoSpawnBoneco: (x: 5, y: 2)
+         posicaoSpawnBoneco: (x: 5, y: 2),
+         fraseInicial: personagem.nome + " desce mais um nível na caverna e observa um homem minerando, desatento com seus pertences."
                     ),
     
     Fase(mapaModelo: """
@@ -83,7 +85,8 @@ var todasAsFases: [Fase] = [
          quantidadePedras: 5,
          quantidadeMinerios: 10,
          tipoDeMinerio: Minerio(desenho: "▮".yellow(), nivel: 1),
-         posicaoSpawnBoneco: (x: 6, y: 3)
+         posicaoSpawnBoneco: (x: 6, y: 3),
+         fraseInicial: personagem.nome + " continua sua exploração e se depara com dois homens brigando."
                     ),
     
     Fase(mapaModelo: """
@@ -108,7 +111,8 @@ var todasAsFases: [Fase] = [
          quantidadePedras: 5,
          quantidadeMinerios: 10,
          tipoDeMinerio: Minerio(desenho: "◆".green(), nivel: 1),
-         posicaoSpawnBoneco: (x: 8, y: 2)
+         posicaoSpawnBoneco: (x: 8, y: 2),
+         fraseInicial: "Depois da situação caótica, " + personagem.nome + " até desconfia do silêncio desse andar…"
                     ),
     
     Fase(mapaModelo: """
@@ -134,7 +138,8 @@ var todasAsFases: [Fase] = [
          quantidadePedras: 5,
          quantidadeMinerios: 10,
          tipoDeMinerio: Minerio(desenho: "✦".cyan2(), nivel: 1),
-         posicaoSpawnBoneco: (x: 44, y: 5)
+         posicaoSpawnBoneco: (x: 44, y: 5),
+         fraseInicial: personagem.nome + " desce mais um andar e avista Stan novamente…"
                     ),
     
     Fase(mapaModelo: """
@@ -161,7 +166,8 @@ var todasAsFases: [Fase] = [
          quantidadePedras: 5,
          quantidadeMinerios: 10,
          tipoDeMinerio: Minerio(desenho: "●".red(), nivel: 1),
-         posicaoSpawnBoneco: (x: 17, y: 2)
+         posicaoSpawnBoneco: (x: 17, y: 2),
+         fraseInicial: personagem.nome + " avança na caverna e se espanta com o número de pessoas perdidas na caverna. Ele encontra duas pessoas debilitadas."
                     ),
     
     Fase(mapaModelo: """
@@ -184,7 +190,8 @@ var todasAsFases: [Fase] = [
          quantidadePedras: 5,
          quantidadeMinerios: 10,
          tipoDeMinerio: Minerio(desenho: "⋇".magenta(), nivel: 1),
-         posicaoSpawnBoneco: (x: 50, y: 4)
+         posicaoSpawnBoneco: (x: 50, y: 4),
+         fraseInicial: personagem.nome + " sente uma energia percorrendo seu corpo. Quando olha à frente, observa a lendária jóia, na cor roxa, mais reluzente que qualquer diamante do mundo."
                     ),
     
 
@@ -206,8 +213,9 @@ class Fase {
     var mapaDesenhadoComObjetos: [[Espaco]] = [];
     let tipoDeMinerio: Minerio;
     let posicaoEscada: (x: Int, y: Int)
+    var fraseInicial: String = ""
     
-    init (mapaModelo: String, npcs: [Npc], quantidadePedras: Int, quantidadeMinerios: Int, tipoDeMinerio: Minerio, posicaoSpawnBoneco: (x: Int, y: Int)) {
+    init (mapaModelo: String, npcs: [Npc], quantidadePedras: Int, quantidadeMinerios: Int, tipoDeMinerio: Minerio, posicaoSpawnBoneco: (x: Int, y: Int), fraseInicial: String) {
         
         let vetor = mapaModelo.split(separator: "&")
         for i in 0..<vetor.count {
@@ -224,6 +232,7 @@ class Fase {
         self.quantidadeMinerios = quantidadeMinerios;
         self.posicaoSpawnBoneco = posicaoSpawnBoneco;
         self.mapaDesenhadoComObjetos = mapaDesenho;
+        self.fraseInicial = fraseInicial;
         personagem.posicao = posicaoSpawnBoneco;
         
         for i in 1..<mapaDesenho.count - 1 {

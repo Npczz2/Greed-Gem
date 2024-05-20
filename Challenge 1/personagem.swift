@@ -13,7 +13,7 @@ class Personagem {
     var direcaoPadrao = "↓".red();
     var energia: Int = 100;
     var inventario: [(desenho: String, quantidade: Int, interacao: (() -> Void)?)] = [
-        ("T".green2(), 1, nil)
+        ("⥾".green2(), 1, nil)
     ];
     
     var nome: String = "";
