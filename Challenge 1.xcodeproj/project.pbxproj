@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79F813532BFBBCB100C94BA6 /* personagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F813522BFBBCB100C94BA6 /* personagem.swift */; };
 		79F91FAA2BEE914E001DF1F2 /* game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F91FA92BEE914E001DF1F2 /* game.swift */; };
 		79F91FAC2BEE9408001DF1F2 /* Carro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F91FAB2BEE9408001DF1F2 /* Carro.swift */; };
 		79F91FAE2BEE9D10001DF1F2 /* fase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F91FAD2BEE9D10001DF1F2 /* fase.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		79F813522BFBBCB100C94BA6 /* personagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = personagem.swift; sourceTree = "<group>"; };
 		79F91FA92BEE914E001DF1F2 /* game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = game.swift; sourceTree = "<group>"; };
 		79F91FAB2BEE9408001DF1F2 /* Carro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carro.swift; sourceTree = "<group>"; };
 		79F91FAD2BEE9D10001DF1F2 /* fase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fase.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				BEE08B7D2BEE8EF70075FF05 /* etor.swift */,
 				79F91FA92BEE914E001DF1F2 /* game.swift */,
 				79F91FAB2BEE9408001DF1F2 /* Carro.swift */,
+				79F813522BFBBCB100C94BA6 /* personagem.swift */,
 			);
 			path = "Challenge 1";
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79F813532BFBBCB100C94BA6 /* personagem.swift in Sources */,
 				79F91FAE2BEE9D10001DF1F2 /* fase.swift in Sources */,
 				BEA3A9CC2BEBEE3500AEFA4C /* main.swift in Sources */,
 				79F91FAC2BEE9408001DF1F2 /* Carro.swift in Sources */,

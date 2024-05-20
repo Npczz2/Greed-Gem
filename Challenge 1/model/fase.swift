@@ -133,7 +133,7 @@ var todasAsFases: [Fase] = [
         })],
          quantidadePedras: 5,
          quantidadeMinerios: 10,
-         tipoDeMinerio: Minerio(desenho: "✦".cyan(), nivel: 1),
+         tipoDeMinerio: Minerio(desenho: "✦".cyan2(), nivel: 1),
          posicaoSpawnBoneco: (x: 44, y: 5)
                     ),
     
