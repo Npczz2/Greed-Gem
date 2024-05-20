@@ -13,7 +13,15 @@ class Personagem {
     var direcaoPadrao = "↓".red();
     var energia: Int = 100;
     var inventario: [(desenho: String, quantidade: Int, interacao: (() -> Void)?)] = [
-        ("⥾".green2(), 1, nil)
+        ("⥾".green2(), 1, nil),
+        ("◍".yellow(), 5, {
+            personagem.energia += 5
+            personagem.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 1))
+        }),
+        ("❦".red(), 5, {
+            personagem.energia += 10
+            personagem.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
+        })
     ];
     
     var nome: String = "";
@@ -70,6 +78,19 @@ class Personagem {
             case "X":
                 exit(0)
                 break
+            
+                
+            case "I":
+                
+                if entradaSeparada.count > 1 {
+                    if let indiceInventario = Int(entradaSeparada[1]), let interacao = inventario[indiceInventario].interacao {
+                        interacao()
+                        
+                    }
+                }
+                
+                printarGameTeste()
+                return
                 
             default:
                 pegarFuturaPosicao = {
@@ -110,6 +131,7 @@ class Personagem {
         
         
     }
+    
     
     func adicionarAoInventario(item: (desenho: String, quantidade: Int, interacao: (() -> Void)?)) {
 

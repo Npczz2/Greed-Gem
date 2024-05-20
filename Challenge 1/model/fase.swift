@@ -31,7 +31,7 @@ var todasAsFases: [Fase] = [
              printarEscolhas(escolhas: ["Eu não me importo, eu preciso dessa jóia.", "Eu vou me cuidar. Obrigado pelo aviso, senhor."])
         })],
          quantidadePedras: 5,
-         quantidadeMinerios: 10,
+         quantidadeMinerios: 0,
          tipoDeMinerio: Minerio(desenho: "◆".blue(), nivel: 1),
          posicaoSpawnBoneco: (x: 13, y: 1),
          fraseInicial: personagem.nome + " adentra a caverna e começa a explorar seu interior…\n"
@@ -182,15 +182,14 @@ var todasAsFases: [Fase] = [
             ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤           &
 """,
          
-         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 6, y: 4), interacao: {
-            print("heitorgdnfjjndfg");
-            print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
-            
+         npcs: [Npc(desenho: "⋇".magenta(), posicaoSpawnNPC: (x: 5, y: 4), interacao: {
+            print("vc coletou a joia fim de game uau pdijsgfngisdfi colocar finais aqui")
+             exit(0)
         })],
-         quantidadePedras: 5,
-         quantidadeMinerios: 10,
+         quantidadePedras: 70,
+         quantidadeMinerios: 0,
          tipoDeMinerio: Minerio(desenho: "⋇".magenta(), nivel: 1),
-         posicaoSpawnBoneco: (x: 50, y: 4),
+         posicaoSpawnBoneco: (x: 49, y: 4),
          fraseInicial: personagem.nome + " sente uma energia percorrendo seu corpo. Quando olha à frente, observa a lendária jóia, na cor roxa, mais reluzente que qualquer diamante do mundo."
                     ),
     

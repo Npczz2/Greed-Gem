@@ -28,7 +28,11 @@ func loopGame() {
     while(true) {
 
         if let entradaConfirmada = readLine() {
-            personagem.acaoDoTurno(entrada: entradaConfirmada)
+            if !entradaConfirmada.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                personagem.acaoDoTurno(entrada: entradaConfirmada)
+            } else {
+                printarGameTeste()
+            }
         }
         
     }
@@ -203,7 +207,7 @@ extension String {
     func bgYellow() -> String { juntar("43") }
     func bgBlue() -> String { juntar("44") }
     func bgMagenta() -> String { juntar("45") }
-    func bgCyan() -> String { juntar("46") }
+    func bgCyan() -> String { return juntar("46") }
     func bgWhite() -> String { juntar("47") }
     func underLine() -> String { juntar("4") }
     func risco() -> String {juntar("9")}
