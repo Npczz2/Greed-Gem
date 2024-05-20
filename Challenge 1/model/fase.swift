@@ -245,8 +245,8 @@ class Fase {
             let randomPosicaoValida = Int.random(in: 0..<posicoesValidas.count)
             let posicaoValida = posicoesValidas[randomPosicaoValida]
             posicoesPedras.append(posicaoValida)
-            
             posicoesValidas.remove(at: randomPosicaoValida)
+            
         }
         
         for _ in 0..<quantidadeMinerios {
@@ -254,6 +254,7 @@ class Fase {
             let posicaoValida = posicoesValidas[randomPosicaoValida]
             posicoesMinerios.append(posicaoValida)
             posicoesValidas.remove(at: randomPosicaoValida)
+            
         }
         
         let randomPosicaoPedra = Int.random(in: 0..<posicoesPedras.count)
@@ -274,6 +275,7 @@ class Fase {
             mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesPedras[i].y][mapaAtual.posicoesPedras[i].x] = Espaco("☗".white(), AlgoInteragivel(index: i) {
                 personagem.energia -= 2
                 mapaAtual.posicoesPedras.remove(at: i)
+                personagem.adicionarAoInventario(item: (desenho: "☗".white(), quantidade: 1, interacao: nil))
                 
 //                for i in 0..<inventario.count{
 //                    if(inventario[i] == ""){
@@ -297,6 +299,7 @@ class Fase {
             mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesMinerios[i].y][mapaAtual.posicoesMinerios[i].x] = Espaco(tipoDeMinerio.desenho, AlgoInteragivel(index: i) {
                 personagem.energia -= 4
                 mapaAtual.posicoesMinerios.remove(at: i)
+                personagem.adicionarAoInventario(item: (desenho: self.tipoDeMinerio.desenho, quantidade: 1, interacao: nil))
                 
 //                for i in 0..<inventario.count{
 //                    if(inventario[i] == ""){

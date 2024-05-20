@@ -12,8 +12,10 @@ class Personagem {
     var posicao: (x: Int, y: Int) = (x: 0, y: 0);
     var direcaoPadrao = "↓".red();
     var energia: Int = 100;
-    var inventario: [String] = ["", ""];
-    var inventarioQuantidade: [Int] = [0,0];
+    var inventario: [(desenho: String, quantidade: Int, interacao: (() -> Void)?)] = [
+        ("T".green2(), 1, nil)
+    ];
+    
     var pegarFuturaPosicao: () -> (x: Int, y: Int) = { (x: personagem.posicao.x, y: personagem.posicao.y + 1) };
     
     func acaoDoTurno(entrada: String) {
@@ -47,7 +49,6 @@ class Personagem {
                 
             case "E": //Interagir
                 let espacoFuturo = pegarFuturaPosicao();
-                print(espacoFuturo)
                 if let coisaNoEspaco = mapaAtual.mapaDesenhadoComObjetos[espacoFuturo.y][espacoFuturo.x].algoInteragivel {
                     coisaNoEspaco.interacao()
                     mapaAtual.desenharObjetosMapa()
@@ -65,14 +66,6 @@ class Personagem {
                 exit(0)
                 break
                 
-            case "I": //Inventário
-                print("Inventário:")
-                for i in 0..<personagem.inventario.count{
-                    if(personagem.inventario[i] != ""){
-                        print(personagem.inventario[i]," x", personagem.inventarioQuantidade[i])
-                    }
-                }
-                break
             default:
                 pegarFuturaPosicao = {
                     (x: personagem.posicao.x, y: personagem.posicao.y)
@@ -84,27 +77,21 @@ class Personagem {
                 
             }
             
-            
-            
-            
+
             if entradaSeparada.count > 1 && !entradaInvalida {
                 if let numeroDeCasas = Int(entradaSeparada[1]) {
                     for i in 0..<numeroDeCasas {
                         var posicaoFutura = pegarFuturaPosicao();
                         if (mapaAtual.mapaDesenhadoComObjetos[posicaoFutura.y][posicaoFutura.x].desenho == ".") {
-                            personagem.posicao.x = pegarFuturaPosicao().x
-                            personagem.posicao.y = pegarFuturaPosicao().y
+                            personagem.posicao = posicaoFutura
                             
                             printarGameTeste()
                         } else {
-                            print("colisao".red())
                             break
                         }
                         
+                        usleep(200000)
                         
-                        do {
-                            usleep(200000)
-                        }
                     }
                 }
             } else {
@@ -117,6 +104,46 @@ class Personagem {
             }
         
         
+    }
+    
+    func adicionarAoInventario(item: (desenho: String, quantidade: Int, interacao: (() -> Void)?)) {
+
+        if let itemExistente = buscarIndice(desenho: item.desenho) {
+
+            inventario[itemExistente].quantidade += item.quantidade
+
+        } else {
+        inventario.append(item)
+
+        }
+
+    }
+
+    func removerDoInventario(item: (desenho: String, quantidade: Int)) {
+
+        if let itemExistente = buscarIndice(desenho: item.desenho) {
+
+            if (inventario[itemExistente].quantidade > item.quantidade) {
+                inventario[itemExistente].quantidade -= item.quantidade
+            } else {
+                inventario.remove(at: itemExistente)
+            }
+
+
+        }
+
+    }
+    
+    func buscarIndice(desenho: String) -> Int? {
+
+        for i in 0..<inventario.count {
+            if inventario[i].desenho == desenho {
+                return i;
+            }
+        }
+
+        return nil;
+
     }
     
 }

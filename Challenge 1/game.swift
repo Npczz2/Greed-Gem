@@ -34,37 +34,17 @@ func loopGame() {
 
 
 
-
-// func desenharObjetosMapa () {
-//     mapaAtual.mapaDesenhadoComObjetos = mapaAtual.mapaDesenho
-//     for i in 0..<mapaAtual.posicoesPedras.count {
-//         mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesPedras[i].y][mapaAtual.posicoesPedras[i].x] = Espaco("▚".bgYellow2(), i) {
-//             print("interacaoPedra")
-//             mapaAtual.posicoesPedras.remove(at: i)
-//         }
-//     }
-
-//     for i in 0..<mapaAtual.posicoesMinerios.count {
-//         mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesMinerios[i].y][mapaAtual.posicoesMinerios[i].x] = Espaco("o".blue2(), i) {
-//             print("interacaoMinerio")
-//             mapaAtual.posicoesMinerios.remove(at: i)
-//         }
-//     }
-
-
-// }
-
-
 func printarGameTeste() {
     
-  //  printarEnergia()
-    
-    for _ in 0..<3 {
+    for _ in 0..<20 {
         print()
     }
     
+    
+    printarEnergia()
+    printarInventario()
+    
     var mapaComObjetos = mapaAtual.mapaDesenhadoComObjetos
-    print("posicao spawn", mapaAtual.posicaoSpawnBoneco)
     mapaComObjetos[personagem.posicao.y][personagem.posicao.x].desenho = personagem.direcaoPadrao
     for i in 0..<mapaComObjetos.count {
         for j in 0..<mapaComObjetos[0].count {
@@ -73,7 +53,7 @@ func printarGameTeste() {
         
     }
     
-  //  printarDevagar(texto: "\n\nParry adentra a caverna e começa a explorar seu interior…\n\n", velocidade: velocidadeTexto, completo: textoCompleto)
+    printarDevagar(texto: "\n\nParry adentra a caverna e começa a explorar seu interior…\n\n", velocidade: velocidadeTexto, completo: textoCompleto)
         
     if(!textoCompleto){
         textoCompleto = true
@@ -81,6 +61,46 @@ func printarGameTeste() {
     
     print()
     
+}
+
+func printarInventario() {
+
+    var vetorInvDesenhado:[[[String]]] = []
+    let terminador = ["│", "┼", "│", "┼", "│"]
+
+    for i in 0..<personagem.inventario.count {
+
+        vetorInvDesenhado.append(desenhoCaixa(index: i, desenho: personagem.inventario[i].desenho,
+                                              quantidade: personagem.inventario[i].quantidade))
+
+    }
+
+for i in 0..<vetorInvDesenhado[0].count {
+    for k in 0..<vetorInvDesenhado.count {
+         for j in 0..<vetorInvDesenhado[k][i].count {
+
+            print(vetorInvDesenhado[k][i][j],
+                  terminator: j == vetorInvDesenhado[k][i].count - 1 &&
+                   k == vetorInvDesenhado.count - 1
+                    ? terminador[i] : "")
+        }
+
+    }
+     print()
+}
+
+ }
+
+func desenhoCaixa(index: Int, desenho: String, quantidade: Int) -> [[String]] {
+
+    return [
+        ["│", " ", String(index), index < 10 ? " " : ""],
+        ["┼", "─", "─", "─"],
+        ["│", " ", desenho, " "],
+        ["┼", "─", "─", "─"],
+        ["│", "x", String(quantidade), quantidade < 10 ? " " : ""]
+    ]
+
 }
 
 func printarEnergia(){
