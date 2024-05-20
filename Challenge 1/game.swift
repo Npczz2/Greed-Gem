@@ -14,6 +14,9 @@ var textoCompleto: Bool = false
 
 func loopGame() {
     
+    print("Digite o nome do personagem: ")
+    personagem.nome = readLine()!
+    
     print("Digite a velocidade de digitação do texto (0.5; 1; 2; 5):")
     velocidadeTexto = Double(readLine()!)!
     
@@ -53,7 +56,7 @@ func printarGameTeste() {
         
     }
     
-    printarDevagar(texto: "\n\nParry adentra a caverna e começa a explorar seu interior…\n\n", velocidade: velocidadeTexto, completo: textoCompleto)
+    printarDevagar(texto: "\n\n" + personagem.nome + " adentra a caverna e começa a explorar seu interior…\n\n", velocidade: velocidadeTexto, completo: textoCompleto)
         
     if(!textoCompleto){
         textoCompleto = true
@@ -88,6 +91,7 @@ for i in 0..<vetorInvDesenhado[0].count {
     }
      print()
 }
+    
 
  }
 
@@ -114,6 +118,7 @@ func printarEnergia(){
         barraEnergia += "#".black2()
     }
     
+    print(personagem.nome + " - Nível " + String(personagem.nivel) + " (" + String(personagem.xp) + "/" + String(personagem.xpNecessario) + ")")
     print("Energia: [" + barraEnergia + "]")
 }
 
@@ -131,6 +136,32 @@ func printarDevagar(texto: String, velocidade: Double, completo: Bool){
         }
     }else{
         print(texto.italic())
+    }
+}
+
+func printarEscolhas(escolhas: [String]){
+    
+    for i in 0..<escolhas.count{
+        print(i + 1, ".", escolhas[i])
+    }
+    
+    var escolha = Int(readLine()!)!
+    
+    while(escolha != 1 && escolha != 2){
+        print("Escolha inválida. Digite novamente.")
+        escolha = Int(readLine()!)!
+    }
+}
+
+func ganharXP(quantidade: Int){
+    personagem.xp += quantidade
+    
+    if(personagem.xp >= personagem.xpNecessario){
+        print("Subiu de nível!")
+        personagem.nivel += 1
+        
+        personagem.xp -= personagem.xpNecessario
+        personagem.xpNecessario = Int(Double(personagem.xpNecessario) * 1.5)
     }
 }
     

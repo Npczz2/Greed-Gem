@@ -26,9 +26,9 @@ var todasAsFases: [Fase] = [
 """,
          
          npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 19, y: 5), interacao: {
-            print("heitorgdnfjjndfg");
-            print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
-            
+             printarDevagar(texto: "Wallis:  Não! não! Não entre, novato!\nWallis: Eu sei que você está pensando na jóia, porém esta caverna esconde diversos perigos. As pessoas estão ficando loucas lá dentro. Inclusive eu. Eu perdi tudo, tudo que tinha…   \n" + personagem.nome + ": O que aconteceu com você, meu senhor?\nWallis: Me roubaram… Toda a minha comida, minhas roupas, meus equipamentos. É um milagre eu ainda estar de pé aqui. As pessoas dentro da caverna são sujas… Se passam por boas pessoas mas estão todas cegas pela jóia.\n\n", velocidade: 1, completo: false)
+                          
+             printarEscolhas(escolhas: ["Eu não me importo, eu preciso dessa jóia.", "Eu vou me cuidar. Obrigado pelo aviso, senhor."])
         })],
          quantidadePedras: 5,
          quantidadeMinerios: 10,
@@ -274,6 +274,7 @@ class Fase {
         for i in 0..<mapaAtual.posicoesPedras.count {
             mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesPedras[i].y][mapaAtual.posicoesPedras[i].x] = Espaco("☗".white(), AlgoInteragivel(index: i) {
                 personagem.energia -= 2
+                ganharXP(quantidade: 1)
                 mapaAtual.posicoesPedras.remove(at: i)
                 personagem.adicionarAoInventario(item: (desenho: "☗".white(), quantidade: 1, interacao: nil))
                 
@@ -298,6 +299,7 @@ class Fase {
         for i in 0..<mapaAtual.posicoesMinerios.count {
             mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesMinerios[i].y][mapaAtual.posicoesMinerios[i].x] = Espaco(tipoDeMinerio.desenho, AlgoInteragivel(index: i) {
                 personagem.energia -= 4
+                ganharXP(quantidade: 2)
                 mapaAtual.posicoesMinerios.remove(at: i)
                 personagem.adicionarAoInventario(item: (desenho: self.tipoDeMinerio.desenho, quantidade: 1, interacao: nil))
                 

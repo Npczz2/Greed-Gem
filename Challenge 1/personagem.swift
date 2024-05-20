@@ -16,6 +16,11 @@ class Personagem {
         ("T".green2(), 1, nil)
     ];
     
+    var nome: String = "";
+    var nivel: Int = 1;
+    var xp: Int = 0;
+    var xpNecessario: Int = 4;
+    
     var pegarFuturaPosicao: () -> (x: Int, y: Int) = { (x: personagem.posicao.x, y: personagem.posicao.y + 1) };
     
     func acaoDoTurno(entrada: String) {
