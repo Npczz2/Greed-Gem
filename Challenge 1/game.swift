@@ -113,8 +113,10 @@ for i in 0..<vetorInvDesenhado[0].count {
 
 func desenhoCaixa(index: Int, desenho: String, quantidade: Int, interagivel: Bool) -> [[String]] {
 
+    let indexString = String(index + 1);
+    
     return [
-        ["│", " ", interagivel ? String(index) : String(index).black2(), index < 10 ? " " : ""],
+        ["│", " ", interagivel ? indexString : indexString.black2(), index  < 9 ? " " : ""],
         ["┼", "─", "─", "─"],
         ["│", " ", desenho, " "],
         ["┼", "─", "─", "─"],

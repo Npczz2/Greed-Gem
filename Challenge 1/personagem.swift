@@ -88,7 +88,7 @@ class Personagem {
             case "I":
                 
                 if entradaSeparada.count > 1 {
-                    if let indiceInventario = Int(entradaSeparada[1]), let interacao = inventario[indiceInventario].interacao {
+                    if let indiceInventario = Int(entradaSeparada[1]), let interacao = inventario[indiceInventario - 1].interacao {
                         interacao()
                         
                     }
