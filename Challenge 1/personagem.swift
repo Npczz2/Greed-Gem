@@ -20,11 +20,11 @@ class Personagem {
     init() {
         inventario.append(ItemInventario("⥾".green2(), quantidade: 1, nivel: 1))
         inventario.append(ItemInventario("◍".yellow(), quantidade: 5, nivel: 1) {
-            self.energia += 5
+            recuperarEnergia(quantidadeEnergia: 5)
             self.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 1))
         })
         inventario.append(ItemInventario("❦".red(), quantidade: 3, nivel: 1) {
-            self.energia += 10
+            recuperarEnergia(quantidadeEnergia: 10)
             self.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
         })
     }
@@ -88,7 +88,7 @@ class Personagem {
             case "I":
                 
                 if entradaSeparada.count > 1 {
-                    if let indiceInventario = Int(entradaSeparada[1]), let interacao = inventario[indiceInventario - 1].interacao {
+                    if let indiceInventario = Int(entradaSeparada[1]), let interacao = inventario[indiceInventario].interacao {
                         interacao()
                         
                     }
@@ -199,5 +199,14 @@ struct ItemInventario {
         self.quantidade = quantidade
         self.nivel = nivel
         
+    }
+}
+
+func recuperarEnergia(quantidadeEnergia: Int){
+    var energiaDif: Int = 100 - personagem.energia
+    if(energiaDif <= quantidadeEnergia){
+        personagem.energia += energiaDif
+    }else{
+        personagem.energia += quantidadeEnergia
     }
 }
