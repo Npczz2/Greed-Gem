@@ -15,17 +15,38 @@ class Personagem {
     var direcaoPadrao = "↓".red();
     var energia: Int = 100;
     var inventario: [ItemInventario] = []
+    let niveisPicareta: [String] = ["༒".yellow(), "༒".white(), "༒".blue(), "༒".yellow2(), "༒".green2(), "༒".cyan2(), "༒".red()]
     
     
     init() {
-        inventario.append(ItemInventario("⥾".green2(), quantidade: 1, nivel: 1))
-        inventario.append(ItemInventario("◍".yellow(), quantidade: 5, nivel: 1) {
-            recuperarEnergia(quantidadeEnergia: 5)
-            self.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 1))
+        inventario.append(ItemInventario("༒".yellow(), quantidade: 1, nivel: 0) {
+            
+            print("qqqqq")
+            
+            if let quantidadeMinerios = self.buscaMinerio(nivel: self.inventario[0].nivel + 1), quantidadeMinerios.quantidade > 4 {
+                
+                print("asdadsad")
+                self.inventario[0].nivel += 1;
+                self.inventario[0].desenho = self.niveisPicareta[self.inventario[0].nivel]
+                self.removerDoInventario(item: (desenho: self.inventario[quantidadeMinerios.index].desenho, quantidade: 5))
+           
+                
+            }
+            
+            
+            
         })
-        inventario.append(ItemInventario("❦".red(), quantidade: 3, nivel: 1) {
+        inventario.append(ItemInventario("◍".yellow(), quantidade: 5, nivel: 0) {
+            recuperarEnergia(quantidadeEnergia: 5)
+            self.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 0))
+        })
+        inventario.append(ItemInventario("❦".red(), quantidade: 3, nivel: 0) {
             recuperarEnergia(quantidadeEnergia: 10)
             self.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
+        })
+        inventario.append(ItemInventario("∝".cyan(), quantidade: 13, nivel: 0) {
+            recuperarEnergia(quantidadeEnergia: 10)
+            self.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
         })
     }
     
@@ -88,7 +109,7 @@ class Personagem {
             case "I":
                 
                 if entradaSeparada.count > 1 {
-                    if let indiceInventario = Int(entradaSeparada[1]), let interacao = inventario[indiceInventario].interacao {
+                    if let indiceInventario = Int(entradaSeparada[1]), let interacao = inventario[indiceInventario - 1].interacao {
                         interacao()
                         
                     }
@@ -164,6 +185,18 @@ class Personagem {
 
         }
 
+    }
+    
+    func buscaMinerio(nivel: Int) -> (index: Int, quantidade: Int)? {
+        
+        for i in 0..<inventario.count {
+            if inventario[i].nivel == nivel {
+                return (index: i, quantidade: inventario[i].quantidade)
+            }
+        }
+        
+        return nil;
+        
     }
     
     func buscarIndice(desenho: String) -> Int? {
