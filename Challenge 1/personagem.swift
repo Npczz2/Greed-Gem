@@ -7,22 +7,27 @@
 
 import Foundation
 
+
+
 class Personagem {
     
     var posicao: (x: Int, y: Int) = (x: 0, y: 0);
     var direcaoPadrao = "↓".red();
     var energia: Int = 100;
-    var inventario: [(desenho: String, quantidade: Int, interacao: (() -> Void)?)] = [
-        ("⥾".green2(), 1, nil),
-        ("◍".yellow(), 5, {
-            personagem.energia += 5
-            personagem.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 1))
-        }),
-        ("❦".red(), 5, {
-            personagem.energia += 10
-            personagem.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
+    var inventario: [ItemInventario] = []
+    
+    
+    init() {
+        inventario.append(ItemInventario("⥾".green2(), quantidade: 1, nivel: 1))
+        inventario.append(ItemInventario("◍".yellow(), quantidade: 5, nivel: 1) {
+            self.energia += 5
+            self.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 1))
         })
-    ];
+        inventario.append(ItemInventario("❦".red(), quantidade: 3, nivel: 1) {
+            self.energia += 10
+            self.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
+        })
+    }
     
     var nome: String = "";
     var nivel: Int = 1;
@@ -133,7 +138,7 @@ class Personagem {
     }
     
     
-    func adicionarAoInventario(item: (desenho: String, quantidade: Int, interacao: (() -> Void)?)) {
+    func adicionarAoInventario(item: ItemInventario) {
 
         if let itemExistente = buscarIndice(desenho: item.desenho) {
 
@@ -173,4 +178,26 @@ class Personagem {
 
     }
     
+}
+
+struct ItemInventario {
+    
+    var desenho: String;
+    var quantidade: Int;
+    var nivel: Int;
+    var interacao: (() -> Void)? = nil
+    
+    init(_ desenho: String, quantidade: Int, nivel: Int, _ interacao: (() -> Void)?) {
+        self.desenho = desenho
+        self.quantidade = quantidade
+        self.nivel = nivel
+        self.interacao = interacao
+    }
+    
+    init(_ desenho: String, quantidade: Int, nivel: Int) {
+        self.desenho = desenho
+        self.quantidade = quantidade
+        self.nivel = nivel
+        
+    }
 }

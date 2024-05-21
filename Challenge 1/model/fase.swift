@@ -57,7 +57,7 @@ var todasAsFases: [Fase] = [
         })],
          quantidadePedras: 5,
          quantidadeMinerios: 10,
-         tipoDeMinerio: Minerio(desenho: "▰".blue(), nivel: 1),
+         tipoDeMinerio: Minerio(desenho: "▰".blue(), nivel: 3),
          posicaoSpawnBoneco: (x: 5, y: 2),
          fraseInicial: personagem.nome + " desce mais um nível na caverna e observa um homem minerando, desatento com seus pertences."
                     ),
@@ -84,7 +84,7 @@ var todasAsFases: [Fase] = [
         })],
          quantidadePedras: 5,
          quantidadeMinerios: 10,
-         tipoDeMinerio: Minerio(desenho: "▮".yellow(), nivel: 1),
+         tipoDeMinerio: Minerio(desenho: "▮".yellow(), nivel: 4),
          posicaoSpawnBoneco: (x: 6, y: 3),
          fraseInicial: personagem.nome + " continua sua exploração e se depara com dois homens brigando."
                     ),
@@ -110,7 +110,7 @@ var todasAsFases: [Fase] = [
         })],
          quantidadePedras: 5,
          quantidadeMinerios: 10,
-         tipoDeMinerio: Minerio(desenho: "◆".green(), nivel: 1),
+         tipoDeMinerio: Minerio(desenho: "◆".green(), nivel: 5),
          posicaoSpawnBoneco: (x: 8, y: 2),
          fraseInicial: "Depois da situação caótica, " + personagem.nome + " até desconfia do silêncio desse andar…"
                     ),
@@ -137,7 +137,7 @@ var todasAsFases: [Fase] = [
         })],
          quantidadePedras: 5,
          quantidadeMinerios: 10,
-         tipoDeMinerio: Minerio(desenho: "✦".cyan2(), nivel: 1),
+         tipoDeMinerio: Minerio(desenho: "✦".cyan2(), nivel: 6),
          posicaoSpawnBoneco: (x: 44, y: 5),
          fraseInicial: personagem.nome + " desce mais um andar e avista Stan novamente…"
                     ),
@@ -165,7 +165,7 @@ var todasAsFases: [Fase] = [
         })],
          quantidadePedras: 5,
          quantidadeMinerios: 10,
-         tipoDeMinerio: Minerio(desenho: "●".red(), nivel: 1),
+         tipoDeMinerio: Minerio(desenho: "●".red(), nivel: 7),
          posicaoSpawnBoneco: (x: 17, y: 2),
          fraseInicial: personagem.nome + " avança na caverna e se espanta com o número de pessoas perdidas na caverna. Ele encontra duas pessoas debilitadas."
                     ),
@@ -188,7 +188,7 @@ var todasAsFases: [Fase] = [
         })],
          quantidadePedras: 70,
          quantidadeMinerios: 0,
-         tipoDeMinerio: Minerio(desenho: "⋇".magenta(), nivel: 1),
+         tipoDeMinerio: Minerio(desenho: "⋇".magenta(), nivel: 8),
          posicaoSpawnBoneco: (x: 49, y: 4),
          fraseInicial: personagem.nome + " sente uma energia percorrendo seu corpo. Quando olha à frente, observa a lendária jóia, na cor roxa, mais reluzente que qualquer diamante do mundo."
                     ),
@@ -284,7 +284,7 @@ class Fase {
                 personagem.energia -= 2
                 ganharXP(quantidade: 1)
                 mapaAtual.posicoesPedras.remove(at: i)
-                personagem.adicionarAoInventario(item: (desenho: "☗".white(), quantidade: 1, interacao: nil))
+                personagem.adicionarAoInventario(item: ItemInventario("☗".white(), quantidade: 1, nivel: 1))
                 
 //                for i in 0..<inventario.count{
 //                    if(inventario[i] == ""){
@@ -309,7 +309,7 @@ class Fase {
                 personagem.energia -= 4
                 ganharXP(quantidade: 2)
                 mapaAtual.posicoesMinerios.remove(at: i)
-                personagem.adicionarAoInventario(item: (desenho: self.tipoDeMinerio.desenho, quantidade: 1, interacao: nil))
+                personagem.adicionarAoInventario(item: ItemInventario(self.tipoDeMinerio.desenho, quantidade: 1, nivel: self.tipoDeMinerio.nivel))
                 
 //                for i in 0..<inventario.count{
 //                    if(inventario[i] == ""){

@@ -14,11 +14,24 @@ var textoCompleto: Bool = false
 
 func loopGame() {
     
+    print("\u{001B}[2J")
     print("Digite o nome do personagem: ")
     personagem.nome = readLine()!
-    
     print("Digite a velocidade de digitação do texto (0.5; 1; 2; 5):")
     velocidadeTexto = Double(readLine()!)!
+    
+    print("\u{001B}[2J")
+    printarDevagar(texto: "\nUm boato de uma jóia rara encontrada em uma caverna na Austrália foi espalhado pelo mundo. Várias pessoas, mesmo as sem experiência nas cavernas decidiram tentar obtê-la por conta de seu valor de venda. ▼", velocidade: velocidadeTexto, completo: false)
+        _ = readLine()
+        printarDevagar(texto: "\nEntretanto, a caverna na qual se encontrava a jóia era conhecida como a Toca Do Diabo, conhecida por sua taxa de mortalidade de 82,6%. Relatos de pessoas que conseguiram sair com vida dessa caverna contam que ela parece algo mágico, um labirinto que te prende na caverna conforme você avança. Mesmo assim, diversos civis cegos pelo dinheiro ignoraram os avisos do governo e adentraram nessas cavernas em busca do objeto raro. ▼", velocidade: velocidadeTexto, completo: false)
+        _ = readLine()
+        printarDevagar(texto: "\nA estimativa do governo é que 18 pessoas já morreram dentro da caverna desde o surgimento do boato.", velocidade: velocidadeTexto, completo: false)
+        _ = readLine()
+        print("\n─────────────────────────────────────────────────────────────────────\n")
+        printarDevagar(texto: personagem.nome + " era um minerador experiente que trabalhava na maior mineradora de diamante da Austrália, chamada Hawks. Depois do boato da jóia lendária se espalhar entre seus colegas de trabalho, todos partiram o mais rápido possível para a Toca Do Diabo para procurá-la, deixando família, casa e emprego para trás. ▼", velocidade: velocidadeTexto, completo: false)
+        _ = readLine()
+        printarDevagar(texto: "\nTomado por um frio na barriga e um sentimento de adrelina que nunca havia sentido antes, " + personagem.nome + " decide ir atrás da jóia.", velocidade: velocidadeTexto, completo: false)
+        _ = readLine()
     
     mapaAtual.desenharObjetosMapa()
     personagem.posicao = mapaAtual.posicaoSpawnBoneco
@@ -43,11 +56,7 @@ func loopGame() {
 
 func printarGameTeste() {
     
-    for _ in 0..<20 {
-        print()
-    }
-    
-    
+    print("\u{001B}[2J")
     printarEnergia()
     printarInventario()
     
@@ -72,13 +81,16 @@ func printarGameTeste() {
 
 func printarInventario() {
 
+    print()
     var vetorInvDesenhado:[[[String]]] = []
     let terminador = ["│", "┼", "│", "┼", "│"]
 
     for i in 0..<personagem.inventario.count {
 
         vetorInvDesenhado.append(desenhoCaixa(index: i, desenho: personagem.inventario[i].desenho,
-                                              quantidade: personagem.inventario[i].quantidade))
+                                              quantidade: personagem.inventario[i].quantidade,
+                                              interagivel: personagem.inventario[i].interacao != nil))
+       
 
     }
 
@@ -95,14 +107,14 @@ for i in 0..<vetorInvDesenhado[0].count {
     }
      print()
 }
-    
+    print()
 
  }
 
-func desenhoCaixa(index: Int, desenho: String, quantidade: Int) -> [[String]] {
+func desenhoCaixa(index: Int, desenho: String, quantidade: Int, interagivel: Bool) -> [[String]] {
 
     return [
-        ["│", " ", String(index), index < 10 ? " " : ""],
+        ["│", " ", interagivel ? String(index) : String(index).black2(), index < 10 ? " " : ""],
         ["┼", "─", "─", "─"],
         ["│", " ", desenho, " "],
         ["┼", "─", "─", "─"],
