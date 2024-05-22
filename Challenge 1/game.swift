@@ -20,16 +20,16 @@ func loopGame() {
     
     print("\u{001B}[2J")
     printarDevagar(texto: "\nUm boato de uma jóia rara encontrada em uma caverna na Austrália foi espalhado pelo mundo. Várias pessoas, mesmo as sem experiência nas cavernas decidiram tentar obtê-la por conta de seu valor de venda. ▼", velocidade: velocidadeTexto, completo: false)
-        _ = readLine()
-        printarDevagar(texto: "\nEntretanto, a caverna na qual se encontrava a jóia era conhecida como a Toca Do Diabo, conhecida por sua taxa de mortalidade de 82,6%. Relatos de pessoas que conseguiram sair com vida dessa caverna contam que ela parece algo mágico, um labirinto que te prende na caverna conforme você avança. Mesmo assim, diversos civis cegos pelo dinheiro ignoraram os avisos do governo e adentraram nessas cavernas em busca do objeto raro. ▼", velocidade: velocidadeTexto, completo: false)
-        _ = readLine()
-        printarDevagar(texto: "\nA estimativa do governo é que 18 pessoas já morreram dentro da caverna desde o surgimento do boato.", velocidade: velocidadeTexto, completo: false)
-        _ = readLine()
-        print("\n─────────────────────────────────────────────────────────────────────\n")
-        printarDevagar(texto: personagem.nome + " era um minerador experiente que trabalhava na maior mineradora de diamante da Austrália, chamada Hawks. Depois do boato da jóia lendária se espalhar entre seus colegas de trabalho, todos partiram o mais rápido possível para a Toca Do Diabo para procurá-la, deixando família, casa e emprego para trás. ▼", velocidade: velocidadeTexto, completo: false)
-        _ = readLine()
-        printarDevagar(texto: "\nTomado por um frio na barriga e um sentimento de adrelina que nunca havia sentido antes, " + personagem.nome + " decide ir atrás da jóia.", velocidade: velocidadeTexto, completo: false)
-        _ = readLine()
+    _ = readLine()
+    printarDevagar(texto: "\nEntretanto, a caverna na qual se encontrava a jóia era conhecida como a Toca Do Diabo, conhecida por sua taxa de mortalidade de 82,6%. Relatos de pessoas que conseguiram sair com vida dessa caverna contam que ela parece algo mágico, um labirinto que te prende na caverna conforme você avança. Mesmo assim, diversos civis cegos pelo dinheiro ignoraram os avisos do governo e adentraram nessas cavernas em busca do objeto raro. ▼", velocidade: velocidadeTexto, completo: false)
+    _ = readLine()
+    printarDevagar(texto: "\nA estimativa do governo é que 18 pessoas já morreram dentro da caverna desde o surgimento do boato.", velocidade: velocidadeTexto, completo: false)
+    _ = readLine()
+    print("\n─────────────────────────────────────────────────────────────────────\n")
+    printarDevagar(texto: personagem.nome + " era um minerador experiente que trabalhava na maior mineradora de diamante da Austrália, chamada Hawks. Depois do boato da jóia lendária se espalhar entre seus colegas de trabalho, todos partiram o mais rápido possível para a Toca Do Diabo para procurá-la, deixando família, casa e emprego para trás. ▼", velocidade: velocidadeTexto, completo: false)
+    _ = readLine()
+    printarDevagar(texto: "\nTomado por um frio na barriga e um sentimento de adrelina que nunca havia sentido antes, " + personagem.nome + " decide ir atrás da jóia.", velocidade: velocidadeTexto, completo: false)
+    _ = readLine()
     
     mapaAtual.desenharObjetosMapa()
     personagem.posicao = mapaAtual.posicaoSpawnBoneco
@@ -37,7 +37,7 @@ func loopGame() {
     
     
     while(true) {
-
+        
         if let entradaConfirmada = readLine() {
             if !entradaConfirmada.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 personagem.acaoDoTurno(entrada: entradaConfirmada)
@@ -68,7 +68,7 @@ func printarGameTeste() {
     }
     
     printarDevagar(texto: "\n\n" + mapaAtual.fraseInicial, velocidade: velocidadeTexto, completo: textoCompleto)
-        
+    
     if(!textoCompleto){
         textoCompleto = true
     }
@@ -78,39 +78,39 @@ func printarGameTeste() {
 }
 
 func printarInventario() {
-
+    
     print()
     var vetorInvDesenhado:[[[String]]] = []
     let terminador = ["│", "┼", "│", "┼", "│"]
-
+    
     for i in 0..<personagem.inventario.count {
-
+        
         vetorInvDesenhado.append(desenhoCaixa(index: i, desenho: personagem.inventario[i].desenho,
                                               quantidade: personagem.inventario[i].quantidade,
                                               interagivel: personagem.inventario[i].interacao != nil))
-       
-
+        
+        
     }
-
-for i in 0..<vetorInvDesenhado[0].count {
-    for k in 0..<vetorInvDesenhado.count {
-         for j in 0..<vetorInvDesenhado[k][i].count {
-
-            print(vetorInvDesenhado[k][i][j],
-                  terminator: j == vetorInvDesenhado[k][i].count - 1 &&
-                   k == vetorInvDesenhado.count - 1
-                    ? terminador[i] : "")
+    
+    for i in 0..<vetorInvDesenhado[0].count {
+        for k in 0..<vetorInvDesenhado.count {
+            for j in 0..<vetorInvDesenhado[k][i].count {
+                
+                print(vetorInvDesenhado[k][i][j],
+                      terminator: j == vetorInvDesenhado[k][i].count - 1 &&
+                      k == vetorInvDesenhado.count - 1
+                      ? terminador[i] : "")
+            }
+            
         }
-
+        print()
     }
-     print()
-}
     print()
-
- }
+    
+}
 
 func desenhoCaixa(index: Int, desenho: String, quantidade: Int, interagivel: Bool) -> [[String]] {
-
+    
     let indexString = String(index + 1);
     
     return [
@@ -120,7 +120,7 @@ func desenhoCaixa(index: Int, desenho: String, quantidade: Int, interagivel: Boo
         ["┼", "─", "─", "─"],
         ["│", "x", String(quantidade), quantidade < 10 ? " " : ""]
     ]
-
+    
 }
 
 func printarEnergia(){
@@ -188,8 +188,37 @@ func ganharXP(quantidade: Int){
         personagem.xpNecessario = Int(Double(personagem.xpNecessario) * 1.5)
     }
 }
-    
-    
+
+
+func chamarTutorial(completo: Bool){
+    if(completo){
+    print("────────────────────────────────────────────────────────────\nTUTORIAL\n\nComandos:\n- Andar: Direção (W, A, S, D) + quantidade de casas a andar\n- Olhar para direção: W, A, S, D\n- Interagir/Quebrar: E\n- Usar item do inventário: I + número da caixa do item\n\nMineração:\nPara minerar, olhe para o minério e use o botão de interação (E). Você começa com uma picareta de madeira e precisa melhorá-la para quebrar minérios superiores. Exemplo:\n" +
+            "༒".yellow() + "   →  " + "☗".white() + " Pedra\n" +
+            "༒".white() + "   →  " + "▰".blue() + " Ferro\n" +
+            "༒".blue() + "   →  " + "▮".yellow() + " Ouro\n" +
+            "༒".yellow2() + "   →  " + "◆".green() + " Esmeralda\n" +
+            "༒".green2() + "   →  " + "✦".cyan2() + " Diamante\n" +
+            "༒".cyan2() + "   →  " + "●".red() + " Rubí\n" +
+            "༒".red() + "   →  " + "⋇".magenta() + " Jóia lendária\n" +
+              "\nEnergia:\nQuebrar minérios e descer andares gasta energia. Caso sua energia acabe, você desmaia e perde o jogo. Para recuperar energia, você pode comer uma comida (" + " ◍ ".yellow() + "❦ ".red() + "∝ ".cyan() + ") do seu inventário (I + posição da comida).\n\nDescer andares e XP:\nPara descer para um novo andar da caverna, você precisa encontrar a escada (⇊) debaixo de uma pedra aleatória e interagir com ela (E). Quebrar pedras e minérios também te concede XP, fator decisivo nos combates.\n" + "Dica: Melhore sua picareta antes de descer de andar, pois você não conseguirá subir de volta.".italic() + "\n────────────────────────────────────────────────────────────")
+    }else{
+        print("────────────────────────────────────────────────────────────\nTUTORIAL\n\nComandos:\n- Andar: Direção (W, A, S, D) + quantidade de casas a andar\n- Olhar para direção: W, A, S, D\n- Interagir/Quebrar: E\n- Usar item do inventário: I + número da caixa do item\n\n Digite 1 para mais informações.\n────────────────────────────────────────────────────────────")
+        var input = readLine()
+        if(input == "1"){
+            print("────────────────────────────────────────────────────────────\nTUTORIAL\n\nComandos:\n- Andar: Direção (W, A, S, D) + quantidade de casas a andar\n- Olhar para direção: W, A, S, D\n- Interagir/Quebrar: E\n- Usar item do inventário: I + número da caixa do item\n\nMineração:\nPara minerar, olhe para o minério e use o botão de interação (E). Você começa com uma picareta de madeira e precisa melhorá-la para quebrar minérios superiores. Exemplo:\n" +
+                  "༒".yellow() + "   →  " + "☗".white() + " Pedra\n" +
+                  "༒".white() + "   →  " + "▰".blue() + " Ferro\n" +
+                  "༒".blue() + "   →  " + "▮".yellow() + " Ouro\n" +
+                  "༒".yellow2() + "   →  " + "◆".green() + " Esmeralda\n" +
+                  "༒".green2() + "   →  " + "✦".cyan2() + " Diamante\n" +
+                  "༒".cyan2() + "   →  " + "●".red() + " Rubí\n" +
+                  "༒".red() + "   →  " + "⋇".magenta() + " Jóia lendária\n" +
+                  "\nEnergia:\nQuebrar minérios e descer andares gasta energia. Caso sua energia acabe, você desmaia e perde o jogo. Para recuperar energia, você pode comer uma comida (" + " ◍ ".yellow() + "❦ ".red() + "∝ ".cyan() + ") do seu inventário (I + posição da comida).\n\nDescer andares e XP:\nPara descer para um novo andar da caverna, você precisa encontrar a escada (⇊) debaixo de uma pedra aleatória e interagir com ela (E). Quebrar pedras e minérios também te concede XP, fator decisivo nos combates.\n" + "Dica: Melhore sua picareta antes de descer de andar, pois você não conseguirá subir de volta.".italic() + "\n────────────────────────────────────────────────────────────")
+        }
+    }
+}
+
+
 
 
 
