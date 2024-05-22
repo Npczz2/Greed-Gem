@@ -26,10 +26,65 @@ var todasAsFases: [Fase] = [
   ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤    &
 """,
          
-         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 19, y: 5), interacao: {
-             printarDevagar(texto: "Wallis:  Não! não! Não entre, novato!\nWallis: Eu sei que você está pensando na jóia, porém esta caverna esconde diversos perigos. As pessoas estão ficando loucas lá dentro. Inclusive eu. Eu perdi tudo, tudo que tinha…   \n" + personagem.nome + ": O que aconteceu com você, meu senhor?\nWallis: Me roubaram… Toda a minha comida, minhas roupas, meus equipamentos. É um milagre eu ainda estar de pé aqui. As pessoas dentro da caverna são sujas… Se passam por boas pessoas mas estão todas cegas pela jóia.\n\n", velocidade: 1, completo: false)
+         npcs: [Npc(desenho: "W".magenta(), posicaoSpawnNPC: (x: 19, y: 5), interacao: {
              
-             printarEscolhas(escolhas: ["Eu não me importo, eu preciso dessa jóia.", "Eu vou me cuidar. Obrigado pelo aviso, senhor."])
+             printarDevagar(texto: "\nWallis: Não! não! Não entre, novato!\nWallis: Eu sei que você está pensando na jóia, porém esta caverna esconde diversos perigos. As pessoas estão ficando loucas lá dentro. Inclusive eu. Eu perdi tudo, tudo que tinha… ▼\n", completo: false)
+         
+             
+            _ = readLine()
+             
+             printarDevagar(texto: personagem.nome + ": O que aconteceu com você, meu senhor? ▼\n", completo: false)
+             
+             _ = readLine()
+        
+             
+            printarDevagar(texto: "Wallis: Me roubaram… Toda a minha comida, minhas roupas, meus equipamentos. É um milagre eu ainda estar de pé aqui. As pessoas dentro da caverna são sujas… Se passam por boas pessoas mas estão todas cegas pela jóia. ▼\n", completo: false)
+             
+             _ = readLine()
+             
+             
+             var escolhaValida = false
+             
+             repeat {
+                 
+                 printarEscolhas(escolhas: ["Eu não me importo, eu preciso dessa jóia.", "Eu vou me cuidar. Obrigado pelo aviso, senhor."])
+                 
+                 if let escolha = readLine() {
+                     
+                     switch escolha {
+                        
+                     case "1":
+                         printarDevagar(texto: "\nWallis: Jovem, você vai se arrepender desta decisão. Eu perdi tudo… E você terá um fim trágico igual a mim. ▼", completo: false);
+                         _ = readLine()
+                         escolhaValida.toggle()
+                         break;
+                     case "2":
+                         printarDevagar(texto: "\nWallis: Você é bom… Não deixe a caverna te corromper… ▼", completo: false);
+                         _ = readLine()
+                         escolhaValida.toggle()
+                         break;
+                     default:
+                         print("Escolha inválida, digite novamente")
+                         break;
+                         
+                     }
+                     
+                 }
+                 
+             } while(!escolhaValida)
+              
+                 
+           
+                 
+                 
+                 
+                 
+                 
+           
+          
+             
+             
+             
          })],
          quantidadePedras: 5,
          quantidadeMinerios: 0,
@@ -51,9 +106,10 @@ var todasAsFases: [Fase] = [
   ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤                   &
 """,
          
-         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 5, y: 4), interacao: {
-             print("heitorgdnfjjndfg");
-             print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
+         npcs: [Npc(desenho: "A".magenta(), posicaoSpawnNPC: (x: 33, y: 5), interacao: {
+             printarEscolhas(escolhas: ["Furtar a mochila", "Avisar o homem sobre a mochila"])
+             
+             
              
          })],
          quantidadePedras: 5,
@@ -78,7 +134,11 @@ var todasAsFases: [Fase] = [
              ├┼┼┼┼┼┼┼┼┼┼┼┼┼┤    &
 """,
          
-         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 7, y: 3), interacao: {
+         npcs: [Npc(desenho: "S".magenta(), posicaoSpawnNPC: (x: 22, y: 5), interacao: {
+             print("heitorgdnfjjndfg");
+             print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
+             
+         }),Npc(desenho: "E".magenta(), posicaoSpawnNPC: (x: 24, y: 5), interacao: {
              print("heitorgdnfjjndfg");
              print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
              
@@ -104,11 +164,7 @@ var todasAsFases: [Fase] = [
                  ├┼┼┼┼┼┼┼┤              &
 """,
          
-         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 3, y: 3), interacao: {
-             print("heitorgdnfjjndfg");
-             print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
-             
-         })],
+         npcs: [],
          quantidadePedras: 5,
          quantidadeMinerios: 10,
          tipoDeMinerio: Minerio(desenho: "◆".green(), nivel: 4),
@@ -132,7 +188,7 @@ var todasAsFases: [Fase] = [
             └┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┘                   &
 """,
          
-         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 6, y: 4), interacao: {
+         npcs: [Npc(desenho: "S".magenta(), posicaoSpawnNPC: (x: 30, y: 5), interacao: {
              print("heitorgdnfjjndfg");
              print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
              
@@ -160,7 +216,11 @@ var todasAsFases: [Fase] = [
                                   └┼┼┼┼┼┼┼┼┼┘          &
 """,
          
-         npcs: [Npc(desenho: "Y".cyan2(), posicaoSpawnNPC: (x: 6, y: 4), interacao: {
+         npcs: [Npc(desenho: "B".magenta(), posicaoSpawnNPC: (x: 17, y: 8), interacao: {
+             print("heitorgdnfjjndfg");
+             print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
+             
+         }), Npc(desenho: "C".magenta(), posicaoSpawnNPC: (x: 39, y: 10), interacao: {
              print("heitorgdnfjjndfg");
              print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
              
@@ -184,10 +244,7 @@ var todasAsFases: [Fase] = [
             ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤           &
 """,
          
-         npcs: [Npc(desenho: "⋇".magenta(), posicaoSpawnNPC: (x: 5, y: 4), interacao: {
-             print("vc coletou a joia fim de game uau pdijsgfngisdfi colocar finais aqui")
-             exit(0)
-         })],
+         npcs: [],
          quantidadePedras: 70,
          quantidadeMinerios: 0,
          tipoDeMinerio: Minerio(desenho: "⋇".magenta(), nivel: 7),

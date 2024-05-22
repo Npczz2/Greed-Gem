@@ -118,7 +118,7 @@ class Fase {
                     personagem.adicionarAoInventario(item: ItemInventario(self.tipoDeMinerio.desenho, quantidade: 1, nivel: self.tipoDeMinerio.nivel))
                     
                 } else {
-                    printarDevagar(texto: "Você precisa de uma picareta de nível \(self.tipoDeMinerio.nivel) ou superior (\(personagem.niveisPicareta[self.tipoDeMinerio.nivel-1]) )", velocidade: 2, completo: false)
+                    printarDevagar(texto: "Você precisa de uma picareta de nível \(self.tipoDeMinerio.nivel) ou superior (\(personagem.niveisPicareta[self.tipoDeMinerio.nivel-1]) )", completo: false)
                     usleep(1000000)
                 }
                 personagem.energia -= self.tipoDeMinerio.nivel * 2

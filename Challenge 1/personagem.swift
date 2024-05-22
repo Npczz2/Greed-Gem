@@ -104,6 +104,10 @@ class Personagem {
             case "X":
                 exit(0)
                 break
+                
+            case "HELP":
+                chamarTutorial(completo: false);
+                return
             
                 
             case "I":
