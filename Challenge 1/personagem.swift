@@ -15,7 +15,7 @@ class Personagem {
     var direcaoPadrao = "↓".red();
     var energia: Int = 100;
     var inventario: [ItemInventario] = []
-    let niveisPicareta: [String] = ["༒".yellow(), "༒".white(), "༒".blue(), "༒".yellow2(), "༒".green2(), "༒".cyan2(), "༒".red()]
+    let niveisPicareta: [String] = ["༒".yellow(), "༒".black2(), "༒".white(), "༒".yellow2(), "༒".green2(), "༒".cyan2(), "༒".red()]
     
     
     init() {

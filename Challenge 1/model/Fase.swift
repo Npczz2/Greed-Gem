@@ -93,11 +93,11 @@ class Fase {
         }))
         
         for i in 0..<mapaAtual.posicoesPedras.count { //Pedra
-            mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesPedras[i].y][mapaAtual.posicoesPedras[i].x] = Espaco("☗".white(), AlgoInteragivel(index: i) {
+            mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesPedras[i].y][mapaAtual.posicoesPedras[i].x] = Espaco("☗".black2(), AlgoInteragivel(index: i) {
                 personagem.energia -= 2
                 ganharXP(quantidade: 1)
                 mapaAtual.posicoesPedras.remove(at: i)
-                personagem.adicionarAoInventario(item: ItemInventario("☗".white(), quantidade: 1, nivel: 1))
+                personagem.adicionarAoInventario(item: ItemInventario("☗".black2(), quantidade: 1, nivel: 1))
                 
             })
             
@@ -168,33 +168,28 @@ struct Espaco {
     }
 }
 
-class Item {
-    let desenho: String;
-    
-    init(desenho: String) {
-        self.desenho = desenho
-    }
-    
-}
 
-class Minerio: Item {
+class Minerio {
     
     let nivel: Int;
+    let desenho: String;
     
     init(desenho: String, nivel: Int) {
         self.nivel = nivel
-        super.init(desenho: desenho)
+        self.desenho = desenho
     }
 }
 
-class Npc: Item {
+class Npc {
     
     let interacao: (() -> Void);
     let posicaoSpawnNPC: (x: Int, y: Int);
+    let desenho: String;
+    
     init(desenho: String, posicaoSpawnNPC: (x: Int, y: Int), interacao: @escaping () -> Void) {
         self.interacao = interacao;
         self.posicaoSpawnNPC = posicaoSpawnNPC;
-        super.init(desenho: desenho)
+        self.desenho = desenho
     }
 }
 

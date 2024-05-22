@@ -18,6 +18,8 @@ func loopGame() {
     print("Digite a velocidade de digitação do texto (0.5; 1; 2; 5):")
     velocidadeTexto = Double(readLine()!)!
     
+    chamarTutorial(completo: true)
+    
     print("\u{001B}[2J")
     printarDevagar(texto: "\nUm boato de uma jóia rara encontrada em uma caverna na Austrália foi espalhado pelo mundo. Várias pessoas, mesmo as sem experiência nas cavernas decidiram tentar obtê-la por conta de seu valor de venda. ▼", velocidade: velocidadeTexto, completo: false)
     _ = readLine()
@@ -193,9 +195,9 @@ func ganharXP(quantidade: Int){
 func chamarTutorial(completo: Bool){
     if(completo){
     print("────────────────────────────────────────────────────────────\nTUTORIAL\n\nComandos:\n- Andar: Direção (W, A, S, D) + quantidade de casas a andar\n- Olhar para direção: W, A, S, D\n- Interagir/Quebrar: E\n- Usar item do inventário: I + número da caixa do item\n\nMineração:\nPara minerar, olhe para o minério e use o botão de interação (E). Você começa com uma picareta de madeira e precisa melhorá-la para quebrar minérios superiores. Exemplo:\n" +
-            "༒".yellow() + "   →  " + "☗".white() + " Pedra\n" +
-            "༒".white() + "   →  " + "▰".blue() + " Ferro\n" +
-            "༒".blue() + "   →  " + "▮".yellow() + " Ouro\n" +
+            "༒".yellow() + "   →  " + "☗".black2() + " Pedra\n" +
+            "༒".black2() + "   →  " + "▰".white() + " Ferro\n" +
+            "༒".white() + "   →  " + "▮".yellow() + " Ouro\n" +
             "༒".yellow2() + "   →  " + "◆".green() + " Esmeralda\n" +
             "༒".green2() + "   →  " + "✦".cyan2() + " Diamante\n" +
             "༒".cyan2() + "   →  " + "●".red() + " Rubí\n" +
@@ -206,13 +208,13 @@ func chamarTutorial(completo: Bool){
         var input = readLine()
         if(input == "1"){
             print("────────────────────────────────────────────────────────────\nTUTORIAL\n\nComandos:\n- Andar: Direção (W, A, S, D) + quantidade de casas a andar\n- Olhar para direção: W, A, S, D\n- Interagir/Quebrar: E\n- Usar item do inventário: I + número da caixa do item\n\nMineração:\nPara minerar, olhe para o minério e use o botão de interação (E). Você começa com uma picareta de madeira e precisa melhorá-la para quebrar minérios superiores. Exemplo:\n" +
-                  "༒".yellow() + "   →  " + "☗".white() + " Pedra\n" +
-                  "༒".white() + "   →  " + "▰".blue() + " Ferro\n" +
-                  "༒".blue() + "   →  " + "▮".yellow() + " Ouro\n" +
+                  "༒".yellow() + "   →  " + "☗".black2() + " Pedra\n" +
+                  "༒".black2() + "   →  " + "▰".white() + " Ferro\n" +
+                  "༒".white() + "   →  " + "▮".yellow() + " Ouro\n" +
                   "༒".yellow2() + "   →  " + "◆".green() + " Esmeralda\n" +
                   "༒".green2() + "   →  " + "✦".cyan2() + " Diamante\n" +
                   "༒".cyan2() + "   →  " + "●".red() + " Rubí\n" +
-                  "༒".red() + "   →  " + "⋇".magenta() + " Jóia lendária\n" +
+                  "༒".red() + "   →  " + "⋇".magenta() + " Jóia lendária\n" + "\n Para elevar o nível da sua picareta, você precisa de 5 minérios de um nível acima dela. Interaja com a picareta no inventário ('I 1') para melhorá-la." +
                   "\nEnergia:\nQuebrar minérios e descer andares gasta energia. Caso sua energia acabe, você desmaia e perde o jogo. Para recuperar energia, você pode comer uma comida (" + " ◍ ".yellow() + "❦ ".red() + "∝ ".cyan() + ") do seu inventário (I + posição da comida).\n\nDescer andares e XP:\nPara descer para um novo andar da caverna, você precisa encontrar a escada (⇊) debaixo de uma pedra aleatória e interagir com ela (E). Quebrar pedras e minérios também te concede XP, fator decisivo nos combates.\n" + "Dica: Melhore sua picareta antes de descer de andar, pois você não conseguirá subir de volta.".italic() + "\n────────────────────────────────────────────────────────────")
         }
     }

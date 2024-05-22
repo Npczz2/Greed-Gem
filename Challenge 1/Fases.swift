@@ -58,8 +58,8 @@ var todasAsFases: [Fase] = [
          })],
          quantidadePedras: 5,
          quantidadeMinerios: 10,
-         tipoDeMinerio: Minerio(desenho: "▰".blue(), nivel: 2),
-         posicaoSpawnBoneco: (x: 5, y: 2),
+         tipoDeMinerio: Minerio(desenho: "▰".white(), nivel: 2),
+         posicaoSpawnBoneco: (x: 5, y: 3),
          fraseInicial: personagem.nome + " desce mais um nível na caverna e observa um homem minerando, desatento com seus pertences."
         ),
     
