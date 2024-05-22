@@ -6,8 +6,6 @@ import Foundation
 
 var personagem = Personagem()
 var mapaAtual = todasAsFases[0]
-//var posicaoBoneco: (x: Int, y:Int, ladoOlhando:String) = (x: mapaAtual.posicaoSpawnBoneco.x, y: mapaAtual.posicaoSpawnBoneco.y,         ladoOlhando: "↓");
-
 var velocidadeTexto: Double = 1
 var textoCompleto: Bool = false
 

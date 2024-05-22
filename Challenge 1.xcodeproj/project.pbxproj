@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79E641612BFE61C0000AEBA7 /* Fases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E641602BFE61C0000AEBA7 /* Fases.swift */; };
 		79F813532BFBBCB100C94BA6 /* personagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F813522BFBBCB100C94BA6 /* personagem.swift */; };
 		79F91FAA2BEE914E001DF1F2 /* game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F91FA92BEE914E001DF1F2 /* game.swift */; };
-		79F91FAC2BEE9408001DF1F2 /* Carro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F91FAB2BEE9408001DF1F2 /* Carro.swift */; };
-		79F91FAE2BEE9D10001DF1F2 /* fase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F91FAD2BEE9D10001DF1F2 /* fase.swift */; };
+		79F91FAE2BEE9D10001DF1F2 /* Fase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F91FAD2BEE9D10001DF1F2 /* Fase.swift */; };
 		BEA3A9CC2BEBEE3500AEFA4C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3A9CB2BEBEE3500AEFA4C /* main.swift */; };
-		BEE08B7E2BEE8EF70075FF05 /* etor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE08B7D2BEE8EF70075FF05 /* etor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,13 +27,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		79E641602BFE61C0000AEBA7 /* Fases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fases.swift; sourceTree = "<group>"; };
 		79F813522BFBBCB100C94BA6 /* personagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = personagem.swift; sourceTree = "<group>"; };
 		79F91FA92BEE914E001DF1F2 /* game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = game.swift; sourceTree = "<group>"; };
-		79F91FAB2BEE9408001DF1F2 /* Carro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carro.swift; sourceTree = "<group>"; };
-		79F91FAD2BEE9D10001DF1F2 /* fase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fase.swift; sourceTree = "<group>"; };
+		79F91FAD2BEE9D10001DF1F2 /* Fase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fase.swift; sourceTree = "<group>"; };
 		BEA3A9C82BEBEE3500AEFA4C /* Challenge 1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Challenge 1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA3A9CB2BEBEE3500AEFA4C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		BEE08B7D2BEE8EF70075FF05 /* etor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = etor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +49,7 @@
 		7977D56F2BF3EE890052D963 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				79F91FAD2BEE9D10001DF1F2 /* fase.swift */,
+				79F91FAD2BEE9D10001DF1F2 /* Fase.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -77,10 +75,9 @@
 			children = (
 				7977D56F2BF3EE890052D963 /* model */,
 				BEA3A9CB2BEBEE3500AEFA4C /* main.swift */,
-				BEE08B7D2BEE8EF70075FF05 /* etor.swift */,
 				79F91FA92BEE914E001DF1F2 /* game.swift */,
-				79F91FAB2BEE9408001DF1F2 /* Carro.swift */,
 				79F813522BFBBCB100C94BA6 /* personagem.swift */,
+				79E641602BFE61C0000AEBA7 /* Fases.swift */,
 			);
 			path = "Challenge 1";
 			sourceTree = "<group>";
@@ -144,11 +141,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				79F813532BFBBCB100C94BA6 /* personagem.swift in Sources */,
-				79F91FAE2BEE9D10001DF1F2 /* fase.swift in Sources */,
+				79F91FAE2BEE9D10001DF1F2 /* Fase.swift in Sources */,
 				BEA3A9CC2BEBEE3500AEFA4C /* main.swift in Sources */,
-				79F91FAC2BEE9408001DF1F2 /* Carro.swift in Sources */,
-				BEE08B7E2BEE8EF70075FF05 /* etor.swift in Sources */,
 				79F91FAA2BEE914E001DF1F2 /* game.swift in Sources */,
+				79E641612BFE61C0000AEBA7 /* Fases.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
