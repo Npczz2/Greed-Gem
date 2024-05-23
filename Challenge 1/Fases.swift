@@ -107,13 +107,47 @@ var todasAsFases: [Fase] = [
 """,
          
          npcs: [Npc(desenho: "A".magenta(), posicaoSpawnNPC: (x: 33, y: 5), interacao: {
-             printarEscolhas(escolhas: ["Furtar a mochila", "Avisar o homem sobre a mochila"])
              
+             var escolhaValida = false
              
+             repeat {
+                 
+                 printarEscolhas(escolhas: ["Furtar a mochila", "Avisar o homem sobre a mochila"])
+                 
+                 if let escolha = readLine() {
+                     
+                     switch escolha {
+                        
+                     case "1":
+                         printarDevagar(texto: "\nVocê rouba a mochila do homem e consegue pegar: \n".italic(), completo: false);
+                         roubarItens(itens: ["Pedra", "Ferro", "Torta"])
+                         _ = readLine()
+                         escolhaValida.toggle()
+                         break;
+                     case "2":
+                         printarDevagar(texto: personagem.nome + ": Ei, com licença, sua mochila está aberta. ▼", completo: false);
+                         _ = readLine()
+                         printarDevagar(texto: "Minerador: Sai daqui cara! Tira o olho das minhas coisas! ▼", completo: false);
+                         _ = readLine()
+                         printarDevagar(texto: personagem.nome + ": Não, não é isso, é só que- ▼", completo: false);
+                         _ = readLine()
+                         printarDevagar(texto: "Minerador: Não importa. Só dá o fora. ▼", completo: false)
+                         _ = readLine()
+                         escolhaValida.toggle()
+                         break;
+                     default:
+                         print("Escolha inválida, digite novamente")
+                         break;
+                         
+                     }
+                     
+                 }
+                 
+             } while(!escolhaValida)
              
          })],
          quantidadePedras: 5,
-         quantidadeMinerios: 10,
+         quantidadeMinerios: 0,
          tipoDeMinerio: Minerio(desenho: "▰".white(), nivel: 2),
          posicaoSpawnBoneco: (x: 5, y: 3),
          fraseInicial: personagem.nome + " desce mais um nível na caverna e observa um homem minerando, desatento com seus pertences."

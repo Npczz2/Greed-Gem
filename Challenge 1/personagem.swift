@@ -16,6 +16,7 @@ class Personagem {
     var energia: Int = 100;
     var inventario: [ItemInventario] = []
     let niveisPicareta: [String] = ["༒".yellow(), "༒".black2(), "༒".white(), "༒".yellow2(), "༒".green2(), "༒".cyan2(), "༒".red()]
+    var pontosBondade: Int = 0
     
     
     init() {

@@ -5,7 +5,7 @@ import Foundation
 
 
 var personagem = Personagem()
-var mapaAtual = todasAsFases[0]
+var mapaAtual = todasAsFases[1]
 var velocidadeTexto: Double = 1
 var textoCompleto: Bool = false
 
@@ -173,6 +173,39 @@ func ganharXP(quantidade: Int){
         
         personagem.xp -= personagem.xpNecessario
         personagem.xpNecessario = Int(Double(personagem.xpNecessario) * 1.5)
+    }
+}
+
+func roubarItens(itens:[String]){
+    
+    for i in 0..<itens.count{
+        switch(itens[i]){
+        case "Pedra":
+            var quantidade = Int.random(in: 1...7)
+            personagem.adicionarAoInventario(item: ItemInventario("☗".black2(), quantidade: quantidade, nivel: 1))
+            
+            print("☗".black2() + " x" + String(quantidade))
+            break
+            
+        case "Ferro":
+            var quantidade = Int.random(in: 1...4)
+            personagem.adicionarAoInventario(item: ItemInventario("▰".white(), quantidade: quantidade, nivel: 2))
+            
+            print("▰".white() + " x" + String(quantidade))
+            break
+            
+        case "Torta":
+            var quantidade = Int.random(in: 1...2)
+            personagem.adicionarAoInventario(item: ItemInventario("◍".yellow(), quantidade: quantidade, nivel: 0))
+            
+            print("◍".yellow() + " x" + String(quantidade))
+            
+            break
+            
+        default:
+            
+            break
+        }
     }
 }
 
