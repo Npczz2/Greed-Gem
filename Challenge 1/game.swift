@@ -5,7 +5,7 @@ import Foundation
 
 
 var personagem = Personagem()
-var mapaAtual = todasAsFases[2]
+var mapaAtual = todasAsFases[4]
 var velocidadeTexto: Double = 1
 var textoCompleto: Bool = false
 
@@ -193,16 +193,35 @@ func roubarItens(itens:[String]){
             
             print("▰".white() + " x" + String(quantidade))
             break
-            
         case "Torta":
             var quantidade = Int.random(in: 1...2)
-            personagem.adicionarAoInventario(item: ItemInventario("◍".yellow(), quantidade: quantidade, nivel: 0))
+            personagem.adicionarAoInventario(item: ItemInventario("◍".yellow(), quantidade: quantidade, nivel: 0) {
+                recuperarEnergia(quantidadeEnergia: 5)
+                personagem.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 1))
+            })
             
             print("◍".yellow() + " x" + String(quantidade))
             
             break
+        case "Peixe":
             
+            var quantidade = Int.random(in: 1...5)
+            personagem.adicionarAoInventario(item: ItemInventario("∝".cyan(), quantidade: quantidade, nivel: 0) {
+                recuperarEnergia(quantidadeEnergia: 10)
+                personagem.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
+            })
+            
+            print("∝".cyan() + " x" + String(quantidade))
+            break
+        case "Rubí":
+            
+            var quantidade = Int.random(in: 1...2)
+            personagem.adicionarAoInventario(item: ItemInventario("●".red(), quantidade: quantidade, nivel: 6))
+            
+            print("●".red() + " x" + String(quantidade))
+            break
         default:
+            
             
             break
         }

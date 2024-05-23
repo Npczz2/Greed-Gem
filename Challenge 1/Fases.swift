@@ -225,8 +225,107 @@ var todasAsFases: [Fase] = [
 """,
          
          npcs: [Npc(desenho: "S".magenta(), posicaoSpawnNPC: (x: 30, y: 5), interacao: {
-             print("heitorgdnfjjndfg");
-             print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
+             
+             if escolheuStan {
+                 
+                 printarDevagar(texto: "Stan: Olha o que temos aqui… MUITO obrigado por não ter ajudado aquele cara mais cedo. ▼", completo: false)
+                 _ = readLine()
+                 printarDevagar(texto: "\(personagem.nome): O que você está fazendo aqui? ▼", completo: false)
+                 _ = readLine()
+                 printarDevagar(texto: "Stan: HAHAHA, o que você acha? Você acha mesmo que eu deixaria alguém além de mim encostar na jóia lendária? ▼", completo: false)
+                 _ = readLine()
+                 printarDevagar(texto: "\(personagem.nome): Então você era o ladrão de verdade… ▼", completo: false)
+                 _ = readLine()
+                 printarDevagar(texto: "Stan: Parabéns, gênio! Agora é tarde demais. Me dê tudo que você tem guardado na mochila ou eu acabo com você.", completo: false)
+                 _ = readLine()
+                 
+                 
+                 var escolhaValida = false
+                 
+                 repeat {
+                     
+                     printarEscolhas(escolhas: ["Entregar todos os itens a Stan", "Enfrentar Stan "])
+                     
+                     if let escolha = readLine() {
+                         
+                         switch escolha {
+                            
+                         case "1":
+                            
+                             printarDevagar(texto: "\(personagem.nome) entrega todos os itens para Stan", completo: false);
+                             for i in (1..<personagem.inventario.count).reversed() {
+                                 personagem.inventario.remove(at: i)
+                             }
+                             escolhaValida.toggle()
+                             break;
+                             
+                         case "2":
+                             
+                             if personagem.nivel > 3 {
+                                 
+                                printarDevagar(texto: "\(personagem.nome) consegue derrotar Stan, que era um minerador de nível 3, e vasculha sua mochila coletando:\n", completo: false)
+                                 roubarItens(itens: ["Torta", "Peixe", "Rubí"])
+                                 _ = readLine()
+                              
+                                 _ = readLine()
+                                 
+                             } else {
+                                 
+                                 printarDevagar(texto: "\(personagem.nome) não foi capaz de enfrentar Stan, que era um minerador de nível 3, e acabou perdendo sua vida\n", completo: false)
+                                 _ = readLine()
+                                 printarDevagar(texto: """
+                                 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                                 ░       ░░░        ░░       ░░░       ░░░░      ░░░        ░░░      ░░
+                                 ▒  ▒▒▒▒  ▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒  ▒
+                                 ▓  ▓▓▓▓  ▓▓      ▓▓▓▓       ▓▓▓       ▓▓▓  ▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓  ▓
+                                 █  ████  ██  ████████  ███  ███  ███  ███  ████  █████  █████        █
+                                 █       ███        ██  ████  ██  ████  ███      ██████  █████  ████  █
+                                 ██████████████████████████████████████████████████████████████████████ \n
+                                 """.red(), completo: false)
+                                 
+                                 exit(0)
+                                 
+                         
+
+                                 
+                             }
+                             
+                             escolhaValida.toggle()
+                             break;
+                         default:
+                             print("Escolha inválida, digite novamente")
+                             break;
+                             
+                         }
+                         
+                     }
+                     
+                 } while(!escolhaValida)
+                 
+                 
+                 
+                 
+                 
+             } else {
+                 
+                 printarDevagar(texto: "Stan: HAHAHA! Você achou que ia ficar por isso mesmo né?", completo: false)
+                 _ = readLine()
+                 printarDevagar(texto: "\(personagem.nome): Você de novo…", completo: false)
+                 _ = readLine()
+                 printarDevagar(texto: "Stan: Parabéns por ter descoberto quem era o verdadeiro ladrão. Agora, me passa tudo que você tem aí.", completo: false)
+                 _ = readLine()
+                 printarDevagar(texto: "Eliot aparece no mapa para defender Parry e vai em direção a Stan", completo: false)
+                 _ = readLine()
+                 printarDevagar(texto: "Eliot: Eu sabia! Ei cara, pode ir na frente! Vou te retribuir pela outra hora.", completo: false)
+                 _ = readLine()
+                 
+                 
+             }
+             
+
+             
+             
+             
              
          })],
          quantidadePedras: 5,

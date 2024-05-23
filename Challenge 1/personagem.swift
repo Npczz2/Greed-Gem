@@ -17,6 +17,10 @@ class Personagem {
     var inventario: [ItemInventario] = []
     let niveisPicareta: [String] = ["༒".yellow(), "༒".black2(), "༒".white(), "༒".yellow2(), "༒".green2(), "༒".cyan2(), "༒".red()]
     var pontosBondade: Int = 0
+    var nome: String = "";
+    var nivel: Int = 156666;
+    var xp: Int = 0;
+    var xpNecessario: Int = 4;
     
     
     init() {
@@ -37,24 +41,21 @@ class Personagem {
             
             
         })
-        inventario.append(ItemInventario("◍".yellow(), quantidade: 5, nivel: 0) {
-            recuperarEnergia(quantidadeEnergia: 5)
-            self.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 0))
-        })
-        inventario.append(ItemInventario("❦".red(), quantidade: 3, nivel: 0) {
-            recuperarEnergia(quantidadeEnergia: 10)
-            self.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
-        })
-        inventario.append(ItemInventario("∝".cyan(), quantidade: 13, nivel: 0) {
-            recuperarEnergia(quantidadeEnergia: 10)
-            self.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
-        })
+//        inventario.append(ItemInventario("◍".yellow(), quantidade: 5, nivel: 0) {
+//            recuperarEnergia(quantidadeEnergia: 5)
+//            self.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 0))
+//        })
+//        inventario.append(ItemInventario("❦".red(), quantidade: 3, nivel: 0) {
+//            recuperarEnergia(quantidadeEnergia: 10)
+//            self.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
+//        })
+//        inventario.append(ItemInventario("∝".cyan(), quantidade: 13, nivel: 0) {
+//            recuperarEnergia(quantidadeEnergia: 10)
+//            self.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
+//        })
     }
     
-    var nome: String = "";
-    var nivel: Int = 1;
-    var xp: Int = 0;
-    var xpNecessario: Int = 4;
+    
     
     var pegarFuturaPosicao: () -> (x: Int, y: Int) = { (x: personagem.posicao.x, y: personagem.posicao.y + 1) };
     
