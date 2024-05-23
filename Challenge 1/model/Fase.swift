@@ -56,8 +56,8 @@ class Fase {
         }
         
         for npc in npcs {
-            let randomPosicaoValida = Int.random(in: 0..<posicoesValidas.count)
-            let posicaoValida = posicoesValidas[randomPosicaoValida]
+            //let randomPosicaoValida = Int.random(in: 0..<posicoesValidas.count)
+           // let posicaoValida = posicoesValidas[randomPosicaoValida]
             posicoesNpcs.append(npc.posicaoSpawnNPC)
             
         }
@@ -132,7 +132,12 @@ class Fase {
         
         for i in 0..<mapaAtual.posicoesNpcs.count { //NPCs
             mapaAtual.mapaDesenhadoComObjetos[posicoesNpcs[i].y][posicoesNpcs[i].x] = Espaco(npcs[i].desenho, AlgoInteragivel(index: 0) {
-                self.npcs[i].interacao()
+                if !self.npcs[i].interagiu {
+                    self.npcs[i].interacao()
+                    self.npcs[i].interagiu = true;
+                }
+                
+                
             })
         }
         
@@ -185,6 +190,7 @@ class Npc {
     let interacao: (() -> Void);
     let posicaoSpawnNPC: (x: Int, y: Int);
     let desenho: String;
+    var interagiu: Bool = false;
     
     init(desenho: String, posicaoSpawnNPC: (x: Int, y: Int), interacao: @escaping () -> Void) {
         self.interacao = interacao;

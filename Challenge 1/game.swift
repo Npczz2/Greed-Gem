@@ -5,7 +5,7 @@ import Foundation
 
 
 var personagem = Personagem()
-var mapaAtual = todasAsFases[1]
+var mapaAtual = todasAsFases[2]
 var velocidadeTexto: Double = 1
 var textoCompleto: Bool = false
 

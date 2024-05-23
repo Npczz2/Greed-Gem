@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+var escolheuStan: Bool = true;
 var faseNumero: Int = 0;
 var todasAsFases: [Fase] = [
     
@@ -121,6 +121,7 @@ var todasAsFases: [Fase] = [
                      case "1":
                          printarDevagar(texto: "\nVocê rouba a mochila do homem e consegue pegar: \n".italic(), completo: false);
                          roubarItens(itens: ["Pedra", "Ferro", "Torta"])
+                         personagem.pontosBondade -= 1;
                          _ = readLine()
                          escolhaValida.toggle()
                          break;
@@ -133,6 +134,7 @@ var todasAsFases: [Fase] = [
                          _ = readLine()
                          printarDevagar(texto: "Minerador: Não importa. Só dá o fora. ▼", completo: false)
                          _ = readLine()
+                         personagem.pontosBondade += 1;
                          escolhaValida.toggle()
                          break;
                      default:
@@ -147,7 +149,7 @@ var todasAsFases: [Fase] = [
              
          })],
          quantidadePedras: 5,
-         quantidadeMinerios: 0,
+         quantidadeMinerios: 10,
          tipoDeMinerio: Minerio(desenho: "▰".white(), nivel: 2),
          posicaoSpawnBoneco: (x: 5, y: 3),
          fraseInicial: personagem.nome + " desce mais um nível na caverna e observa um homem minerando, desatento com seus pertences."
@@ -169,12 +171,12 @@ var todasAsFases: [Fase] = [
 """,
          
          npcs: [Npc(desenho: "S".magenta(), posicaoSpawnNPC: (x: 22, y: 5), interacao: {
-             print("heitorgdnfjjndfg");
-             print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
              
+             stanElliotInteracao()
+
          }),Npc(desenho: "E".magenta(), posicaoSpawnNPC: (x: 24, y: 5), interacao: {
-             print("heitorgdnfjjndfg");
-             print("ola vc interagiu com o npc pc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44ola vc interagiu com o npc 44")
+            
+             stanElliotInteracao()
              
          })],
          quantidadePedras: 5,
