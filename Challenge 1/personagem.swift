@@ -134,6 +134,8 @@ class Personagem {
                 
                 
             }
+        
+            printarGameTeste()
             
 
             if entradaSeparada.count > 1 && !entradaInvalida {
@@ -152,8 +154,6 @@ class Personagem {
                         
                     }
                 }
-            } else {
-                printarGameTeste()
             }
             
             if(personagem.energia <= 0)

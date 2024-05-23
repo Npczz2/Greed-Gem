@@ -5,7 +5,7 @@ import Foundation
 
 
 var personagem = Personagem()
-var mapaAtual = todasAsFases[4]
+var mapaAtual = todasAsFases[6]
 var velocidadeTexto: Double = 1
 var textoCompleto: Bool = false
 
@@ -155,6 +155,11 @@ func printarDevagar(texto: String, completo: Bool){
     }else{
         print(texto.italic())
     }
+}
+
+func printarDialogo(_ texto: String) {
+    printarDevagar(texto: texto + " ▼\n", completo: false)
+    _ = readLine()
 }
 
 func printarEscolhas(escolhas: [String]){
