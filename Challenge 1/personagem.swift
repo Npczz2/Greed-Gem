@@ -15,6 +15,7 @@ class Personagem {
     var direcaoPadrao = "↓".red();
     var energia: Int = 100;
     var inventario: [ItemInventario] = []
+    var inventarioDesenhado:[[[String]]] = []
     let niveisPicareta: [String] = ["༒".yellow(), "༒".black2(), "༒".white(), "༒".yellow2(), "༒".green2(), "༒".cyan2(), "༒".red()]
     var pontosBondade: Int = 0
     var nome: String = "";
@@ -25,12 +26,9 @@ class Personagem {
     
     init() {
         inventario.append(ItemInventario("༒".yellow(), quantidade: 1, nivel: 0) {
-            
-            print("qqqqq")
-            
+ 
             if let quantidadeMinerios = self.buscaMinerio(nivel: self.inventario[0].nivel + 1), quantidadeMinerios.quantidade > 4 {
                 
-                print("asdadsad")
                 self.inventario[0].nivel += 1;
                 self.inventario[0].desenho = self.niveisPicareta[self.inventario[0].nivel]
                 self.removerDoInventario(item: (desenho: self.inventario[quantidadeMinerios.index].desenho, quantidade: 5))
@@ -41,18 +39,20 @@ class Personagem {
             
             
         })
-//        inventario.append(ItemInventario("◍".yellow(), quantidade: 5, nivel: 0) {
-//            recuperarEnergia(quantidadeEnergia: 5)
-//            self.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 0))
-//        })
-//        inventario.append(ItemInventario("❦".red(), quantidade: 3, nivel: 0) {
-//            recuperarEnergia(quantidadeEnergia: 10)
-//            self.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
-//        })
+        inventario.append(ItemInventario("◍".yellow(), quantidade: 5, nivel: 0) {
+            recuperarEnergia(quantidadeEnergia: 10)
+            self.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 0))
+        })
+        inventario.append(ItemInventario("❦".red(), quantidade: 3, nivel: 0) {
+            recuperarEnergia(quantidadeEnergia: 8)
+            self.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
+        })
 //        inventario.append(ItemInventario("∝".cyan(), quantidade: 13, nivel: 0) {
-//            recuperarEnergia(quantidadeEnergia: 10)
+//            recuperarEnergia(quantidadeEnergia: 5)
 //            self.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
 //        })
+        
+
     }
     
     
@@ -93,6 +93,7 @@ class Personagem {
                 if let coisaNoEspaco = mapaAtual.mapaDesenhadoComObjetos[espacoFuturo.y][espacoFuturo.x].algoInteragivel {
                     coisaNoEspaco.interacao()
                     mapaAtual.desenharObjetosMapa()
+                    desenharInventario()
                 }
                 break
             case "B":
@@ -158,6 +159,8 @@ class Personagem {
             
             if(personagem.energia <= 0)
             {
+                printarDialogo("\(personagem.nome) trabalha até ficar esgotado e morre de fadiga.")
+                print(derrotaGrande)
                 exit(0)
             }
         
@@ -215,6 +218,19 @@ class Personagem {
 
         return nil;
 
+    }
+    
+    func desenharInventario() {
+      
+        inventarioDesenhado.removeAll()
+        
+        for i in 0..<self.inventario.count {
+            
+            inventarioDesenhado.append(desenhoCaixa(index: i, desenho: personagem.inventario[i].desenho,
+                                                  quantidade: personagem.inventario[i].quantidade,
+                                                  interagivel: personagem.inventario[i].interacao != nil))
+            
+        }
     }
     
 }

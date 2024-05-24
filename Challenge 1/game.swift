@@ -5,13 +5,23 @@ import Foundation
 
 
 var personagem = Personagem()
-var mapaAtual = todasAsFases[6]
+var mapaAtual = todasAsFases[5]
 var velocidadeTexto: Double = 1
 var textoCompleto: Bool = false
+let derrotaGrande = """
+                     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                     ░       ░░░        ░░       ░░░       ░░░░      ░░░        ░░░      ░░
+                     ▒  ▒▒▒▒  ▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒  ▒
+                     ▓  ▓▓▓▓  ▓▓      ▓▓▓▓       ▓▓▓       ▓▓▓  ▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓  ▓
+                     █  ████  ██  ████████  ███  ███  ███  ███  ████  █████  █████        █
+                     █       ███        ██  ████  ██  ████  ███      ██████  █████  ████  █
+                     ██████████████████████████████████████████████████████████████████████ \n
+                     """.red()
 
 
 func loopGame() {
     
+    personagem.desenharInventario()
     print("\u{001B}[2J")
     print("Digite o nome do personagem: ")
     personagem.nome = readLine()!
@@ -81,26 +91,18 @@ func printarGameTeste() {
 
 func printarInventario() {
     
+    
+    
     print()
-    var vetorInvDesenhado:[[[String]]] = []
     let terminador = ["│", "┼", "│", "┼", "│"]
     
-    for i in 0..<personagem.inventario.count {
-        
-        vetorInvDesenhado.append(desenhoCaixa(index: i, desenho: personagem.inventario[i].desenho,
-                                              quantidade: personagem.inventario[i].quantidade,
-                                              interagivel: personagem.inventario[i].interacao != nil))
-        
-        
-    }
-    
-    for i in 0..<vetorInvDesenhado[0].count {
-        for k in 0..<vetorInvDesenhado.count {
-            for j in 0..<vetorInvDesenhado[k][i].count {
+    for i in 0..<personagem.inventarioDesenhado[0].count {
+        for k in 0..<personagem.inventarioDesenhado.count {
+            for j in 0..<personagem.inventarioDesenhado[k][i].count {
                 
-                print(vetorInvDesenhado[k][i][j],
-                      terminator: j == vetorInvDesenhado[k][i].count - 1 &&
-                      k == vetorInvDesenhado.count - 1
+                print(personagem.inventarioDesenhado[k][i][j],
+                      terminator: j == personagem.inventarioDesenhado[k][i].count - 1 &&
+                      k == personagem.inventarioDesenhado.count - 1
                       ? terminador[i] : "")
             }
             
@@ -198,25 +200,24 @@ func roubarItens(itens:[String]){
             
             print("▰".white() + " x" + String(quantidade))
             break
-        case "Torta":
-            var quantidade = Int.random(in: 1...2)
-            personagem.adicionarAoInventario(item: ItemInventario("◍".yellow(), quantidade: quantidade, nivel: 0) {
-                recuperarEnergia(quantidadeEnergia: 5)
-                personagem.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 1))
-            })
+        
+        case "Ouro":
+            var quantidade = Int.random(in: 1...4)
+            personagem.adicionarAoInventario(item: ItemInventario("▮".yellow2(), quantidade: quantidade, nivel: 3))
             
-            print("◍".yellow() + " x" + String(quantidade))
-            
+            print("▮".yellow2() + " x" + String(quantidade))
             break
-        case "Peixe":
+        case "Esmeralda":
+            var quantidade = Int.random(in: 1...4)
+            personagem.adicionarAoInventario(item: ItemInventario("◆".green2(), quantidade: quantidade, nivel: 4))
             
-            var quantidade = Int.random(in: 1...5)
-            personagem.adicionarAoInventario(item: ItemInventario("∝".cyan(), quantidade: quantidade, nivel: 0) {
-                recuperarEnergia(quantidadeEnergia: 10)
-                personagem.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
-            })
+            print("◆".green2() + " x" + String(quantidade))
+            break
+        case "Diamante":
+            var quantidade = Int.random(in: 1...4)
+            personagem.adicionarAoInventario(item: ItemInventario("✦".cyan2(), quantidade: quantidade, nivel: 5))
             
-            print("∝".cyan() + " x" + String(quantidade))
+            print("✦".cyan2() + " x" + String(quantidade))
             break
         case "Rubí":
             
@@ -225,6 +226,37 @@ func roubarItens(itens:[String]){
             
             print("●".red() + " x" + String(quantidade))
             break
+        case "Torta":
+            var quantidade = Int.random(in: 1...2)
+            personagem.adicionarAoInventario(item: ItemInventario("◍".yellow(), quantidade: quantidade, nivel: 0) {
+                recuperarEnergia(quantidadeEnergia: 10)
+                personagem.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 1))
+            })
+            
+            print("◍".yellow() + " x" + String(quantidade))
+            
+            break
+        case "Fruta":
+            
+            var quantidade = Int.random(in: 1...5)
+            personagem.adicionarAoInventario(item: ItemInventario("❦".red(), quantidade: quantidade, nivel: 0) {
+                recuperarEnergia(quantidadeEnergia: 8)
+                personagem.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
+            })
+            
+            print("❦".red() + " x" + String(quantidade))
+            break
+        case "Peixe":
+            
+            var quantidade = Int.random(in: 1...5)
+            personagem.adicionarAoInventario(item: ItemInventario("∝".cyan(), quantidade: quantidade, nivel: 0) {
+                recuperarEnergia(quantidadeEnergia: 5)
+                personagem.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
+            })
+            
+            print("∝".cyan() + " x" + String(quantidade))
+            break
+        
         default:
             
             

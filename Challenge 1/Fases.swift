@@ -111,7 +111,7 @@ var todasAsFases: [Fase] = [
                      case "1":
                          
                          printarDevagar(texto: "\n\(personagem.nome) rouba a mochila do homem e consegue pegar: \n".italic(), completo: false);
-                         roubarItens(itens: ["Pedra", "Ferro", "Torta"])
+                         roubarItens(itens: ["Pedra", "Ferro", "Torta", "Peixe"])
                          personagem.pontosBondade -= 1;
                          _ = readLine()
                          escolhaValida.toggle()
@@ -246,23 +246,14 @@ var todasAsFases: [Fase] = [
                              if personagem.nivel > 3 {
                                  
                                  printarDevagar(texto: "\(personagem.nome) consegue derrotar Stan, que era um minerador de nível 3, e vasculha sua mochila coletando:\n".italic(), completo: false)
-                                 roubarItens(itens: ["Torta", "Peixe", "Rubí"])
+                                 roubarItens(itens: ["Torta", "Peixe", "Rubí", "Ouro", "Diamante"])
                                  _ = readLine()
                                  
-                                 _ = readLine()
                                  
                              } else {
                                  
                                  printarDialogo("\(personagem.nome) não foi capaz de enfrentar Stan, que era um minerador de nível 3, e acabou perdendo sua vida\n".italic())
-                                 print("""
-                                 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                                 ░       ░░░        ░░       ░░░       ░░░░      ░░░        ░░░      ░░
-                                 ▒  ▒▒▒▒  ▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒  ▒
-                                 ▓  ▓▓▓▓  ▓▓      ▓▓▓▓       ▓▓▓       ▓▓▓  ▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓  ▓
-                                 █  ████  ██  ████████  ███  ███  ███  ███  ████  █████  █████        █
-                                 █       ███        ██  ████  ██  ████  ███      ██████  █████  ████  █
-                                 ██████████████████████████████████████████████████████████████████████ \n
-                                 """.red())
+                                 print(derrotaGrande)
                                  
                                  exit(0)
                                  
@@ -327,10 +318,8 @@ var todasAsFases: [Fase] = [
                                   └┼┼┼┼┼┼┼┼┼┘          &
 """,
          
-         npcs: [Npc(desenho: "K".magenta(), posicaoSpawnNPC: (x: 17, y: 8), interacao: {
-             printarDevagar(texto: "Kauê Zero Troféus: Por favor… Tire essa pedra de cima de mim, não consigo me mexer. Por favor, me salve. ▼", completo: false)
-             _ = readLine()
-             printarDialogo(<#T##texto: String##String#>)
+         npcs: [Npc(desenho: "B".magenta(), posicaoSpawnNPC: (x: 17, y: 8), interacao: {
+             printarDialogo("Bryan: Por favor… Tire essa pedra de cima de mim, não consigo me mexer. Por favor, me salve.")
              
              
              var escolhaValida = false
@@ -347,15 +336,16 @@ var todasAsFases: [Fase] = [
                          printarDevagar(texto: "\(personagem.nome) tira a pedra de cima do homem. ▼".italic(), completo: false);
                          personagem.energia -= 5
                          _ = readLine()
-                         printarDevagar(texto: "Kauê Zero Troféus: Muito obrigado, você me salvou! Pensei que iria morrer aqui... ▼".italic(), completo: false);
-                         _ = readLine()
+                         printarDialogo("Bryan: Muito obrigado, você me salvou! Pensei que iria morrer aqui...".italic())
+                       
+                       
                          
                          personagem.pontosBondade += 1
                          
                          escolhaValida.toggle()
                          break;
                      case "2":
-                         printarDevagar(texto: personagem.nome + "\(personagem.nome) finge que não ouviu o pedido de socorro do homem e segue sua exploração. ▼".italic(), completo: false);
+                         printarDialogo("\(personagem.nome) finge que não ouviu o pedido de socorro do homem e segue sua exploração.")
                          _ = readLine()
                          
                          escolhaValida.toggle()
@@ -363,7 +353,7 @@ var todasAsFases: [Fase] = [
                          
                      case "3":
                          printarDevagar(texto: "\(personagem.nome) decide roubar os itens do homem que estava preso, coletando:\n", completo: false);
-                         roubarItens(itens: ["Pedra", "Esmeralda", "Diamante"])
+                         roubarItens(itens: ["Pedra", "Esmeralda", "Diamante", "Fruta"])
                          _ = readLine()
                          
                          personagem.pontosBondade -= 1
@@ -383,18 +373,12 @@ var todasAsFases: [Fase] = [
              
          }), Npc(desenho: "C".magenta(), posicaoSpawnNPC: (x: 39, y: 10), interacao: {
              
-             printarDevagar(texto: "Carl: SAI! SAI DAQUI! A JÓIA É MINHA! SAI DAQUI OU EU TE MATO!", completo: false)
-             _ = readLine();
-             printarDevagar(texto: "\(personagem.nome): Ei, calma, calma! Eu não quero lutar!", completo: false)
-             _ = readLine();
-             printarDevagar(texto: "Carl: NÃO, ELA É MINHA. SÓ. MINHA.", completo: false)
-             _ = readLine();
-             printarDevagar(texto: "Os dois começam a brigar e \(personagem.nome) consegue derrotar Carl.", completo: false)
-             _ = readLine();
-             printarDevagar(texto: "\(personagem.nome): É culpa sua. Você que começou com tudo isso.", completo: false)
-             _ = readLine();
-             
-             
+             printarDialogo("Carl: SAI! SAI DAQUI! A JÓIA É MINHA! SAI DAQUI OU EU TE MATO!")
+             printarDialogo("\(personagem.nome): Ei, calma, calma! Eu não quero lutar!")
+             printarDialogo("Carl: NÃO, ELA É MINHA. SÓ. MINHA.")
+             printarDialogo("Os dois começam a brigar e \(personagem.nome) consegue derrotar Carl.")
+             printarDialogo("\(personagem.nome): É culpa sua. Você que começou com tudo isso.")
+      
              var escolhaValida = false
              
              repeat {
@@ -407,8 +391,7 @@ var todasAsFases: [Fase] = [
                          
                      case "1":
                          
-                         printarDevagar(texto: "\(personagem.nome) decide poupar a vida de Carl.".italic(), completo: false)
-                         _ = readLine()
+                         printarDialogo("\(personagem.nome) decide poupar a vida de Carl.".italic())
                          personagem.pontosBondade += 1
                          escolhaValida.toggle()
                          break;
@@ -466,15 +449,7 @@ var todasAsFases: [Fase] = [
              if(personagem.inventario[0].nivel < mapaAtual.tipoDeMinerio.nivel) {
                 
                  printarDialogo("\(personagem.nome) tenta usar sua picareta para extrair a jóia e finalmente levá-la para casa. Porém, ao tentar arrancar a jóia que ficava fixa em uma pedra extremamente dura, ele acaba forçando demais pelo nível de sua picareta ser insuficiente e acaba quebrando a jóia.")
-                 print("""
-                 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                 ░       ░░░        ░░       ░░░       ░░░░      ░░░        ░░░      ░░
-                 ▒  ▒▒▒▒  ▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒  ▒
-                 ▓  ▓▓▓▓  ▓▓      ▓▓▓▓       ▓▓▓       ▓▓▓  ▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓  ▓
-                 █  ████  ██  ████████  ███  ███  ███  ███  ████  █████  █████        █
-                 █       ███        ██  ████  ██  ████  ███      ██████  █████  ████  █
-                 ██████████████████████████████████████████████████████████████████████ \n
-                 """.red())
+                 print(derrotaGrande)
                  
              } else {
                  
@@ -485,15 +460,7 @@ var todasAsFases: [Fase] = [
                      printarDialogo("Para sua surpresa, a polícia o aguardava. Alguém de dentro da caverna conseguiu escapar e relatar os crimes de \(personagem.nome).")
                      printarDialogo("\(personagem.nome) foi sentenciado a 10 anos de prisão e teve a jóia confiscada.")
                      
-                     print("""
-                     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                     ░       ░░░        ░░       ░░░       ░░░░      ░░░        ░░░      ░░
-                     ▒  ▒▒▒▒  ▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒  ▒
-                     ▓  ▓▓▓▓  ▓▓      ▓▓▓▓       ▓▓▓       ▓▓▓  ▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓  ▓
-                     █  ████  ██  ████████  ███  ███  ███  ███  ████  █████  █████        █
-                     █       ███        ██  ████  ██  ████  ███      ██████  █████  ████  █
-                     ██████████████████████████████████████████████████████████████████████ \n
-                     """.red())
+                     print(derrotaGrande)
                      
                  
                      
