@@ -132,7 +132,7 @@ class Fase {
                     printarDevagar(texto: "Você precisa de uma picareta de nível \(self.tipoDeMinerio.nivel) ou superior (\(personagem.niveisPicareta[self.tipoDeMinerio.nivel-1]) )", completo: false)
                     usleep(1000000)
                 }
-                personagem.energia -= self.tipoDeMinerio.nivel * 2
+                personagem.energia -= Int(Double(self.tipoDeMinerio.nivel) * 1.5)
             })
             
             

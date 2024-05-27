@@ -48,7 +48,7 @@ class Personagem {
             recuperarEnergia(quantidadeEnergia: 8)
             self.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
         })
-        inventario.append(ItemInventario("∝".cyan(), quantidade: 99, nivel: 0) {
+        inventario.append(ItemInventario("∝".cyan(), quantidade: 5, nivel: 0) {
             recuperarEnergia(quantidadeEnergia: 5)
             self.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
         })

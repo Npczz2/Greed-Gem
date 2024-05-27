@@ -50,7 +50,7 @@ func stanElliotInteracao(){
                 printarDialogo(personagem.nome + ": O que? Mas porque ele está roubando os outros?")
                 printarDialogo("Elliot: Provavelmente para fazer com que só ele chegue até a jóia.")
                 printarDialogo(personagem.nome + ": Que cara maluco...")
-                printarDevagar(texto: "Elliot: Ele roubou tudo que um parceiro meu tinha. O velho endoidou… Não sei onde ele está agora.", completo: false)
+                printarDevagar(texto: "Elliot: Ele roubou tudo que um parceiro meu tinha. O velho endoidou… Não sei onde ele está agora.\n\n", completo: false)
                 printarDialogo("Elliot: Bom, tome cuidado no caminho. Quem sabe não nos vemos de novo.")
                 
                 escolheuStan = false

@@ -76,7 +76,7 @@ var todasAsFases: [Fase] = [
              
              
          })],
-         quantidadePedras: 5,
+         quantidadePedras: 8,
          quantidadeMinerios: 0,
          tipoDeMinerio: Minerio(desenho: "◆".blue(), nivel: 1),
          posicaoSpawnBoneco: (x: 13, y: 1),
@@ -138,7 +138,7 @@ var todasAsFases: [Fase] = [
              
          })],
          quantidadePedras: 5,
-         quantidadeMinerios: 10,
+         quantidadeMinerios: 7,
          tipoDeMinerio: Minerio(desenho: "▰".white(), nivel: 2),
          posicaoSpawnBoneco: (x: 5, y: 3),
          fraseInicial: personagem.nome + " desce mais um nível na caverna e observa um homem minerando, desatento com seus pertences.",
@@ -169,8 +169,8 @@ var todasAsFases: [Fase] = [
              stanElliotInteracao()
              
          })],
-         quantidadePedras: 5,
-         quantidadeMinerios: 10,
+         quantidadePedras: 9,
+         quantidadeMinerios: 6,
          tipoDeMinerio: Minerio(desenho: "▮".yellow2(), nivel: 3),
          posicaoSpawnBoneco: (x: 6, y: 3),
          fraseInicial: personagem.nome + " continua sua exploração e se depara com dois homens brigando.",
@@ -192,8 +192,8 @@ var todasAsFases: [Fase] = [
 """,
          
          npcs: [],
-         quantidadePedras: 5,
-         quantidadeMinerios: 10,
+         quantidadePedras: 3,
+         quantidadeMinerios: 9,
          tipoDeMinerio: Minerio(desenho: "◆".green2(), nivel: 4),
          posicaoSpawnBoneco: (x: 8, y: 2),
          fraseInicial: "Depois da situação caótica, " + personagem.nome + " até desconfia do silêncio desse andar…",
@@ -247,7 +247,7 @@ var todasAsFases: [Fase] = [
                              
                          case "2":
                              
-                             if personagem.nivel > 3 {
+                             if personagem.nivel > 5 {
                                  
                                  printarDevagar(texto: "\(personagem.nome) consegue derrotar Stan, que era um minerador de nível 3, e vasculha sua mochila coletando:\n".italic(), completo: false)
                                  roubarItens(itens: ["Torta", "Peixe", "Rubí", "Ouro", "Diamante"])
@@ -299,8 +299,8 @@ var todasAsFases: [Fase] = [
              
              
          })],
-         quantidadePedras: 5,
-         quantidadeMinerios: 10,
+         quantidadePedras: 12,
+         quantidadeMinerios: 6,
          tipoDeMinerio: Minerio(desenho: "✦".cyan2(), nivel: 5),
          posicaoSpawnBoneco: (x: 44, y: 5),
          fraseInicial: personagem.nome + " desce mais um andar e avista Stan novamente…",
@@ -430,8 +430,8 @@ var todasAsFases: [Fase] = [
              
              
          })],
-         quantidadePedras: 5,
-         quantidadeMinerios: 10,
+         quantidadePedras: 15,
+         quantidadeMinerios: 5,
          tipoDeMinerio: Minerio(desenho: "●".red(), nivel: 6),
          posicaoSpawnBoneco: (x: 17, y: 2),
          fraseInicial: personagem.nome + " avança na caverna e se espanta com o número de pessoas perdidas na caverna. Ele encontra duas pessoas debilitadas.",
@@ -452,19 +452,25 @@ var todasAsFases: [Fase] = [
          
          npcs: [Npc(desenho: "⋇".magenta(), posicaoSpawnNPC: (x: 5, y: 4) ){
              
-             if(personagem.inventario[0].nivel < mapaAtual.tipoDeMinerio.nivel) {
+             if(personagem.inventario[0].nivel < mapaAtual.tipoDeMinerio.nivel - 1) {
                 
                  printarDialogo("\(personagem.nome) tenta usar sua picareta para extrair a jóia e finalmente levá-la para casa. Porém, ao tentar arrancar a jóia que ficava fixa em uma pedra extremamente dura, ele acaba forçando demais pelo nível de sua picareta ser insuficiente e acaba quebrando a jóia.")
                  print(derrotaGrande)
                  
              } else {
                  
+                 personagem.adicionarAoInventario(item: ItemInventario("⋇".magenta(), quantidade: 1, nivel: 7))
+                 personagem.desenharInventario()
+                 printarGameTeste()
+                 
                  if personagem.pontosBondade < 0 {
+                     
                      
                      printarDialogo("Depois de sua longa jornada, \(personagem.nome) conseguiu coletar a jóia. Estava confuso, pois o que devia ser um momento de extrema celebração se tornou algo agonizante. Ao segurar a jóia, começou a imaginá-la com sangue escorrendo de sua base, representando a morte das pessoas que ele deixou para trás na caverna.")
                      printarDialogo("Em completo desespero, saiu correndo de volta pelo caminho que trilhou. Depois de muita dificuldade, alcançou a entrada da caverna.")
                      printarDialogo("Para sua surpresa, a polícia o aguardava. Alguém de dentro da caverna conseguiu escapar e relatar os crimes de \(personagem.nome).")
                      printarDialogo("\(personagem.nome) foi sentenciado a 10 anos de prisão e teve a jóia confiscada.")
+                     
                      
                      print(derrotaGrande)
                      
