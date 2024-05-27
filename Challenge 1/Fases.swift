@@ -403,7 +403,6 @@ var todasAsFases: [Fase] = [
                      case "2":
                          
                          printarDevagar(texto: "\(personagem.nome) decide roubar todos os minérios restantes de Carl, recebendo:\n".italic(), completo: false)
-                         _ = readLine()
                          roubarItens(itens: ["Rubí", "Pedra", "Ouro", "Ferro"])
                          
                          personagem.pontosBondade -= 1

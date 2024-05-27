@@ -263,6 +263,9 @@ func roubarItens(itens:[String]){
             break
         }
     }
+    
+    print("                                              ▼")
+    _ = readLine();
 }
 
 let textoTutorial = "────────────────────────────────────────────────────────────\nTUTORIAL\n\nComandos:\n- Andar: Direção (W, A, S, D) + quantidade de casas a andar\n- Olhar para direção: W, A, S, D\n- Interagir/Quebrar: E\n- Usar item do inventário: I + número da caixa do item\n\nMineração:\nPara minerar, olhe para o minério e use o botão de interação (E). Você começa com uma picareta de madeira e precisa melhorá-la para quebrar minérios superiores. Exemplo:\n" +
