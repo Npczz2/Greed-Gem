@@ -17,7 +17,7 @@ var todasAsFases: [Fase] = [
   ┌┬┬┬┬┬┬┼┤ . . ├┼┬┬┬┬┬┬┐    &
   ├┼┼┼┼┼┼┼┤ . . ├┼┼┼┼┼┼┼┤    &
   │ . . . . . . . . . . ├┬┐  &
- ┌┤ . . . . . . . . . . ├┼┤  &
+ ┌┤ . . . . . . .   . . ├┼┤  &
 │├┤ . . . . . . . . . . . ││ &
 ││  . . . . . . . . . . . ││ &
  ├┐ . . . . . . . . . . ┌┬┤  &
@@ -80,7 +80,8 @@ var todasAsFases: [Fase] = [
          quantidadeMinerios: 0,
          tipoDeMinerio: Minerio(desenho: "◆".blue(), nivel: 1),
          posicaoSpawnBoneco: (x: 13, y: 1),
-         fraseInicial: personagem.nome + " adentra a caverna e começa a explorar seu interior…\n"
+         fraseInicial: personagem.nome + " adentra a caverna e começa a explorar seu interior…\n",
+         ultimaFase: false
         ),
     
     Fase(mapaModelo: """
@@ -89,7 +90,7 @@ var todasAsFases: [Fase] = [
   ├┼┼┼┤ . . . . . ├┬┐                 &
  ┌┤ . . . . . . . ├┼┼┬┬┬┬┬┬┬┬┬┬┬┬┬┐   &
 │├┤ . . . . . . . . ├┼┼┼┼┼┼┼┼┼┼┼┼┼┤   &
-││  . . . . . . . . . . . . . . . ││  &
+││  . . . . . . . . . . . . . .   ││  &
  ├┐ . . . . . . . ┌┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┤   &
  ├┤ . . . . . . . ├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤   &
   ├┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┤                   &
@@ -140,7 +141,8 @@ var todasAsFases: [Fase] = [
          quantidadeMinerios: 10,
          tipoDeMinerio: Minerio(desenho: "▰".white(), nivel: 2),
          posicaoSpawnBoneco: (x: 5, y: 3),
-         fraseInicial: personagem.nome + " desce mais um nível na caverna e observa um homem minerando, desatento com seus pertences."
+         fraseInicial: personagem.nome + " desce mais um nível na caverna e observa um homem minerando, desatento com seus pertences.",
+         ultimaFase: false
         ),
     
     Fase(mapaModelo: """
@@ -149,7 +151,7 @@ var todasAsFases: [Fase] = [
 ││ . . . . . ├┬┬┬┬┬┬┬┬┬┬┬┬┬┐    &
 ││ . . . . . ├┼┼┼┼┼┼┼┼┼┼┼┼┼┤    &
 ││ . . . . . . . . . . . . ├┬┐  &
-││ . . . . . . . . . . . . ├┼┤  &
+││ . . . . . . . . .     . ├┼┤  &
 ││ . . . . . . . . ┌┬┬┬┐ . . ││ &
  ├┬┬┬┬┬┬┬┬┬┬┬┐ . . ├┼┼┼┤ . . ││ &
  ├┼┼┼┼┼┼┼┼┼┼┼┤ . . . . . . . ││ &
@@ -169,9 +171,10 @@ var todasAsFases: [Fase] = [
          })],
          quantidadePedras: 5,
          quantidadeMinerios: 10,
-         tipoDeMinerio: Minerio(desenho: "▮".yellow(), nivel: 3),
+         tipoDeMinerio: Minerio(desenho: "▮".yellow2(), nivel: 3),
          posicaoSpawnBoneco: (x: 6, y: 3),
-         fraseInicial: personagem.nome + " continua sua exploração e se depara com dois homens brigando."
+         fraseInicial: personagem.nome + " continua sua exploração e se depara com dois homens brigando.",
+         ultimaFase: false
         ),
     
     Fase(mapaModelo: """
@@ -191,9 +194,10 @@ var todasAsFases: [Fase] = [
          npcs: [],
          quantidadePedras: 5,
          quantidadeMinerios: 10,
-         tipoDeMinerio: Minerio(desenho: "◆".green(), nivel: 4),
+         tipoDeMinerio: Minerio(desenho: "◆".green2(), nivel: 4),
          posicaoSpawnBoneco: (x: 8, y: 2),
-         fraseInicial: "Depois da situação caótica, " + personagem.nome + " até desconfia do silêncio desse andar…"
+         fraseInicial: "Depois da situação caótica, " + personagem.nome + " até desconfia do silêncio desse andar…",
+         ultimaFase: false
         ),
     
     Fase(mapaModelo: """
@@ -202,7 +206,7 @@ var todasAsFases: [Fase] = [
    ├┼┼┼┤ . . . . . . . . . . . . . ├┼┼┼┼┼┼┬┐    &
    │ . . . . . . . . . . . . . . . . . . ├┼┤    &
  ┌┬│ . . . . . . ┌┬┬┬┬┬┬┬┐ . . . . . . . . └┬┐  &
- ├┼┘ . . . . . ┌┬┼┼┼┼┼┼┼┼┼┬┐ . . . . . . . . ││ &
+ ├┼┘ . . . . . ┌┬┼┼┼┼┼┼┼┼┼┬┐   . . . . . . . ││ &
 ││ . . . . . . └─┐         │ . . . . . . . ┌┬┘  &
 ││ . . . . . . . └─────────┘ . . . . . . . │    &
  ├┬┬┬┐ . . . . . . . . . . . . . . . ┌┬┬┬┬┬┘    &
@@ -299,7 +303,8 @@ var todasAsFases: [Fase] = [
          quantidadeMinerios: 10,
          tipoDeMinerio: Minerio(desenho: "✦".cyan2(), nivel: 5),
          posicaoSpawnBoneco: (x: 44, y: 5),
-         fraseInicial: personagem.nome + " desce mais um andar e avista Stan novamente…"
+         fraseInicial: personagem.nome + " desce mais um andar e avista Stan novamente…",
+         ultimaFase: false
         ),
     
     Fase(mapaModelo: """
@@ -311,9 +316,9 @@ var todasAsFases: [Fase] = [
  ││ . . . . ┌┬┐ . . . . . . . . . . . . . . ├┼┼┼┼┼┼┼┐  &
  └┼┬┬┬┬┬┐ . . . . . . . . . . . . . ┌┬┬┬┐ . . . . . ││ &
      └┼┼│ . . . . ┌┬┬┬┬┬┬┬┬┬┐ . . . ├┼┼┼┤ . . . . . ││ &
-       ││ . . . . ├┼┼┼┼┼┼┼┼┼┤ . . . . . . . . . . . ││ &
+       ││ . . .   ├┼┼┼┼┼┼┼┼┼┤ . . . . . . . . . . . ││ &
        └├┬┬┬┬┬┬┬┬┬┤         ├┬┬┬┬┬┐ . . . . ┌┬┬┬┬┬┬┬┘  &
-        └┼┼┼┼┼┼┼┼┼┘         └┼┼┼┼┼┤ . . . . ├┼┼┼┼┼┼┘   &
+        └┼┼┼┼┼┼┼┼┼┘         └┼┼┼┼┼┤ .   . . ├┼┼┼┼┼┼┘   &
                                   ├┬┬┬┬┬┬┬┬┬┤          &
                                   └┼┼┼┼┼┼┼┼┼┘          &
 """,
@@ -429,7 +434,8 @@ var todasAsFases: [Fase] = [
          quantidadeMinerios: 10,
          tipoDeMinerio: Minerio(desenho: "●".red(), nivel: 6),
          posicaoSpawnBoneco: (x: 17, y: 2),
-         fraseInicial: personagem.nome + " avança na caverna e se espanta com o número de pessoas perdidas na caverna. Ele encontra duas pessoas debilitadas."
+         fraseInicial: personagem.nome + " avança na caverna e se espanta com o número de pessoas perdidas na caverna. Ele encontra duas pessoas debilitadas.",
+         ultimaFase: false
         ),
     
     Fase(mapaModelo: """
@@ -485,7 +491,8 @@ var todasAsFases: [Fase] = [
          quantidadeMinerios: 0,
          tipoDeMinerio: Minerio(desenho: "⋇".magenta(), nivel: 7),
          posicaoSpawnBoneco: (x: 49, y: 4),
-         fraseInicial: personagem.nome + " sente uma energia percorrendo seu corpo. Quando olha à frente, observa a lendária jóia, na cor roxa, mais reluzente que qualquer diamante do mundo."
+         fraseInicial: personagem.nome + " sente uma energia percorrendo seu corpo. Quando olha à frente, observa a lendária jóia, na cor roxa, mais reluzente que qualquer diamante do mundo.",
+         ultimaFase: true
         ),
     
     

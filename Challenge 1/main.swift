@@ -7,7 +7,7 @@
 
 import Foundation
 
-print("Seja bem-vindo a Lust for Ore!")
+print("Seja bem-vindo a Greed Gem!")
 
 comeco()
 

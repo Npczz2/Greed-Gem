@@ -19,7 +19,7 @@ class Personagem {
     let niveisPicareta: [String] = ["༒".yellow(), "༒".black2(), "༒".white(), "༒".yellow2(), "༒".green2(), "༒".cyan2(), "༒".red()]
     var pontosBondade: Int = 0
     var nome: String = "";
-    var nivel: Int = 156666;
+    var nivel: Int = 1;
     var xp: Int = 0;
     var xpNecessario: Int = 4;
     
@@ -32,6 +32,7 @@ class Personagem {
                 self.inventario[0].nivel += 1;
                 self.inventario[0].desenho = self.niveisPicareta[self.inventario[0].nivel]
                 self.removerDoInventario(item: (desenho: self.inventario[quantidadeMinerios.index].desenho, quantidade: 5))
+                self.desenharInventario()
            
                 
             }
@@ -41,16 +42,16 @@ class Personagem {
         })
         inventario.append(ItemInventario("◍".yellow(), quantidade: 5, nivel: 0) {
             recuperarEnergia(quantidadeEnergia: 10)
-            self.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 0))
+            self.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 1)) // arruma dps
         })
         inventario.append(ItemInventario("❦".red(), quantidade: 3, nivel: 0) {
             recuperarEnergia(quantidadeEnergia: 8)
             self.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
         })
-//        inventario.append(ItemInventario("∝".cyan(), quantidade: 13, nivel: 0) {
-//            recuperarEnergia(quantidadeEnergia: 5)
-//            self.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
-//        })
+        inventario.append(ItemInventario("∝".cyan(), quantidade: 99, nivel: 0) {
+            recuperarEnergia(quantidadeEnergia: 5)
+            self.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
+        })
         
 
     }
@@ -118,9 +119,11 @@ class Personagem {
                 if entradaSeparada.count > 1 {
                     if let indiceInventario = Int(entradaSeparada[1]), let interacao = inventario[indiceInventario - 1].interacao {
                         interacao()
+                        desenharInventario()
                         
                     }
                 }
+                
                 
                 printarGameTeste()
                 return

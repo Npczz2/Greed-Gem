@@ -26,8 +26,9 @@ class Fase {
     let tipoDeMinerio: Minerio;
     let posicaoEscada: (x: Int, y: Int)
     var fraseInicial: String = ""
+    let ultimaFase: Bool
     
-    init (mapaModelo: String, npcs: [Npc], quantidadePedras: Int, quantidadeMinerios: Int, tipoDeMinerio: Minerio, posicaoSpawnBoneco: (x: Int, y: Int), fraseInicial: String) {
+    init (mapaModelo: String, npcs: [Npc], quantidadePedras: Int, quantidadeMinerios: Int, tipoDeMinerio: Minerio, posicaoSpawnBoneco: (x: Int, y: Int), fraseInicial: String, ultimaFase: Bool) {
         
         let vetor = mapaModelo.split(separator: "&")
         for i in 0..<vetor.count {
@@ -45,6 +46,7 @@ class Fase {
         self.posicaoSpawnBoneco = posicaoSpawnBoneco;
         self.mapaDesenhadoComObjetos = mapaDesenho;
         self.fraseInicial = fraseInicial;
+        self.ultimaFase = ultimaFase;
         personagem.posicao = posicaoSpawnBoneco;
         
         for i in 1..<mapaDesenho.count - 1 {
@@ -78,19 +80,28 @@ class Fase {
             
         }
         
-        let randomPosicaoPedra = Int.random(in: 0..<posicoesPedras.count)
-        posicaoEscada = posicoesPedras[randomPosicaoPedra]
+       
+            let randomPosicaoPedra = Int.random(in: 0..<posicoesPedras.count)
+            posicaoEscada = posicoesPedras[randomPosicaoPedra]
+        
+        
     }
     
     func desenharObjetosMapa () {
         
         mapaAtual.mapaDesenhadoComObjetos = mapaAtual.mapaDesenho
-        self.mapaDesenho[posicaoEscada.y][posicaoEscada.x] = Espaco("⇊".bgBlack(), AlgoInteragivel(index: 0, interacao: {
-            faseNumero += 1;
-            mapaAtual = todasAsFases[faseNumero]
-            textoCompleto = false //Texto ter que ser digitado novamente
-            personagem.posicao = todasAsFases[faseNumero].posicaoSpawnBoneco
-        }))
+        
+        if !ultimaFase {
+            
+            self.mapaDesenho[posicaoEscada.y][posicaoEscada.x] = Espaco("⇊".bgBlack(), AlgoInteragivel(index: 0, interacao: {
+                faseNumero += 1;
+                mapaAtual = todasAsFases[faseNumero]
+                textoCompleto = false //Texto ter que ser digitado novamente
+                personagem.posicao = todasAsFases[faseNumero].posicaoSpawnBoneco
+            }))
+            
+        }
+        
         
         for i in 0..<mapaAtual.posicoesPedras.count { //Pedra
             mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesPedras[i].y][mapaAtual.posicoesPedras[i].x] = Espaco("☗".black2(), AlgoInteragivel(index: i) {

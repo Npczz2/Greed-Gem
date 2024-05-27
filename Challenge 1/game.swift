@@ -5,7 +5,7 @@ import Foundation
 
 
 var personagem = Personagem()
-var mapaAtual = todasAsFases[5]
+var mapaAtual = todasAsFases[0]
 var velocidadeTexto: Double = 1
 var textoCompleto: Bool = false
 let derrotaGrande = """
@@ -250,7 +250,7 @@ func roubarItens(itens:[String]){
             
             var quantidade = Int.random(in: 1...5)
             personagem.adicionarAoInventario(item: ItemInventario("∝".cyan(), quantidade: quantidade, nivel: 0) {
-                recuperarEnergia(quantidadeEnergia: 5)
+                recuperarEnergia(quantidadeEnergia: 10)
                 personagem.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
             })
             
