@@ -229,7 +229,7 @@ func roubarItens(itens:[String]){
         case "Torta":
             var quantidade = Int.random(in: 1...2)
             personagem.adicionarAoInventario(item: ItemInventario("◍".yellow(), quantidade: quantidade, nivel: 0) {
-                recuperarEnergia(quantidadeEnergia: 10)
+                recuperarEnergia(quantidadeEnergia: 16)
                 personagem.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 1))
             })
             
@@ -240,7 +240,7 @@ func roubarItens(itens:[String]){
             
             var quantidade = Int.random(in: 1...5)
             personagem.adicionarAoInventario(item: ItemInventario("❦".red(), quantidade: quantidade, nivel: 0) {
-                recuperarEnergia(quantidadeEnergia: 8)
+                recuperarEnergia(quantidadeEnergia: 12)
                 personagem.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
             })
             
@@ -250,7 +250,7 @@ func roubarItens(itens:[String]){
             
             var quantidade = Int.random(in: 1...5)
             personagem.adicionarAoInventario(item: ItemInventario("∝".cyan(), quantidade: quantidade, nivel: 0) {
-                recuperarEnergia(quantidadeEnergia: 10)
+                recuperarEnergia(quantidadeEnergia: 8)
                 personagem.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
             })
             
