@@ -25,24 +25,60 @@ func loopGame() {
     print("\u{001B}[2J");
     print("Digite o nome do personagem: ");
     personagem.nome = readLine()!;
-    print("Digite a velocidade de digitação do texto (0.5; 1; 2; 5):");
-    velocidadeTexto = Double(readLine()!)!;
+    
+
+    
+    var escolhaValida = false
+    
+    repeat {
+        
+        
+        print("\u{001B}[2JEscolha a velocidade que o texto irá ser escrito:")
+        print("""
+
+        1. Lento
+        2. Normal
+        3. Rápido
+        4. Super rápido
+
+    """);
+        
+        if let entrada = readLine() {
+            switch entrada {
+            case "1":
+                velocidadeTexto = 1;
+                escolhaValida.toggle();
+                break;
+            case "2":
+                velocidadeTexto = 3;
+                escolhaValida.toggle();
+                break;
+            case "3":
+                velocidadeTexto = 6;
+                escolhaValida.toggle();
+                break;
+            case "4":
+                velocidadeTexto = 70;
+                escolhaValida.toggle();
+                break;
+            default:
+                break;
+            }
+        }
+        
+        
+    } while(!escolhaValida);
+    
+    
     
     print("\u{001B}[2J");
-    printarDevagar(texto: "\nUm boato de uma jóia rara encontrada em uma caverna na Austrália foi espalhado pelo mundo. Várias pessoas, mesmo as sem experiência nas cavernas decidiram tentar obtê-la por conta de seu valor de venda. ▼", completo: false);
-    _ = readLine();
-    printarDevagar(texto: "\nEntretanto, a caverna na qual se encontrava a jóia era conhecida como a Toca Do Diabo, conhecida por sua taxa de mortalidade de 82,6%. Relatos de pessoas que conseguiram sair com vida dessa caverna contam que ela parece algo mágico, um labirinto que te prende na caverna conforme você avança. Mesmo assim, diversos civis cegos pelo dinheiro ignoraram os avisos do governo e adentraram nessas cavernas em busca do objeto raro. ▼", completo: false);
-    _ = readLine();
-    printarDevagar(texto: "\nA estimativa do governo é que 18 pessoas já morreram dentro da caverna desde o surgimento do boato.", completo: false);
-    _ = readLine();
+    printarDialogo("Um boato de uma jóia rara encontrada em uma caverna na Austrália foi espalhado pelo mundo. Várias pessoas, mesmo as sem experiência nas cavernas decidiram tentar obtê-la por conta de seu valor de venda.");
+    printarDialogo("Entretanto, a caverna na qual se encontrava a jóia era conhecida como a Toca Do Diabo, conhecida por sua taxa de mortalidade de 82,6%. Relatos de pessoas que conseguiram sair com vida dessa caverna contam que ela parece algo mágico, um labirinto que te prende na caverna conforme você avança. Mesmo assim, diversos civis cegos pelo dinheiro ignoraram os avisos do governo e adentraram nessas cavernas em busca do objeto raro.");
+    printarDialogo("A estimativa do governo é que 18 pessoas já morreram dentro da caverna desde o surgimento do boato.");
     print("\n─────────────────────────────────────────────────────────────────────\n");
-    printarDevagar(texto: personagem.nome + " era um minerador experiente que trabalhava na maior mineradora de diamante da Austrália, chamada Hawks. Depois do boato da jóia lendária se espalhar entre seus colegas de trabalho, todos partiram o mais rápido possível para a Toca Do Diabo para procurá-la, deixando família, casa e emprego para trás. ▼", completo: false);
-    _ = readLine();
-    printarDevagar(texto: "\nTomado por um frio na barriga e um sentimento de adrelina que nunca havia sentido antes, " + personagem.nome + " decide ir atrás da jóia.", completo: false);
-    _ = readLine();
-    
+    printarDialogo(personagem.nome + " era um minerador experiente que trabalhava na maior mineradora de diamante da Austrália, chamada Hawks. Depois do boato da jóia lendária se espalhar entre seus colegas de trabalho, todos partiram o mais rápido possível para a Toca Do Diabo para procurá-la, deixando família, casa e emprego para trás.");
+    printarDialogo("Tomado por um frio na barriga e um sentimento de adrelina que nunca havia sentido antes, " + personagem.nome + " decide ir atrás da jóia.");
     chamarTutorial(completo: false);
-    
     mapaAtual.desenharObjetosMapa();
     personagem.posicao = mapaAtual.posicaoSpawnBoneco;
     printarGameTeste();
