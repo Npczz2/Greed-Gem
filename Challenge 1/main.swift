@@ -7,7 +7,7 @@
 
 import Foundation
 
-print("Seja bem-vindo a Greed Gem!")
+print("Seja bem-vindo a Greed Gem!");
 
 print("""
     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -17,9 +17,9 @@ print("""
     █  ████  ██  ███  ███  ████████  ████████  ████  ████████  ████  ██  ████████  █  █  ███
     ██      ███  ████  ██        ██        ██       █████████        ██       ██    ██    ██
     ████████████████████████████████████████████████████████████████████████████████████████
-    """.magenta())
+    """.magenta());
 
-comeco()
+comeco();
 
 func comeco() {
     
@@ -29,24 +29,24 @@ func comeco() {
         2 - Tutorial
         3 - Sair
 
-    """)
+    """);
     
     switch readLine() {
         
     case "1":
-        loopGame()
-        break
+        loopGame();
+        break;
     case "2":
-        chamarTutorial(completo: true)
-        comeco()
-        break
+        chamarTutorial(completo: true);
+        comeco();
+        break;
     case "3":
-        exit(0)
-        break
+        exit(0);
+        break;
     default:
-        print("opcao invalida, tente novamente")
-        comeco()
-        break
+        print("opcao invalida, tente novamente");
+        comeco();
+        break;
         
         
     }
