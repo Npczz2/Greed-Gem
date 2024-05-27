@@ -237,7 +237,6 @@ var todasAsFases: [Fase] = [
                              
                          case "1":
                              
-                             printarDevagar(texto: "\(personagem.nome) entrega todos os itens para Stan.".italic(), completo: false);
                              printarDialogo("\(personagem.nome) entrega todos os itens para Stan.".italic())
                              for i in (1..<personagem.inventario.count).reversed() {
                                  personagem.inventario.remove(at: i)
