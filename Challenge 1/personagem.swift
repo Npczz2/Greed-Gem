@@ -41,15 +41,15 @@ class Personagem {
             
         })
         inventario.append(ItemInventario("◍".yellow(), quantidade: 5, nivel: 0) {
-            recuperarEnergia(quantidadeEnergia: 10)
+            recuperarEnergia(quantidadeEnergia: 16)
             self.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 1)) // arruma dps
         })
         inventario.append(ItemInventario("❦".red(), quantidade: 3, nivel: 0) {
-            recuperarEnergia(quantidadeEnergia: 8)
+            recuperarEnergia(quantidadeEnergia: 12)
             self.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1))
         })
         inventario.append(ItemInventario("∝".cyan(), quantidade: 5, nivel: 0) {
-            recuperarEnergia(quantidadeEnergia: 5)
+            recuperarEnergia(quantidadeEnergia: 8)
             self.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1))
         })
         

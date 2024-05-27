@@ -249,7 +249,7 @@ var todasAsFases: [Fase] = [
                              
                              if personagem.nivel > 5 {
                                  
-                                 printarDevagar(texto: "\(personagem.nome) consegue derrotar Stan, que era um minerador de nível 3, e vasculha sua mochila coletando:\n".italic(), completo: false)
+                                 printarDevagar(texto: "\(personagem.nome) consegue derrotar Stan, que era um minerador de nível 5, e vasculha sua mochila coletando:\n".italic(), completo: false)
                                  roubarItens(itens: ["Torta", "Peixe", "Rubí", "Ouro", "Diamante"])
                                  _ = readLine()
                                  
