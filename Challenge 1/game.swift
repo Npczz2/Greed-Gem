@@ -1,9 +1,5 @@
 import Foundation
 
-
-
-
-
 var personagem = Personagem();
 var mapaAtual = todasAsFases[0];
 var velocidadeTexto: Double = 1;
@@ -18,7 +14,6 @@ let derrotaGrande = """
                      ██████████████████████████████████████████████████████████████████████ \n
                      """.red();
 
-
 func loopGame() {
     
     personagem.desenharInventario();
@@ -26,41 +21,43 @@ func loopGame() {
     print("Digite o nome do personagem: ");
     personagem.nome = readLine()!;
     
-
-    
     var escolhaValida = false
     
     repeat {
         
-        
         print("\u{001B}[2JEscolha a velocidade que o texto irá ser escrito:")
         print("""
-
+    
         1. Lento
         2. Normal
         3. Rápido
         4. Super rápido
-
+    
     """);
         
         if let entrada = readLine() {
             switch entrada {
+                
             case "1":
                 velocidadeTexto = 1;
                 escolhaValida.toggle();
                 break;
+                
             case "2":
                 velocidadeTexto = 3;
                 escolhaValida.toggle();
                 break;
+                
             case "3":
                 velocidadeTexto = 6;
                 escolhaValida.toggle();
                 break;
+                
             case "4":
                 velocidadeTexto = 70;
                 escolhaValida.toggle();
                 break;
+                
             default:
                 break;
             }
@@ -68,8 +65,6 @@ func loopGame() {
         
         
     } while(!escolhaValida);
-    
-    
     
     print("\u{001B}[2J");
     printarDialogo("Um boato de uma jóia rara encontrada em uma caverna na Austrália foi espalhado pelo mundo. Várias pessoas, mesmo as sem experiência nas cavernas decidiram tentar obtê-la por conta de seu valor de venda.");
@@ -83,7 +78,6 @@ func loopGame() {
     personagem.posicao = mapaAtual.posicaoSpawnBoneco;
     printarGameTeste();
     
-    
     while(true) {
         
         if let entradaConfirmada = readLine() {
@@ -96,9 +90,6 @@ func loopGame() {
         
     }
 }
-
-
-
 
 func printarGameTeste() {
     
@@ -125,12 +116,11 @@ func printarGameTeste() {
     
 }
 
+let terminador = ["│", "┼", "│", "┼", "│"];
+
 func printarInventario() {
     
-    
-    
     print();
-    let terminador = ["│", "┼", "│", "┼", "│"];
     
     for i in 0..<personagem.inventarioDesenhado[0].count {
         for k in 0..<personagem.inventarioDesenhado.count {
@@ -141,18 +131,15 @@ func printarInventario() {
                       k == personagem.inventarioDesenhado.count - 1
                       ? terminador[i] : "");
             }
-            
         }
         print();
     }
     print();
-    
 }
 
 func desenhoCaixa(index: Int, desenho: String, quantidade: Int, interagivel: Bool) -> [[String]] {
     
     let indexString = String(index + 1);
-    
     return [
         ["│", " ", interagivel ? indexString : indexString.black2(), index  < 9 ? " " : ""],
         ["┼", "─", "─", "─"],
@@ -164,13 +151,14 @@ func desenhoCaixa(index: Int, desenho: String, quantidade: Int, interagivel: Boo
 }
 
 func printarEnergia(){
-    var energiaConv: Int = personagem.energia/5;
+    
+    let energiaConv: Int = personagem.energia/5;
     var barraEnergia: String = "";
-    for i in 0..<energiaConv{
+    for _ in 0..<energiaConv{
         barraEnergia += "#";
     }
     
-    for i in 0..<20-energiaConv {
+    for _ in 0..<20-energiaConv {
         barraEnergia += "#".black2();
     }
     
@@ -179,23 +167,24 @@ func printarEnergia(){
 }
 
 func printarDevagar(texto: String, completo: Bool){
-    var textoConv = Array(texto);
-    var velocidadeConv = 50000 / velocidadeTexto;
     
+    let textoConv = Array(texto);
+    let velocidadeConv = 50000 / velocidadeTexto;
     setbuf(__stdoutp, nil);
     
-    if(!completo){ //Caso ainda não tenha digitado o texto
+    if(!completo) { //Caso ainda não tenha digitado o texto
         for i in 0..<textoConv.count{
             print(textoConv[i], terminator: "");
             
             usleep(useconds_t(velocidadeConv));
         }
-    }else{
+    } else{
         print(texto.italic());
     }
 }
 
 func printarDialogo(_ texto: String) {
+    
     printarDevagar(texto: texto + " ▼\n", completo: false);
     _ = readLine();
 }
@@ -211,9 +200,9 @@ func ganharXP(quantidade: Int){
     personagem.xp += quantidade;
     
     if(personagem.xp >= personagem.xpNecessario){
+        
         print("Subiu de nível!");
         personagem.nivel += 1;
-        
         personagem.xp -= personagem.xpNecessario;
         personagem.xpNecessario = Int(Double(personagem.xpNecessario) * 1.5);
     }
@@ -223,68 +212,63 @@ func roubarItens(itens:[String]){
     
     for i in 0..<itens.count{
         switch(itens[i]){
-        case "Pedra":
-            var quantidade = Int.random(in: 1...7);
-            personagem.adicionarAoInventario(item: ItemInventario("☗".black2(), quantidade: quantidade, nivel: 1));
             
+        case "Pedra":
+            let quantidade = Int.random(in: 1...7);
+            personagem.adicionarAoInventario(item: ItemInventario("☗".black2(), quantidade: quantidade, nivel: 1));
             print("☗".black2() + " x" + String(quantidade));
             break;
             
         case "Ferro":
-            var quantidade = Int.random(in: 1...4)
+            let quantidade = Int.random(in: 1...4)
             personagem.adicionarAoInventario(item: ItemInventario("▰".white(), quantidade: quantidade, nivel: 2));
-            
             print("▰".white() + " x" + String(quantidade));
             break;
-        
-        case "Ouro":
-            var quantidade = Int.random(in: 1...4)
-            personagem.adicionarAoInventario(item: ItemInventario("▮".yellow2(), quantidade: quantidade, nivel: 3));
             
+        case "Ouro":
+            let quantidade = Int.random(in: 1...4)
+            personagem.adicionarAoInventario(item: ItemInventario("▮".yellow2(), quantidade: quantidade, nivel: 3));
             print("▮".yellow2() + " x" + String(quantidade));
             break;
-        case "Esmeralda":
-            var quantidade = Int.random(in: 1...4);
-            personagem.adicionarAoInventario(item: ItemInventario("◆".green2(), quantidade: quantidade, nivel: 4));
             
+        case "Esmeralda":
+            let quantidade = Int.random(in: 1...4);
+            personagem.adicionarAoInventario(item: ItemInventario("◆".green2(), quantidade: quantidade, nivel: 4));
             print("◆".green2() + " x" + String(quantidade));
             break;
-        case "Diamante":
-            var quantidade = Int.random(in: 1...4);
-            personagem.adicionarAoInventario(item: ItemInventario("✦".cyan2(), quantidade: quantidade, nivel: 5));
             
+        case "Diamante":
+            let quantidade = Int.random(in: 1...4);
+            personagem.adicionarAoInventario(item: ItemInventario("✦".cyan2(), quantidade: quantidade, nivel: 5));
             print("✦".cyan2() + " x" + String(quantidade));
             break;
+            
         case "Rubí":
-            
-            var quantidade = Int.random(in: 1...2);
+            let quantidade = Int.random(in: 1...2);
             personagem.adicionarAoInventario(item: ItemInventario("●".red(), quantidade: quantidade, nivel: 6));
-            
             print("●".red() + " x" + String(quantidade));
             break;
+            
         case "Torta":
-            var quantidade = Int.random(in: 1...2);
+            let quantidade = Int.random(in: 1...2);
             personagem.adicionarAoInventario(item: ItemInventario("◍".yellow(), quantidade: quantidade, nivel: 0) {
                 recuperarEnergia(quantidadeEnergia: 16);
                 personagem.removerDoInventario(item: (desenho: "◍".yellow(), quantidade: 1));
             })
-            
             print("◍".yellow() + " x" + String(quantidade));
-            
             break;
-        case "Fruta":
             
-            var quantidade = Int.random(in: 1...5);
+        case "Fruta":
+            let quantidade = Int.random(in: 1...5);
             personagem.adicionarAoInventario(item: ItemInventario("❦".red(), quantidade: quantidade, nivel: 0) {
                 recuperarEnergia(quantidadeEnergia: 12);
                 personagem.removerDoInventario(item: (desenho: "❦".red(), quantidade: 1));
             })
-            
             print("❦".red() + " x" + String(quantidade));
             break;
-        case "Peixe":
             
-            var quantidade = Int.random(in: 1...5);
+        case "Peixe":
+            let quantidade = Int.random(in: 1...5);
             personagem.adicionarAoInventario(item: ItemInventario("∝".cyan(), quantidade: quantidade, nivel: 0) {
                 recuperarEnergia(quantidadeEnergia: 8);
                 personagem.removerDoInventario(item: (desenho: "∝".cyan(), quantidade: 1));
@@ -292,15 +276,13 @@ func roubarItens(itens:[String]){
             
             print("∝".cyan() + " x" + String(quantidade));
             break;
-        
+            
         default:
-            
-            
             break;
         }
     }
     
-    print("                                              ▼")
+    print("                                              ▼");
     _ = readLine();
 }
 
@@ -317,31 +299,18 @@ let textoTutorial = "───────────────────�
 func chamarTutorial(completo: Bool){
     if(completo){
         print(textoTutorial);
-    }else{
+        
+    } else {
         print("────────────────────────────────────────────────────────────\nTUTORIAL\n\nComandos:\n- Andar: Direção (W, A, S, D) + quantidade de casas a andar\n- Olhar para direção: W, A, S, D\n- Interagir/Quebrar: E\n- Usar item do inventário: I + número da caixa do item\n\n Digite 1 para mais informações.\n────────────────────────────────────────────────────────────");
-        var input = readLine()
+        let input = readLine()
         if(input == "1"){
             print(textoTutorial);
-        } else {
+         } else {
             return;
-        }
-            
-        
+         }
     }
-    
     _ = readLine();
-    
 }
-
-
-
-
-
-
-
-
-
-
 
 extension String {
     

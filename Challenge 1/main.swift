@@ -8,7 +8,6 @@
 import Foundation
 
 print("Seja bem-vindo a Greed Gem!");
-
 print("""
     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
     ░░      ░░░       ░░░        ░░        ░░       ░░░░░░░░░░      ░░░       ░░░  ░░░░  ░░░
@@ -36,18 +35,20 @@ func comeco() {
     case "1":
         loopGame();
         break;
+        
     case "2":
         chamarTutorial(completo: true);
         comeco();
         break;
+        
     case "3":
         exit(0);
         break;
+        
     default:
         print("opcao invalida, tente novamente");
         comeco();
         break;
-        
         
     }
 }

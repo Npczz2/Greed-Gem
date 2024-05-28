@@ -7,10 +7,6 @@
 
 import Foundation
 
-
-
-
-
 class Fase {
     
     var mapaDesenho: [[Espaco]] = [];
@@ -58,10 +54,7 @@ class Fase {
         }
         
         for npc in npcs {
-            //let randomPosicaoValida = Int.random(in: 0..<posicoesValidas.count)
-           // let posicaoValida = posicoesValidas[randomPosicaoValida]
             posicoesNpcs.append(npc.posicaoSpawnNPC);
-            
         }
         
         for _ in 0..<quantidadePedras {
@@ -69,7 +62,6 @@ class Fase {
             let posicaoValida = posicoesValidas[randomPosicaoValida];
             posicoesPedras.append(posicaoValida);
             posicoesValidas.remove(at: randomPosicaoValida);
-            
         }
         
         for _ in 0..<quantidadeMinerios {
@@ -77,31 +69,25 @@ class Fase {
             let posicaoValida = posicoesValidas[randomPosicaoValida];
             posicoesMinerios.append(posicaoValida);
             posicoesValidas.remove(at: randomPosicaoValida);
-            
         }
         
-       
         let randomPosicaoPedra = Int.random(in: 0..<posicoesPedras.count);
         posicaoEscada = posicoesPedras[randomPosicaoPedra];
-        
         
     }
     
     func desenharObjetosMapa () {
-
+        
         mapaAtual.mapaDesenhadoComObjetos = mapaAtual.mapaDesenho;
         
         if !ultimaFase {
-            
             self.mapaDesenho[posicaoEscada.y][posicaoEscada.x] = Espaco("⇊".bgBlack(), AlgoInteragivel(index: 0, interacao: {
                 faseNumero += 1;
                 mapaAtual = todasAsFases[faseNumero];
                 textoCompleto = false; //Texto ter que ser digitado novamente
                 personagem.posicao = todasAsFases[faseNumero].posicaoSpawnBoneco;
             }))
-            
         }
-        
         
         for i in 0..<mapaAtual.posicoesPedras.count { //Pedra
             mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesPedras[i].y][mapaAtual.posicoesPedras[i].x] = Espaco("☗".black2(), AlgoInteragivel(index: i) {
@@ -111,14 +97,9 @@ class Fase {
                 personagem.adicionarAoInventario(item: ItemInventario("☗".black2(), quantidade: 1, nivel: 1));
                 
             })
-            
-            
-            
         }
         
         for i in 0..<mapaAtual.posicoesMinerios.count { //Minério
-            
-            
             
             mapaAtual.mapaDesenhadoComObjetos[mapaAtual.posicoesMinerios[i].y][mapaAtual.posicoesMinerios[i].x] = Espaco(tipoDeMinerio.desenho, AlgoInteragivel(index: i) {
                 
@@ -134,11 +115,6 @@ class Fase {
                 }
                 personagem.energia -= Int(Double(self.tipoDeMinerio.nivel) * 1.5);
             })
-            
-            
-            
-            
-            
         }
         
         for i in 0..<mapaAtual.posicoesNpcs.count { //NPCs
@@ -147,15 +123,12 @@ class Fase {
                     self.npcs[i].interacao();
                     self.npcs[i].interagiu = true;
                 }
-                
-                
             })
         }
         
-        
     }
+    
 }
-
 
 class AlgoInteragivel {
     
@@ -166,7 +139,6 @@ class AlgoInteragivel {
         self.interacao = interacao;
         self.index = index;
     }
-    
 }
 
 struct Espaco {
@@ -183,7 +155,6 @@ struct Espaco {
         self.algoInteragivel = nil;
     }
 }
-
 
 class Minerio {
     

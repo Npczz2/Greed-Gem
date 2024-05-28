@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 class Personagem {
     
     var posicao: (x: Int, y: Int) = (x: 0, y: 0);
@@ -64,101 +62,96 @@ class Personagem {
         
         var entradaInvalida = false;
         
-            
-            let entradaSeparada = entrada.split(separator: " ");
-            
-            switch entradaSeparada[0].uppercased() {
-                
-            case "W":
-                pegarFuturaPosicao = { return (x: personagem.posicao.x, y: personagem.posicao.y - 1) }
-                personagem.direcaoPadrao = "↑".red();
-                break;
-                
-            case "A":
-                pegarFuturaPosicao = { (x: personagem.posicao.x - 2, y: personagem.posicao.y) }
-                personagem.direcaoPadrao = "←".red();
-                break;
-                
-            case "S":
-                pegarFuturaPosicao = { (x: personagem.posicao.x, y: personagem.posicao.y + 1) }
-                personagem.direcaoPadrao = "↓".red();
-                break;
-                
-            case "D":
-                pegarFuturaPosicao = { (x: personagem.posicao.x + 2, y: personagem.posicao.y) }
-                personagem.direcaoPadrao = "→".red();
-                break;
-                
-            case "E": //Interagir
-                let espacoFuturo = pegarFuturaPosicao();
-                if let coisaNoEspaco = mapaAtual.mapaDesenhadoComObjetos[espacoFuturo.y][espacoFuturo.x].algoInteragivel {
-                    coisaNoEspaco.interacao();
-                    mapaAtual.desenharObjetosMapa();
-                    desenharInventario();
-                }
-                break;
-            case "B":
-                print("troca de mapa..");
-                mapaAtual = todasAsFases[1];
-                mapaAtual.desenharObjetosMapa();
-                
-                personagem.energia -= 10;
-                break;
-                
-            case "X":
-                exit(0);
-                break;
-                
-            case "HELP":
-                chamarTutorial(completo: false);
-                return;
-            
-                
-            case "I":
-                
-                if entradaSeparada.count > 1 {
-                    if let indiceInventario = Int(entradaSeparada[1]), let interacao = inventario[indiceInventario - 1].interacao {
-                        interacao();
-                        desenharInventario();
-                        
-                    }
-                }
-                
-                
-                printarGameTeste();
-                return;
-                
-            default:
-                pegarFuturaPosicao = {
-                    (x: personagem.posicao.x, y: personagem.posicao.y)
-                }
-                
-                entradaInvalida = true;
-                break;
-                
-                
-            }
         
-        printarGameTeste();
+        let entradaSeparada = entrada.split(separator: " ");
+        
+        switch entradaSeparada[0].uppercased() {
             
+        case "W":
+            pegarFuturaPosicao = { return (x: personagem.posicao.x, y: personagem.posicao.y - 1) }
+            personagem.direcaoPadrao = "↑".red();
+            break;
 
-            if entradaSeparada.count > 1 && !entradaInvalida {
-                if let numeroDeCasas = Int(entradaSeparada[1]) {
-                    for i in 0..<numeroDeCasas {
-                        var posicaoFutura = pegarFuturaPosicao();
-                        if (mapaAtual.mapaDesenhadoComObjetos[posicaoFutura.y][posicaoFutura.x].desenho == ".") {
-                            
-                            personagem.posicao = posicaoFutura;
-                            printarGameTeste();
-                        } else {
-                            break;
-                        }
-                        
-                        usleep(200000);
-                        
-                    }
+        case "A":
+            pegarFuturaPosicao = { (x: personagem.posicao.x - 2, y: personagem.posicao.y) }
+            personagem.direcaoPadrao = "←".red();
+            break;
+            
+        case "S":
+            pegarFuturaPosicao = { (x: personagem.posicao.x, y: personagem.posicao.y + 1) }
+            personagem.direcaoPadrao = "↓".red();
+            break;
+            
+        case "D":
+            pegarFuturaPosicao = { (x: personagem.posicao.x + 2, y: personagem.posicao.y) }
+            personagem.direcaoPadrao = "→".red();
+            break;
+            
+        case "E": //Interagir
+            
+            let espacoFuturo = pegarFuturaPosicao();
+            if let coisaNoEspaco = mapaAtual.mapaDesenhadoComObjetos[espacoFuturo.y][espacoFuturo.x].algoInteragivel {
+                coisaNoEspaco.interacao();
+                mapaAtual.desenharObjetosMapa();
+                desenharInventario();
+            }
+            break;
+        case "B":
+            print("troca de mapa..");
+            mapaAtual = todasAsFases[1];
+            mapaAtual.desenharObjetosMapa();
+            personagem.energia -= 10;
+            break;
+            
+        case "X":
+            exit(0);
+            break;
+            
+        case "HELP":
+            chamarTutorial(completo: false);
+            return;
+            
+        case "I":
+            if entradaSeparada.count > 1 {
+                if let indiceInventario = Int(entradaSeparada[1]), let interacao = inventario[indiceInventario - 1].interacao {
+                    interacao();
+                    desenharInventario();
+                    
                 }
             }
+                  
+            printarGameTeste();
+            return;
+            
+        default:
+            pegarFuturaPosicao = {
+                (x: personagem.posicao.x, y: personagem.posicao.y)
+            }
+            
+            entradaInvalida = true;
+            break;
+               
+        }
+
+        if entradaSeparada.count > 1 && !entradaInvalida {
+            if let numeroDeCasas = Int(entradaSeparada[1]) {
+                for _ in 0..<numeroDeCasas {
+                    let posicaoFutura = pegarFuturaPosicao();
+                    if (mapaAtual.mapaDesenhadoComObjetos[posicaoFutura.y][posicaoFutura.x].desenho == ".") {
+                        
+                        personagem.posicao = posicaoFutura;
+                        printarGameTeste();
+                    } else {
+                        break;
+                    }
+                    
+                    usleep(200000);
+                    
+                }
+            }
+        } else {
+            printarGameTeste();
+        }
             
             if(personagem.energia <= 0)
             {
@@ -166,8 +159,7 @@ class Personagem {
                 print(derrotaGrande);
                 exit(0);
             }
-        
-        
+         
     }
     
     
@@ -193,7 +185,6 @@ class Personagem {
             } else {
                 inventario.remove(at: itemExistente);
             }
-
 
         }
 
@@ -261,7 +252,8 @@ struct ItemInventario {
 }
 
 func recuperarEnergia(quantidadeEnergia: Int){
-    var energiaDif: Int = 100 - personagem.energia;
+    
+    let energiaDif: Int = 100 - personagem.energia;
     if(energiaDif <= quantidadeEnergia){
         personagem.energia += energiaDif;
     }else{
