@@ -14,13 +14,13 @@
 
 - #### Durante a exploração, o jogador irá se deparar com itens espalhados pelo mapa, e como se trata de um jogo de cavernas e mineração, os itens encontrados serão pedras e minérios, espalhados aleatoriamente pelo mapa, representados pelos seguintes caracteres:
 
-- Pedra ( <span style="color: blue;">☗</span> )
-- Ferro ( ▰ )
-- Ouro ( ▮ )
-- Esmeralda ( ◆ )
-- Diamante ( ✦ )
-- Rubi ( ● )
-- Joia lendária ( ⋇ )
+    - Pedra ( <span style="color: blue;">☗</span> )
+    - Ferro ( ▰ )
+    - Ouro ( ▮ )
+    - Esmeralda ( ◆ )
+    - Diamante ( ✦ )
+    - Rubi ( ● )
+    - Joia lendária ( ⋇ )
 
 - #### Para coletar uma pedra ou um minério, o jogador deve ficar a frente do mesmo e interagir (apertando “E”):
 
