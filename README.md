@@ -23,7 +23,8 @@
 
 *Para coletar uma pedra ou um minério, o jogador deve ficar a frente do mesmo e interagir (apertando “E”):*
 
-![Imagem do jogo](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/tetrisTSPIN.png)
+![Imagem do jogo](https://github.com/Npczz2/Joguinho-c1/blob/master/Assets/andando.gif)
+
 
 - Para usar algum item, é preciso colocar (”i ” + posição do inventário):
 
