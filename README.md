@@ -36,6 +36,9 @@
 
 # Funcionalidades futuras (fazer maanha)
 
+    - Cada fase do jogo é criada passando alguns parâmetros que pode ser randomizado (com excessão das interações dos NPCS), então seria muito legal criar um algoritmo para gerar mapas aleatórios, assim seria possível criar fases infinitas.
+    - Cada mapa é salvo como um desenho dentro do código, tendo um algoritmo para mapear esse desenho.
+    
     ![Passando de fase](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/passandodefase.gif) 
   
 # Tecnologias utilizadas
@@ -53,10 +56,10 @@
   
 ```bash
 # clonar repositório
-git clone https://github.com/Domiuau/TetrisConsole
+git clone https://github.com/Npczz2/Joguinho-c1
 ```
 
 # Autor
 
-- [Guilherme Mateus Sousa Santos]( https://github.com/Domiuau)
-- [Heitor Ivaza Lopes]( https://github.com/Npczz2)
+- [Guilherme Mateus Sousa Santos](https://github.com/Domiuau)
+- [Heitor Ivaza Lopes](https://github.com/Npczz2)
