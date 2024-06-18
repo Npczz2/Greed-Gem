@@ -6,7 +6,7 @@
 
 # Resumo da jogabilidade
 
-#### Apesar de ser um jogo de terminal, ele possui mecânicas de um jogo 2D, tendo movimentação e a direção que o personagem, representado por uma seta vermelha (“→”), está virado no mapa.
+- #### Apesar de ser um jogo de terminal, ele possui mecânicas de um jogo 2D, tendo movimentação e a direção que o personagem, representado por uma seta vermelha (“→”), está virado no mapa.
 
 ![Andando](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/andando.gif) 
 
