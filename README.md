@@ -1,7 +1,7 @@
 # Sobre o projeto
 
-- Primeiro Challange Apple Developer Academy | Senac turma 2024 - 2025 e primeiro projeto nessa linguagem.
-- RPG de console utilizando conceitos básicos de Swift.
+- Primeiro Challange Apple Developer Academy | Senac turma 2024 - 2025 e primeiro projeto em Swift.
+- RPG de console utilizando conceitos básicos e explorando a linguagem.
 - Greed Gem é um jogo de sobrevivência e exploração, onde o objetivo é coletar a joia lendária, e, para isso, o jogador deve gerenciar muito bem seus recursos coletados pelo mapa. Durante seu progresso, diversas situações inusitadas poderão acontecer, onde o jogador terá escolhas a fazer, podendo mudar completamente o final do jogo.
 
 # Resumo da jogabilidade
