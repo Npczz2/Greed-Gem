@@ -12,7 +12,7 @@
 
 *Os comandos para virar o personagem, são: W, A, S e D.*
 
-#### Durante a exploração, o jogador irá se deparar com itens espalhados pelo mapa, e como se trata de um jogo de cavernas e mineração, os itens encontrados serão pedras e minérios, espalhados aleatoriamente pelo mapa, representados pelos seguintes caracteres:
+- #### Durante a exploração, o jogador irá se deparar com itens espalhados pelo mapa, e como se trata de um jogo de cavernas e mineração, os itens encontrados serão pedras e minérios, espalhados aleatoriamente pelo mapa, representados pelos seguintes caracteres:
 
 - Pedra ( <span style="color: blue;">☗</span> )
 - Ferro ( ▰ )
@@ -22,21 +22,21 @@
 - Rubi ( ● )
 - Joia lendária ( ⋇ )
 
-#### Para coletar uma pedra ou um minério, o jogador deve ficar a frente do mesmo e interagir (apertando “E”):
+- #### Para coletar uma pedra ou um minério, o jogador deve ficar a frente do mesmo e interagir (apertando “E”):
 
-![Quebando coisas](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/quebandocoisas.gif) 
+    ![Quebando coisas](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/quebandocoisas.gif) 
 
-#### Para usar algum item, é preciso colocar (”i ” + posição do inventário):
+- #### Para usar algum item, é preciso colocar (”i ” + posição do inventário):
 
-![Inventario](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/inventario.gif)
+    ![Inventario](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/inventario.gif)
 
-#### Para passar de nível (ou ir mais a fundo na caverna no nosso contexto), o jogador deve encontrar a "passagem secreta", que está localizada em baixo de uma pedra aleatória:
+- #### Para passar de nível (ou ir mais a fundo na caverna no nosso contexto), o jogador deve encontrar a "passagem secreta", que está localizada em baixo de uma pedra aleatória:
 
-![Quebando coisas](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/passandodefase.gif) 
+    ![Quebando coisas](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/passandodefase.gif) 
 
-#### mostrar como uma fase é feita amanha
+- #### mostrar como uma fase é feita amanha
   
-![Passando de fase](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/passandodefase.gif) 
+    ![Passando de fase](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/passandodefase.gif) 
   
 # Tecnologias utilizadas
 - Swift
