@@ -14,7 +14,7 @@
 
 #### Durante a exploração, o jogador irá se deparar com itens espalhados pelo mapa, e como se trata de um jogo de cavernas e mineração, os itens encontrados serão pedras e minérios, espalhados aleatoriamente pelo mapa, representados pelos seguintes caracteres:
 
-- Pedra ( <span style="color: blue;">☗</span> )
+- Pedra ( <span style="color: blue;">a</span> )
 - Ferro ( ▰ )
 - Ouro ( ▮ )
 - Esmeralda ( ◆ )
