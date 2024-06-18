@@ -34,8 +34,8 @@
 
     ![Quebando coisas](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/passandodefase.gif) 
 
-- #### mostrar como uma fase é feita amanha
-  
+# Funcionalidades futuras (fazer maanha)
+
     ![Passando de fase](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/passandodefase.gif) 
   
 # Tecnologias utilizadas
@@ -58,6 +58,5 @@ git clone https://github.com/Domiuau/TetrisConsole
 
 # Autor
 
-Guilherme Mateus Sousa Santos
-Heitor Ivaza Lopes 
-*tentar colocar os links dos perfis aqui amanha*
+[Guilherme Mateus Sousa Santos][https://github.com/Domiuau]
+[Heitor Ivaza Lopes ][https://github.com/Npczz2]
