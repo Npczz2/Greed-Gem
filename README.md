@@ -8,7 +8,8 @@
 
 - Apesar de ser um jogo de terminal, ele possui mecânicas de um jogo 2D, tendo movimentação e a direção que o personagem, representado por uma seta vermelha (“→”), está virado no mapa.
 
-![Imagem do jogo](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/tetrisTSPIN.png)
+![Imagem do jogo](https://github.com/Npczz2/Joguinho-c1/blob/master/Assets/andando.gif)
+
 *Os comandos para virar o personagem, são: W, A, S e D.*
 
 - Durante a exploração, o jogador irá se deparar com itens espalhados pelo mapa, e como se trata de um jogo de cavernas e mineração, os itens encontrados serão pedras e minérios, espalhados aleatoriamente pelo mapa, representados pelos seguintes caracteres:
