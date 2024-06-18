@@ -12,7 +12,7 @@
 
 *Os comandos para virar o personagem, são: W, A, S e D.*
 
-## Durante a exploração, o jogador irá se deparar com itens espalhados pelo mapa, e como se trata de um jogo de cavernas e mineração, os itens encontrados serão pedras e minérios, espalhados aleatoriamente pelo mapa, representados pelos seguintes caracteres:
+### Durante a exploração, o jogador irá se deparar com itens espalhados pelo mapa, e como se trata de um jogo de cavernas e mineração, os itens encontrados serão pedras e minérios, espalhados aleatoriamente pelo mapa, representados pelos seguintes caracteres:
 
 - Pedra ( ☗ )
 - Ferro ( ▰ )
@@ -22,19 +22,19 @@
 - Rubi ( ● )
 - Joia lendária ( ⋇ )
 
-## Para coletar uma pedra ou um minério, o jogador deve ficar a frente do mesmo e interagir (apertando “E”):
+### Para coletar uma pedra ou um minério, o jogador deve ficar a frente do mesmo e interagir (apertando “E”):
 
 ![Imagem do jogo](https://github.com/Npczz2/Joguinho-c1/blob/master/Assets/andando.gif)
 
-## Para usar algum item, é preciso colocar (”i ” + posição do inventário):
+### Para usar algum item, é preciso colocar (”i ” + posição do inventário):
 
 ![Imagem do jogo](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/tetrisTSPIN.png)
 
-## Para passar de nível (ou ir mais a fundo na caverna no nosso contexto), o jogador deve encontrar a "passagem secreta", que está localizada em baixo de uma pedra aleatória:
+### Para passar de nível (ou ir mais a fundo na caverna no nosso contexto), o jogador deve encontrar a "passagem secreta", que está localizada em baixo de uma pedra aleatória:
 
 ![Imagem do jogo](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/tetrisTSPIN.png)
 
-## É possivel escolher as peças disponiveis no jogo e o tamanho do campo, basta mudar o construtor e o vetor de Peças no metodo main
+### É possivel escolher as peças disponiveis no jogo e o tamanho do campo, basta mudar o construtor e o vetor de Peças no metodo main
   
   ![Main](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/Main.png)
   
