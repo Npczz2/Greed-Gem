@@ -9,7 +9,7 @@
 #### Apesar de ser um jogo de terminal, ele possui mecânicas de um jogo 2D, tendo movimentação e a direção que o personagem, representado por uma seta vermelha (“→”), está virado no mapa.
 
 <div style="text-align: center;">
-    <img src="[https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/quebandocoisas.gif](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/andando.gif)" alt="Quebrando coisas">
+    <img src="https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/andando.gif" alt="Quebrando coisas">
 </div>
 
 *Os comandos para virar o personagem, são: W, A, S e D.*
