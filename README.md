@@ -58,5 +58,5 @@ git clone https://github.com/Domiuau/TetrisConsole
 
 # Autor
 
-[Guilherme Mateus Sousa Santos]: https://github.com/Domiuau
-[Heitor Ivaza Lopes]: https://github.com/Npczz2
+- [Guilherme Mateus Sousa Santos]( https://github.com/Domiuau)
+- [Heitor Ivaza Lopes]( https://github.com/Npczz2)
