@@ -39,7 +39,7 @@
 - Cada fase do jogo é criada passando alguns parâmetros que pode ser randomizado (com excessão das interações dos NPCS), então seria muito legal criar um algoritmo para gerar mapas aleatórios, assim seria possível criar fases infinitas.
 - Cada mapa é salvo como um desenho dentro do código, tendo um algoritmo para mapear esse desenho.
     
-    ![Passando de fase](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/vetorFases.png) 
+    ![Quebando coisas](https://github.com/Npczz2/Joguinho-c1/blob/main/Assets/vetorFases.png) 
   
 # Tecnologias utilizadas
 - Swift
